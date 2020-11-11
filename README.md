@@ -2,15 +2,15 @@
 
 ## Description
 
-**Overview of the project**
+**Overview of the project**  
 Inspired by Letterboxd, this application allows you to track all of your favorite anime and manga. You will be able to create an account, log which shows or manga you have read, and leave reviews. You will also be able to create lists of shows/manga you want to watch/read, create lists of your favorite characters, and also follow other users. This will be done using the Jikan API.
 
 ## Proposal
 
-**Group Name:** Weebs
-**Project Name:** nipponmedia
-**KanBan:** https://github.com/Crowe828/nipponmedia/projects/1
-**Repo:** https://github.com/Crowe828/nipponmedia
+**Group Name:** Weebs  
+**Project Name:** nipponmedia  
+**KanBan:** https://github.com/Crowe828/nipponmedia/projects/1  
+**Repo:** https://github.com/Crowe828/nipponmedia  
 
 ## Burndown Schedule:
 
