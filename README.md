@@ -31,5 +31,5 @@ Inspired by Letterboxd, this application allows you to track all of your favorit
 
 ## Team Members
 
- - Christian Rowe: ![GitHub Profile](https://github.com/Crowe828) 
- - Brandon Green: ![GitHub Profile](https://github.com/BrandonGreenOAB) 
+ - Christian Rowe: [GitHub Profile](https://github.com/Crowe828) 
+ - Brandon Green: [GitHub Profile](https://github.com/BrandonGreenOAB) 
