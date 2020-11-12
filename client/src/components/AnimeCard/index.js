@@ -9,14 +9,17 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     width: 300,
-    height: 325,
+    height: 350,
     marginTop: 10,
   },
   title: {
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
+    marginBottom: 0,
+  },
+  pot: {
+    marginTop: 0,
   },
 });
 
@@ -24,6 +27,11 @@ export default function AnimeCard() {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
+      <img
+        className={classes.pot}
+        src={"https://via.placeholder.com/300x150"}
+        alt={"placeholder"}
+      />
       <CardContent>
         <Typography
           className={classes.title}
@@ -45,7 +53,9 @@ export default function AnimeCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button className={classes.pot, classes.pos} size="small">
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );
