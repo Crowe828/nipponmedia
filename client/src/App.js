@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import "./App.css";
 import Search from "./components/Search";
+import AnimeCard from "./components/AnimeCard";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Header />
         <Nav />
         <Search />
+        <AnimeCard />
       </div>
     );
   }
