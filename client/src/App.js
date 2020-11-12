@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import "./App.css";
+import Search from "./components/Search";
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Nav />
+        <Search />
       </div>
     );
   }
