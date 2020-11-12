@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-import "./App.css";
 import Search from "./components/Search";
+import Footer from "./components/Footer";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Header />
         <Nav />
         <Search />
+        <Footer />
       </div>
     );
   }
