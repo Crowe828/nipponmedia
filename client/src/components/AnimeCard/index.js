@@ -43,7 +43,7 @@ export default function AnimeCard(props) {
             sm={6}
             md={3}
             align="center"
-            key={props.results.indexOf(result)}
+            key={result.attributes.titles.en}
           >
             <Card className={classes.root}>
               <img
