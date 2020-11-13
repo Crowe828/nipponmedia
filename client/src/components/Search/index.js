@@ -2,22 +2,33 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
+import "./style.css"
 
 const useStyles = makeStyles({
   bar: {
-    width: 850,
+    width: 650,
     height: 50,
   },
   container: {
     width: "100%",
-    display: "flex",
-    justifyContent: "space-around",
     marginTop: 15,
+    display: "inline-flex",
+    flexDirection: "row",
+    justifyContent: "center",
   },
   filter: {
-    height: 50,
-    width: 350,
+    height: 40,
+    width: 250,
+    
   },
+  button: {
+    height: 55,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  category: {
+    marginLeft: 0,
+  }
 });
 
 export default function Search(props) {
@@ -31,22 +42,22 @@ export default function Search(props) {
   });
   return (
     <div className={classes.container}>
-      <form>
-        <input name="search" onChange={props.handleInputChange} className={classes.bar} />
-        <button onClick={props.handleFormSubmit}>Search</button>
-        <Autocomplete
-          id="grouped-demo"
+      <form style={
+        {display: "inline-flex", justifyContent: "center"}
+      }>
+        <input placeholder="Search for an Anime or Manga!" name="search" onChange={props.handleInputChange} className={classes.bar} />
+        <button className={classes.button} onClick={props.handleFormSubmit}>Search</button>
+        <Autocomplete className={classes.filter}
           options={options.sort(
             (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
           )}
           groupBy={(option) => option.firstLetter}
           getOptionLabel={(option) => option.title}
-          style={{ width: 300 }}
           renderInput={(params) => (
             <TextField
               className={classes.filter}
               {...params}
-              label="With categories"
+              label="Category"
               variant="outlined"
             />
           )}
