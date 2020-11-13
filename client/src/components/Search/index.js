@@ -10,8 +10,9 @@ const useStyles = makeStyles({
     height: 50,
   },
   container: {
+    width: "100%",
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
     marginTop: 15,
   },
   filter: {
