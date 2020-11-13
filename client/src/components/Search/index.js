@@ -1,5 +1,4 @@
 import React from "react";
-import SearchBar from "material-ui-search-bar";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
@@ -21,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Search() {
+export default function Search(props) {
   const classes = useStyles();
   const options = animeManga.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
@@ -32,24 +31,27 @@ export default function Search() {
   });
   return (
     <div className={classes.container}>
-      <SearchBar className={classes.bar} />
-      <Autocomplete
-        id="grouped-demo"
-        options={options.sort(
-          (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
-        )}
-        groupBy={(option) => option.firstLetter}
-        getOptionLabel={(option) => option.title}
-        style={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            className={classes.filter}
-            {...params}
-            label="With categories"
-            variant="outlined"
-          />
-        )}
-      />
+      <form>
+        <input name="search" onChange={props.handleInputChange} className={classes.bar} />
+        <button onClick={props.handleFormSubmit}>Search</button>
+        <Autocomplete
+          id="grouped-demo"
+          options={options.sort(
+            (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
+          )}
+          groupBy={(option) => option.firstLetter}
+          getOptionLabel={(option) => option.title}
+          style={{ width: 300 }}
+          renderInput={(params) => (
+            <TextField
+              className={classes.filter}
+              {...params}
+              label="With categories"
+              variant="outlined"
+            />
+          )}
+        />
+      </form>
     </div>
   );
 }
