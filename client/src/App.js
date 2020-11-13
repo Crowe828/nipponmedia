@@ -20,6 +20,7 @@ class App extends Component {
         <Header />
         <Nav />
         <Search />
+        <Saved />
         <Footer />
       </div>
     );

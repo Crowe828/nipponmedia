@@ -47,6 +47,23 @@ export default function Saved() {
         <Paper className={classes.paper}>xs=6</Paper>
       </Grid>
     </Grid>
+
+    <Grid container className={classes.title}>
+    <Grid item xs={6}>
+      <h1>Favorite Characters</h1>
+    </Grid>
+    <Grid item xs={6}>
+      <h1>Favorite Manga</h1>
+    </Grid>
+    </Grid>
+  <Grid container className={classes.saved}>
+    <Grid item xs={6}>
+      <Paper className={classes.paper}>characters here</Paper>
+    </Grid>
+    <Grid item xs={6}>
+      <Paper className={classes.paper}>xs=6</Paper>
+    </Grid>
+  </Grid>
     </div>
   );
 }
