@@ -23,40 +23,43 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AnimeCard() {
+export default function AnimeCard(props) {
   const classes = useStyles();
+
   return (
-    <Card className={classes.root}>
-      <img
-        className={classes.pot}
-        src={"https://via.placeholder.com/300x150"}
-        alt={"placeholder"}
-      />
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          Title
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button className={classes.pot, classes.pos} size="small">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    <div>
+      {props.results.map((result) => (
+        <Card className={classes.root}>
+          <img
+            className={classes.pot}
+            src={result.attributes.posterImage.tiny}
+            alt={result.attributes.titles.en}
+          />
+          <CardContent>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              {result.attributes.ageRatingGuide}
+            </Typography>
+            <Typography variant="h5" component="h2">
+              {result.attributes.titles.en}
+            </Typography>
+            <Typography className={classes.pos} color="textSecondary">
+              {result.attributes.titles.ja_jp}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {result.attributes.synopsis}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button className={(classes.pot, classes.pos)} size="small">
+              Learn
+            </Button>
+          </CardActions>
+        </Card>
+      ))}
+    </div>
   );
 }
