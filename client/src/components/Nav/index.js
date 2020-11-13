@@ -41,6 +41,9 @@ export default function Nav() {
           <Link to="/login">
             <Button color="inherit">Login</Button>
           </Link>
+          <Link to="/signup">
+            <Button color="inherit">Signup</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

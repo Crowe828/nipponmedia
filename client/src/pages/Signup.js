@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+export default function Signup() {
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
-          <h2>Login Form</h2>
-          <form className="login">
+          <h2>Sign Up Form</h2>
+          <form className="signup">
             <div className="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
@@ -26,13 +26,26 @@ export default function Login() {
                 placeholder="Password"
               />
             </div>
+            <div
+              style={{ display: "none" }}
+              id="alert"
+              className="alert alert-danger"
+              role="alert"
+            >
+              <span
+                className="glyphicon glyphicon-exclamation-sign"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Error:</span>{" "}
+              <span className="msg"></span>
+            </div>
             <button type="submit" className="btn btn-default">
-              Login
+              Sign Up
             </button>
           </form>
           <br />
-          <Link to="/signup">
-            <p>Or sign up here</p>
+          <Link to="/login">
+            <p>Or log in here</p>
           </Link>
         </div>
       </div>
