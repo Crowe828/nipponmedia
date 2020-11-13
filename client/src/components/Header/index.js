@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     height: "100px",
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: "#fff",
+    background: "#3f51b5",
+    fontSize: "72px",
   },
 }));
 
@@ -19,7 +21,7 @@ export default function Header() {
   const classes = useStyles();
   return (
     <Grid item xs={12}>
-      <Paper className={classes.paper}> This is the header</Paper>
+      <Paper className={classes.paper}>Nippon Media</Paper>
     </Grid>
   );
 }
