@@ -29,7 +29,7 @@ export default function AnimeCard(props) {
   return (
     <div>
       {props.results.map((result) => (
-        <Card className={classes.root}>
+        <Card key={JSON.stringify(result.attributes.titles.en)} className={classes.root}>
           <img
             className={classes.pot}
             src={result.attributes.posterImage.tiny}
