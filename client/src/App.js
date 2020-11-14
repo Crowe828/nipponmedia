@@ -72,7 +72,7 @@ class App extends Component {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/details">
+            <Route path="/:id">
               <Details state={this.state} />
             </Route>
           </Switch>

@@ -38,16 +38,9 @@ export default function AnimeCard(props) {
         alignItems="flex-start"
       >
         {props.results.map((result) => (
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            md={3}
-            align="center"
-            key={result.attributes.slug}
-          >
+          <Grid item xs={12} sm={6} md={3} align="center" key={result.id}>
             <Card className={classes.root}>
-              <Link to={`/details/${result.attributes.slug}`}>
+              <Link to={`/${result.id}`}>
                 <img
                   className={classes.pot}
                   src={result.attributes.posterImage.small}
@@ -75,7 +68,7 @@ export default function AnimeCard(props) {
                   className={(classes.pot, classes.pos)}
                   size="small"
                 >
-                  Learn more
+                  <Link to={`/${result.id}`}>Learn more</Link>
                 </Button>
               </CardActions>
             </Card>
