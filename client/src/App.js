@@ -9,8 +9,38 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import "./App.css";
+import API from "../src/utils/API";
 
 class App extends Component {
+  state = {
+    results: [],
+    search: "",
+    result: {},
+  };
+
+  componentDidMount() {
+    this.animeInfo("My hero");
+  }
+
+  animeInfo = (query) => {
+    console.log(query);
+    API.getAnime(query)
+      .then((res) => this.setState({ ...this.state, results: res.data.data }))
+      .catch((err) => console.log(err));
+  };
+
+  handleInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state.search);
+    this.animeInfo(this.state.search);
+  };
+
   render() {
     return (
       <div className="App">
@@ -19,7 +49,11 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route exact path="/">
-              <Main />
+              <Main
+                handleFormSubmit={this.handleFormSubmit}
+                handleInputChange={this.handleInputChange}
+                state={this.state}
+              />
             </Route>
           </Switch>
           <Switch>
@@ -39,7 +73,7 @@ class App extends Component {
           </Switch>
           <Switch>
             <Route path="/details">
-              <Details />
+              <Details state={this.state} />
             </Route>
           </Switch>
           <Footer />
