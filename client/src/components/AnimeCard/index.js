@@ -65,13 +65,14 @@ export default function AnimeCard(props) {
                 <Typography className={classes.pos} color="textSecondary">
                   {result.attributes.titles.ja_jp}
                 </Typography>
-                <Typography variant="body2" component="p">
-                  {result.attributes.synopsis}
-                </Typography>
               </CardContent>
               <CardActions>
-                <Button className={(classes.pot, classes.pos)} size="small">
-                  Learn
+                <Button
+                  onClick={() => console.log(result)}
+                  className={(classes.pot, classes.pos)}
+                  size="small"
+                >
+                  Learn more
                 </Button>
               </CardActions>
             </Card>
