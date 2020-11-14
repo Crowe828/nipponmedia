@@ -15,7 +15,6 @@ class Main extends Component {
   }
 
   animeInfo = (query) => {
-    console.log(query);
     API.getAnime(query)
       .then((res) => this.setState({ ...this.state, results: res.data.data }))
       .catch((err) => console.log(err));

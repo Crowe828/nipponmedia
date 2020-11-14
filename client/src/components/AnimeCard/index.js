@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -43,14 +44,16 @@ export default function AnimeCard(props) {
             sm={6}
             md={3}
             align="center"
-            key={result.attributes.titles.en}
+            key={result.attributes.slug}
           >
             <Card className={classes.root}>
-              <img
-                className={classes.pot}
-                src={result.attributes.posterImage.small}
-                alt={result.attributes.titles.en}
-              />
+              <Link to={`/details/${result.attributes.slug}`}>
+                <img
+                  className={classes.pot}
+                  src={result.attributes.posterImage.small}
+                  alt={result.attributes.titles.en}
+                />
+              </Link>
               <CardContent>
                 <Typography
                   className={classes.title}
