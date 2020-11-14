@@ -1,0 +1,25 @@
+.NavMenuTitle {
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.NavMenuHome {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  display: block;
+}
+
+.NavMenuLink {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  display: block;
+}

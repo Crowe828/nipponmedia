@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import NavMenu from "../NavMenu";
+import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,7 +59,7 @@ export default function Nav() {
                 <animated.div
                   key={key}
                   style={props}
-                  className="bg-black-t-50 fixed top-0 left-0 w-full h-full z-50"
+                  className="maskTransitions"
                   onClick={() => setShowMenu(false)}
                 ></animated.div>
               )
@@ -69,7 +70,7 @@ export default function Nav() {
                 <animated.div
                   key={key}
                   style={props}
-                  className="fixed bg-white top-0 left-0 w-4/5 h-full z-50 shadow p-3"
+                  className="menuTransitions"
                 >
                   <NavMenu closeMenu={() => setShowMenu(false)} />
                 </animated.div>
