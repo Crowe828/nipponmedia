@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import HomeIcon from "@material-ui/icons/Home";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
@@ -18,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 360,
   },
 }));
-
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
 
 export default function NavMenu(props) {
   const classes = useStyles();
@@ -39,6 +34,7 @@ export default function NavMenu(props) {
               Home
             </Link>
           </ListItem>
+          <Divider />
           <ListItem button>
             <ListItemIcon>
               <AccountBoxIcon fontSize="large" style={{ color: "white" }} />
@@ -51,6 +47,7 @@ export default function NavMenu(props) {
               Profile
             </Link>
           </ListItem>
+          <Divider />
           <ListItem button>
             <ListItemIcon>
               <ExitToAppIcon fontSize="large" style={{ color: "white" }} />
@@ -59,6 +56,7 @@ export default function NavMenu(props) {
               Login
             </Link>
           </ListItem>
+          <Divider />
           <ListItem button>
             <ListItemIcon>
               <FiberNewIcon fontSize="large" style={{ color: "white" }} />
@@ -71,6 +69,7 @@ export default function NavMenu(props) {
               Signup
             </Link>
           </ListItem>
+          <Divider />
         </List>
       </div>
     </div>
