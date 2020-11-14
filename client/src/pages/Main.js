@@ -7,6 +7,7 @@ class Main extends Component {
   state = {
     results: [],
     search: "",
+    result: {},
   };
 
   componentDidMount() {
