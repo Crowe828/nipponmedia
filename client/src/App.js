@@ -36,7 +36,6 @@ class App extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.search);
     this.animeInfo(this.state.search);
   };
 
