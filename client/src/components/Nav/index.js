@@ -42,7 +42,7 @@ export default function Nav() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ background: "#ff5722" }}>
+      <AppBar position="static" style={{ backgroundColor: "#263238" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -76,17 +76,8 @@ export default function Nav() {
                 </animated.div>
               )
           )}
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <Button color="inherit">Home</Button>
-          </Link>
-          <Link to="/login">
-            <Button color="inherit">Login</Button>
-          </Link>
-          <Link to="/signup">
-            <Button color="inherit">Signup</Button>
-          </Link>
-          <Link to="/profile">
-            <Button color="inherit">Profile</Button>
           </Link>
         </Toolbar>
       </AppBar>

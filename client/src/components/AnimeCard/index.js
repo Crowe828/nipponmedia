@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import "./style.css";
 
 const useStyles = makeStyles({
   root: {
@@ -39,24 +38,23 @@ export default function AnimeCard(props) {
         {props.results.map((result) => (
           <Grid item xs={12} sm={6} md={3} align="center" key={result.id}>
             <Link to={`/${result.id}`} style={{ textDecoration: "none" }}>
-              <Card className={classes.root}>
+              <Card
+                className={classes.root}
+                style={{ color: "white", backgroundColor: "#263238" }}
+              >
                 <img
                   className={classes.pot}
                   src={result.attributes.posterImage.small}
                   alt={result.attributes.titles.en}
                 />
                 <CardContent>
-                  <Typography
-                    className={classes.title}
-                    color="textSecondary"
-                    gutterBottom
-                  >
+                  <Typography className={classes.title} gutterBottom>
                     {result.attributes.ageRatingGuide}
                   </Typography>
                   <Typography variant="h5" component="h2">
                     {result.attributes.titles.en}
                   </Typography>
-                  <Typography className={classes.pos} color="textSecondary">
+                  <Typography className={classes.pos}>
                     {result.attributes.titles.ja_jp}
                   </Typography>
                 </CardContent>
