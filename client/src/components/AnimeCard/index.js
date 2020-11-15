@@ -64,7 +64,6 @@ export default function AnimeCard(props) {
               </CardContent>
               <CardActions>
                 <Button
-                  onClick={() => console.log(result)}
                   className={(classes.pot, classes.pos)}
                   size="small"
                 >
