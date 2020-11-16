@@ -5,6 +5,8 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
 
 const styles = (theme) => ({
   main: {
@@ -18,13 +20,14 @@ const styles = (theme) => ({
   },
   spaceBetween: {
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   textCenter: {
     textAlign: "center",
   },
   imageSize: {
     width: "40%",
+    borderRadius: "5px",
   },
   card: {
     borderRadius: "10px",
@@ -36,7 +39,12 @@ const styles = (theme) => ({
     marginTop: "20px",
     marginLeft: "10px",
     boxShadow: ".5px .5px 1px 1px",
-  }
+  },
+  btnGroup: {
+    marginTop: "15px",
+    display: "flex",
+    justifyContent: "space-around"
+  },
 });
 
 class Details extends Component {
@@ -79,7 +87,7 @@ class Details extends Component {
             />
           </div>
           <Card className={classes.textCenter}>
-            <CardContent >
+            <CardContent>
               <Grid className={classes.spaceBetween} container spacing={3}>
                 <Grid item xs={12}>
                   <Typography>
@@ -124,6 +132,22 @@ class Details extends Component {
               </Grid>
             </CardContent>
           </Card>
+          <div className={classes.btnGroup}>
+            <Button variant="contained" color="primary">
+              Watching
+            </Button>
+            <Button variant="contained" color="secondary">
+              Watched
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              size="medium"
+              startIcon={<SaveIcon />}
+            >
+              Save
+            </Button>
+          </div>
         </main>
       );
     }
