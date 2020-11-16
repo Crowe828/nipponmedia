@@ -4,10 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
+    paper: {
     padding: theme.spacing(2),
     height: "100px",
     textAlign: "center",
@@ -21,7 +18,7 @@ export default function Header() {
   const classes = useStyles();
   return (
     <Grid item xs={12}>
-      <Paper className={classes.paper}>Nippon Media</Paper>
+      <Paper square className={classes.paper}>Nippon Media</Paper>
     </Grid>
   );
 }

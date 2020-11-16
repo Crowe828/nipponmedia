@@ -19,17 +19,18 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.animeInfo("My hero");
+    this.getDefault();
   }
 
-  animeInfo = (query) => {
-    API.getAnime(query)
+  getDefault = () => {
+    API.defaultData()
       .then((res) => this.setState({ ...this.state, results: res.data.data }))
       .catch((err) => console.log(err));
   };
 
-  mangaInfo = (query) => {
-    API.getManga(query)
+  getInfo = (query, category) => {
+    console.log(query, category);
+    API.getData(query, category)
       .then((res) => this.setState({ ...this.state, results: res.data.data }))
       .catch((err) => console.log(err));
   };
@@ -40,15 +41,9 @@ class App extends Component {
     });
   };
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = (event, category) => {
     event.preventDefault();
-
-    this.animeInfo(this.state.search);
-  };
-
-  handleFormSubmitManga = (event) => {
-    event.preventDefault();
-    this.mangaInfo(this.state.search);
+    this.getInfo(this.state.search, category);
   };
 
   render() {

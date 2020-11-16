@@ -1,14 +1,13 @@
 import axios from "axios";
 
 export default {
-  getAnime: function (query) {
-    return axios.get(
-      "https://kitsu.io/api/edge/anime?filter%5Btext%5D=" + query 
-    );
+  defaultData: function () {
+    return axios.get("https://kitsu.io/api/edge/trending/anime");
   },
-  getManga: function (query) {
+  getData: function (query, drop) {
+    console.log(query, drop);
     return axios.get(
-      "https://kitsu.io/api/edge/manga?filter%5Btext%5D=" + query
+      "https://kitsu.io/api/edge/" + drop + "?filter%5Btext%5D=" + query
     );
   },
 };

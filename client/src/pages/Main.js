@@ -10,10 +10,6 @@ function Main(props) {
         handleInputChange={props.handleInputChange}
         handleFormSubmit={props.handleFormSubmit}
       />
-      <SearchManga
-        handleInputChange={props.handleInputChange}
-        handleFormSubmitManga={props.handleFormSubmitManga}
-      />
       <AnimeCard results={props.state.results} />
     </div>
   );

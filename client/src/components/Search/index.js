@@ -33,26 +33,38 @@ const useStyles = makeStyles({
 });
 
 export default function Search(props) {
+  
   const classes = useStyles();
   const [category, setCategory] = React.useState("");
 
   const handleChange = (event) => {
-    console.log(event.target.value);
+    console.log(event.target.value.toLowerCase());
     setCategory(event.target.value);
   };
 
   return (
     <div className={classes.container}>
-      <form style={{ display: "inline-flex", justifyContent: "center" }}>
+      <form
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: "90%",
+        }}
+      >
         <input
-          placeholder="Search for an Anime or Manga!"
+          placeholder=" Search for an Anime or Manga!"
           name="search"
           onChange={props.handleInputChange}
           className={classes.bar}
+          style={{
+            fontSize: "16px",
+            border: "solid",
+            borderRadius: "4px",
+            borderWidth: "1px",
+            borderColor: "#cac6c6",
+          }}
         />
-        <button className={classes.button} onClick={props.handleFormSubmit}>
-          Search
-        </button>
+
         <FormControl className={classes.formControl}>
           <InputLabel id="input">Age</InputLabel>
           <Select
@@ -61,10 +73,23 @@ export default function Search(props) {
             labelId="categoryLabel"
             id="select"
           >
-            <MenuItem value="Anime">Anime</MenuItem>
-            <MenuItem value="Manga">Manga</MenuItem>
+            <MenuItem value="anime">Anime</MenuItem>
+            <MenuItem value="manga">Manga</MenuItem>
           </Select>
         </FormControl>
+        <button
+        type="submit"
+        className={classes.button}
+        onClick={(e) => props.handleFormSubmit(e, category)}
+        style={{
+          color: "white",
+          backgroundColor: "#f44336",
+          border: "none",
+          borderRadius: "4px",
+        }}
+      >
+        Search
+      </button> 
       </form>
     </div>
   );
