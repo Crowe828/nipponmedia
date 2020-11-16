@@ -41,39 +41,47 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          position: "relative",
+          minHeight: "100vh",
+        }}
+      >
         <Router>
-          <Header />
-          <Nav />
-          <Switch>
-            <Route exact path="/">
-              <Main
-                handleFormSubmit={this.handleFormSubmit}
-                handleInputChange={this.handleInputChange}
-                state={this.state}
-              />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-          </Switch>
-          <Switch>
-            <Route path="/:id">
-              <Details state={this.state} />
-            </Route>
-          </Switch>
+          <div style={{ paddingBottom: "50px" }}>
+            <Header />
+            <Nav />
+            <Switch>
+              <Route exact path="/">
+                <Main
+                  handleFormSubmit={this.handleFormSubmit}
+                  handleInputChange={this.handleInputChange}
+                  state={this.state}
+                />
+              </Route>
+            </Switch>
+            <Switch>
+              <Route path="/login">
+                <Login />
+              </Route>
+            </Switch>
+            <Switch>
+              <Route path="/signup">
+                <Signup />
+              </Route>
+            </Switch>
+            <Switch>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+            </Switch>
+            <Switch>
+              <Route path="/:id">
+                <Details state={this.state} />
+              </Route>
+            </Switch>
+          </div>
           <Footer />
         </Router>
       </div>

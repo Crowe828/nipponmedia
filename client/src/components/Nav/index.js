@@ -43,7 +43,11 @@ export default function Nav() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "#263238" }}>
+      <AppBar
+        elevation={0}
+        position="static"
+        style={{ backgroundColor: "#263238" }}
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -77,7 +81,6 @@ export default function Nav() {
                 </animated.div>
               )
           )}
-
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <Button color="inherit">
               <HomeIcon style={{ paddingRight: "5px", fontSize: "large" }} />{" "}

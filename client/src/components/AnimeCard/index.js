@@ -8,11 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import Popover from "@material-ui/core/Popover";
 
 const useStyles = makeStyles({
-  root: {
-    width: 284,
-    height: 600,
-    marginTop: 10,
-  },
   title: {
     fontSize: 14,
   },
@@ -43,13 +38,14 @@ export default function AnimeCard(props) {
   const open = Boolean(anchorEl);
 
   return (
-    <div style={{ padding: 10 }}>
+    <div style={{ padding: 30 }}>
       <Grid
         container
         spacing={2}
         direction="row"
         justify="flex-start"
         alignItems="flex-start"
+        style={{ marginBottom: "25px" }}
       >
         {props.results.map((result) => (
           <Grid item xs={12} sm={6} md={3} align="center" key={result.id}>
@@ -57,7 +53,7 @@ export default function AnimeCard(props) {
               <Card style={{ color: "white", backgroundColor: "#263238" }}>
                 <img
                   className={classes.pot}
-                  src={result.attributes.posterImage.small}
+                  src={result.attributes.posterImage.large}
                   alt={result.attributes.titles.en}
                   style={{ width: "100%" }}
                 />
@@ -68,9 +64,6 @@ export default function AnimeCard(props) {
                     onMouseEnter={handlePopoverOpen}
                     onMouseLeave={handlePopoverClose}
                   >
-                    <Typography className={classes.title} gutterBottom>
-                      {result.attributes.ageRatingGuide}
-                    </Typography>
                     <Typography variant="h5" component="h2">
                       {result.attributes.titles.en}
                     </Typography>
@@ -101,8 +94,8 @@ export default function AnimeCard(props) {
               >
                 <Typography
                   style={{
-                    padding: "24px",
-                    fontSize: "22px",
+                    padding: "18px",
+                    fontSize: "18px",
                     color: "white",
                     backgroundColor: "#455a64",
                   }}

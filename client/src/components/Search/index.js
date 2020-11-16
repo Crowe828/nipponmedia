@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core/styles";
 import "./style.css";
 
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
   },
   button: {
     height: 55,
+    width: 55,
     marginLeft: 10,
     marginRight: 10,
   },
@@ -59,6 +61,7 @@ export default function Search(props) {
             borderRadius: "4px",
             borderWidth: "1px",
             borderColor: "#cac6c6",
+            backgroundColor: "#cfd8dc",
           }}
         />
         <button
@@ -66,12 +69,12 @@ export default function Search(props) {
           onClick={props.handleFormSubmit}
           style={{
             color: "white",
-            backgroundColor: "#f44336",
+            backgroundColor: "#81c784",
             border: "none",
             borderRadius: "4px",
           }}
         >
-          Search
+          <SearchIcon />
         </button>
         <Autocomplete
           className={classes.filter}
