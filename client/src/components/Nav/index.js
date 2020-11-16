@@ -7,6 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import HomeIcon from "@material-ui/icons/Home";
 import NavMenu from "../NavMenu";
 import "./style.css";
 
@@ -76,8 +77,12 @@ export default function Nav() {
                 </animated.div>
               )
           )}
+
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <Button color="inherit">Home</Button>
+            <Button color="inherit">
+              <HomeIcon style={{ paddingRight: "5px", fontSize: "large" }} />{" "}
+              Home
+            </Button>
           </Link>
         </Toolbar>
       </AppBar>
