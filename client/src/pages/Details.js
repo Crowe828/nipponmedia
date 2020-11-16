@@ -10,6 +10,7 @@ import SaveIcon from "@material-ui/icons/Save";
 
 const styles = (theme) => ({
   main: {
+    fontFamily: "PT Sans Narrow, sans-serif",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -26,7 +27,7 @@ const styles = (theme) => ({
     textAlign: "center",
   },
   imageSize: {
-    width: "40%",
+    width: "35%",
     borderRadius: "5px",
   },
   card: {
@@ -43,7 +44,7 @@ const styles = (theme) => ({
   btnGroup: {
     marginTop: "15px",
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
 });
 
