@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
-import "./style.css"
+import "./style.css";
 
 const useStyles = makeStyles({
   bar: {
@@ -19,7 +19,6 @@ const useStyles = makeStyles({
   filter: {
     height: 40,
     width: 250,
-    
   },
   button: {
     height: 55,
@@ -28,7 +27,7 @@ const useStyles = makeStyles({
   },
   category: {
     marginLeft: 0,
-  }
+  },
 });
 
 export default function Search(props) {
@@ -42,12 +41,40 @@ export default function Search(props) {
   });
   return (
     <div className={classes.container}>
-      <form style={
-        {display: "inline-flex", justifyContent: "center"}
-      }>
-        <input placeholder="Search for an Anime or Manga!" name="search" onChange={props.handleInputChange} className={classes.bar} />
-        <button className={classes.button} onClick={props.handleFormSubmit}>Search</button>
-        <Autocomplete className={classes.filter}
+      <form
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: "90%",
+        }}
+      >
+        <input
+          placeholder=" Search for an Anime or Manga!"
+          name="search"
+          onChange={props.handleInputChange}
+          className={classes.bar}
+          style={{
+            fontSize: "16px",
+            border: "solid",
+            borderRadius: "4px",
+            borderWidth: "1px",
+            borderColor: "#cac6c6",
+          }}
+        />
+        <button
+          className={classes.button}
+          onClick={props.handleFormSubmit}
+          style={{
+            color: "white",
+            backgroundColor: "#f44336",
+            border: "none",
+            borderRadius: "4px",
+          }}
+        >
+          Search
+        </button>
+        <Autocomplete
+          className={classes.filter}
           options={options.sort(
             (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
           )}
