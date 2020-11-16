@@ -92,7 +92,7 @@ class Details extends Component {
               <Grid className={classes.spaceBetween} container spacing={3}>
                 <Grid item xs={12}>
                   <Typography>
-                    Synopsis:
+                    Synopsis: <br />
                     {this.state.response.data.data.attributes.synopsis}
                   </Typography>
                 </Grid>
@@ -146,7 +146,7 @@ class Details extends Component {
               size="medium"
               startIcon={<SaveIcon />}
             >
-              Save
+              Save as Favorite
             </Button>
           </div>
         </main>
