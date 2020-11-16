@@ -54,20 +54,20 @@ export default function AnimeCard(props) {
         {props.results.map((result) => (
           <Grid item xs={12} sm={6} md={3} align="center" key={result.id}>
             <Link to={`/${result.id}`} style={{ textDecoration: "none" }}>
-              <Typography
-                aria-owns={open ? "mouse-over-popover" : undefined}
-                aria-haspopup="true"
-                onMouseEnter={handlePopoverOpen}
-                onMouseLeave={handlePopoverClose}
-              >
-                <Card style={{ color: "white", backgroundColor: "#263238" }}>
-                  <img
-                    className={classes.pot}
-                    src={result.attributes.posterImage.small}
-                    alt={result.attributes.titles.en}
-                    style={{ width: "100%" }}
-                  />
-                  <CardContent>
+              <Card style={{ color: "white", backgroundColor: "#263238" }}>
+                <img
+                  className={classes.pot}
+                  src={result.attributes.posterImage.small}
+                  alt={result.attributes.titles.en}
+                  style={{ width: "100%" }}
+                />
+                <CardContent>
+                  <Typography
+                    aria-owns={open ? "mouse-over-popover" : undefined}
+                    aria-haspopup="true"
+                    onMouseEnter={handlePopoverOpen}
+                    onMouseLeave={handlePopoverClose}
+                  >
                     <Typography className={classes.title} gutterBottom>
                       {result.attributes.ageRatingGuide}
                     </Typography>
@@ -77,9 +77,9 @@ export default function AnimeCard(props) {
                     <Typography className={classes.pos}>
                       {result.attributes.titles.ja_jp}
                     </Typography>
-                  </CardContent>
-                </Card>
-              </Typography>
+                  </Typography>
+                </CardContent>
+              </Card>
               <Popover
                 id="mouse-over-popover"
                 className={classes.popover}
@@ -101,8 +101,8 @@ export default function AnimeCard(props) {
               >
                 <Typography
                   style={{
-                    padding: "30px",
-                    fontSize: "24px",
+                    padding: "24px",
+                    fontSize: "22px",
                     color: "white",
                     backgroundColor: "#455a64",
                   }}
