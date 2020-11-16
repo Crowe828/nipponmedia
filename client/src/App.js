@@ -28,6 +28,12 @@ class App extends Component {
       .catch((err) => console.log(err));
   };
 
+  mangaInfo = (query) => {
+    API.getManga(query)
+      .then((res) => this.setState({ ...this.state, results: res.data.data }))
+      .catch((err) => console.log(err));
+  };
+
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -36,7 +42,13 @@ class App extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
+
     this.animeInfo(this.state.search);
+  };
+
+  handleFormSubmitManga = (event) => {
+    event.preventDefault();
+    this.mangaInfo(this.state.search);
   };
 
   render() {
@@ -50,6 +62,7 @@ class App extends Component {
               <Main
                 handleFormSubmit={this.handleFormSubmit}
                 handleInputChange={this.handleInputChange}
+                handleFormSubmitManga={this.handleFormSubmitManga}
                 state={this.state}
               />
             </Route>

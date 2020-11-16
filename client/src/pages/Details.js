@@ -29,17 +29,22 @@ const styles = (theme) => ({
   imageSize: {
     width: "35%",
     borderRadius: "5px",
+    marginBottom: "10px",
   },
   card: {
     borderRadius: "10px",
     marginTop: "20px",
     boxShadow: ".5px .5px 1px 1px",
+    backgroundColor: "#263238",
+    color: "white",
   },
   cardSmall: {
     borderRadius: "10px",
     marginTop: "20px",
     marginLeft: "10px",
     boxShadow: ".5px .5px 1px 1px",
+    backgroundColor: "#263238",
+    color: "white",
   },
   btnGroup: {
     marginTop: "15px",

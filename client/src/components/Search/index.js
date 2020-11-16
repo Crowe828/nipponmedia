@@ -1,8 +1,10 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
-import "./style.css"
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import "./style.css";
 
 const useStyles = makeStyles({
   bar: {
@@ -19,7 +21,6 @@ const useStyles = makeStyles({
   filter: {
     height: 40,
     width: 250,
-    
   },
   button: {
     height: 55,
@@ -28,43 +29,43 @@ const useStyles = makeStyles({
   },
   category: {
     marginLeft: 0,
-  }
+  },
 });
 
 export default function Search(props) {
   const classes = useStyles();
-  const options = animeManga.map((option) => {
-    const firstLetter = option.title[0].toUpperCase();
-    return {
-      firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
-      ...option,
-    };
-  });
+  const [category, setCategory] = React.useState("");
+
+  const handleChange = (event) => {
+    console.log(event.target.value);
+    setCategory(event.target.value);
+  };
+
   return (
     <div className={classes.container}>
-      <form style={
-        {display: "inline-flex", justifyContent: "center"}
-      }>
-        <input placeholder="Search for an Anime or Manga!" name="search" onChange={props.handleInputChange} className={classes.bar} />
-        <button className={classes.button} onClick={props.handleFormSubmit}>Search</button>
-        <Autocomplete className={classes.filter}
-          options={options.sort(
-            (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
-          )}
-          groupBy={(option) => option.firstLetter}
-          getOptionLabel={(option) => option.title}
-          renderInput={(params) => (
-            <TextField
-              className={classes.filter}
-              {...params}
-              label="Category"
-              variant="outlined"
-            />
-          )}
+      <form style={{ display: "inline-flex", justifyContent: "center" }}>
+        <input
+          placeholder="Search for an Anime or Manga!"
+          name="search"
+          onChange={props.handleInputChange}
+          className={classes.bar}
         />
+        <button className={classes.button} onClick={props.handleFormSubmit}>
+          Search
+        </button>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="input">Age</InputLabel>
+          <Select
+            onChange={handleChange}
+            value={category}
+            labelId="categoryLabel"
+            id="select"
+          >
+            <MenuItem value="Anime">Anime</MenuItem>
+            <MenuItem value="Manga">Manga</MenuItem>
+          </Select>
+        </FormControl>
       </form>
     </div>
   );
 }
-
-const animeManga = [{ title: "Manga" }, { title: "Anime" }];
