@@ -31,7 +31,7 @@ export default function Signup() {
               label="Email"
               style={{ margin: 8 }}
               placeholder="Email"
-              helperText="e.g. perfect-cell@dbz.com"
+              helperText="e.g. imperfect-cell@dbz.com"
               fullWidth
               margin="normal"
               InputLabelProps={{
@@ -61,9 +61,9 @@ export default function Signup() {
               <span
                 className="glyphicon glyphicon-exclamation-sign"
                 aria-hidden="true"
-              ></span>
-              <span className="sr-only">Error:</span>{" "}
-              <span className="msg"></span>
+              />
+              <span className="sr-only">Error: </span>
+              <span className="msg" />
             </div>
             <h4>
               We promise to never use or sell your information in any way
