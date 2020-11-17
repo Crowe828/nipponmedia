@@ -38,7 +38,10 @@ export default function ContentCard(props) {
       >
         {props.results.map((result) => (
           <Grid item xs={12} sm={6} md={3} align="center" key={result.id}>
-            <Link to={`/${result.id}`} style={{ textDecoration: "none" }}>
+            <Link
+              to={`/${result.type}/${result.id}`}
+              style={{ textDecoration: "none" }}
+            >
               <Card style={{ color: "white", backgroundColor: "#263238" }}>
                 <Tooltip
                   title={
