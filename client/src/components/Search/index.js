@@ -9,6 +9,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import "./style.css";
 
+//styling for the search bar and categories
 const useStyles = makeStyles({
   bar: {
     width: 650,
@@ -42,6 +43,9 @@ const useStyles = makeStyles({
     marginLeft: 10,
   },
 });
+
+//passing handle inputchange and handle formsubmit via props. also using handleChange
+//to grab the value of the category for the details page
 
 export default function Search(props) {
   const classes = useStyles();
@@ -92,6 +96,8 @@ export default function Search(props) {
         <button
           type="submit"
           className={classes.button}
+          /* binding an anonymous funciton to the handleformsubmit so it doesnt call unless clicked
+          grabbing category and the event in order to determine whether its Anime or Manga*/
           onClick={(e) => props.handleFormSubmit(e, category)}
           style={{
             color: "white",

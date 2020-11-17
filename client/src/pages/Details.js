@@ -14,7 +14,7 @@ const styles = () => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    marginBottom: "50px"
+    marginBottom: "50px",
   },
   center: {
     display: "flex",
@@ -60,15 +60,17 @@ class Details extends Component {
     this.state = { response: null };
   }
 
+  //this pulls the type and id of the anime from the App.js state
   componentDidMount() {
     axios
-      .get("https://kitsu.io/api/edge/anime" + window.location.pathname)
+      .get("https://kitsu.io/api/edge/" + window.location.pathname)
       .then((response) => {
         console.log(response.data.data);
         this.setState({ response });
       });
   }
 
+// will render anime detail, manga detail, or nothing depending on state
   render() {
     const { classes } = this.props;
     if (this.state.response == null) {
@@ -160,5 +162,7 @@ class Details extends Component {
     }
   }
 }
+
+//exporting with styles since this is a Class component
 
 export default withStyles(styles, { withTheme: true })(Details);
