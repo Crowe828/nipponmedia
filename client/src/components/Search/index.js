@@ -62,7 +62,7 @@ export default function Search(props) {
         }}
       >
         <input
-          placeholder=" Search for an Anime or Manga!"
+          placeholder="Search for an Anime or Manga!"
           name="search"
           onChange={props.handleInputChange}
           className={classes.bar}
@@ -73,6 +73,7 @@ export default function Search(props) {
             borderWidth: "1px",
             borderColor: "#cac6c6",
             backgroundColor: "#cfd8dc",
+            paddingLeft: "15px",
           }}
         />
 
