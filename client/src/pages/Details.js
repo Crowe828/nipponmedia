@@ -8,12 +8,13 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 
-const styles = (theme) => ({
+const styles = () => ({
   main: {
     fontFamily: "PT Sans Narrow, sans-serif",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    marginBottom: "50px"
   },
   center: {
     display: "flex",

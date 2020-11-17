@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Profile() {
   const classes = useStyles();
   return (
-    <div>
+    <div style={{ marginBottom: "50px" }}>
       <Grid container className={classes.title}>
         <Grid item xs={6}>
           <h1>Anime's Watched</h1>

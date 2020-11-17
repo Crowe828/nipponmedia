@@ -1,24 +1,23 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-    padding: theme.spacing(2),
-    height: "100px",
-    textAlign: "center",
-    color: "#fff",
-    background: "#3f51b5",
-    fontSize: "72px",
-  },
-}));
-
 export default function Header() {
-  const classes = useStyles();
   return (
     <Grid item xs={12}>
-      <Paper square className={classes.paper}>Nippon Media</Paper>
+      <div
+        style={{
+          textAlign: "center",
+          color: "#fff",
+          backgroundColor: "#263238",
+          padding: "1px",
+        }}
+      >
+        <h1 style={{ fontSize: "72px", margin: "10px" }}>ニッポンメディア！</h1>
+        <h2 style={{ fontSize: "48px", margin: "10px" }}>Nippon Media.</h2>
+        <h3 style={{ fontSize: "24x" }}>
+          Discuss your favorte Anime and Manga.
+        </h3>
+      </div>
     </Grid>
   );
 }

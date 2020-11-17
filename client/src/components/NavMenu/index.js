@@ -9,6 +9,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
+import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +24,7 @@ export default function NavMenu(props) {
 
   return (
     <div>
-      <div className="NavMenuTitle">Menu</div>
+      <div className="NavMenuTitle">メインメニュー! Main Menu.</div>
       <div className={classes.root}>
         <List component="nav" aria-label="Navbar Menu">
           <ListItem button>
@@ -67,6 +68,18 @@ export default function NavMenu(props) {
               onClick={props.closeMenu}
             >
               Signup
+            </Link>
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemIcon>
+              <PowerSettingsNewIcon
+                fontSize="large"
+                style={{ color: "white" }}
+              />
+            </ListItemIcon>
+            <Link to="/" className="NavMenuLink" onClick={props.closeMenu}>
+              Logout
             </Link>
           </ListItem>
           <Divider />

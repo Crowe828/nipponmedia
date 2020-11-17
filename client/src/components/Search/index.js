@@ -1,4 +1,7 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -24,16 +27,23 @@ const useStyles = makeStyles({
   },
   button: {
     height: 55,
+    width: 55,
+    minWidth: 55,
     marginLeft: 10,
     marginRight: 10,
   },
   category: {
     marginLeft: 0,
   },
+  formControl: {
+    height: 55,
+    width: 100,
+    minWidth: 80,
+    marginLeft: 10,
+  },
 });
 
 export default function Search(props) {
-  
   const classes = useStyles();
   const [category, setCategory] = React.useState("");
 
@@ -52,7 +62,7 @@ export default function Search(props) {
         }}
       >
         <input
-          placeholder=" Search for an Anime or Manga!"
+          placeholder="Search for an Anime or Manga!"
           name="search"
           onChange={props.handleInputChange}
           className={classes.bar}
@@ -62,34 +72,36 @@ export default function Search(props) {
             borderRadius: "4px",
             borderWidth: "1px",
             borderColor: "#cac6c6",
+            backgroundColor: "#cfd8dc",
+            paddingLeft: "15px",
           }}
         />
-
-        <FormControl className={classes.formControl}>
-          <InputLabel id="input">Category</InputLabel>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="dropdown">Type</InputLabel>
           <Select
-            onChange={handleChange}
-            value={category}
-            labelId="categoryLabel"
+            labelId="dropdown"
             id="select"
+            value={category}
+            onChange={handleChange}
+            label="Type"
           >
             <MenuItem value="anime">Anime</MenuItem>
             <MenuItem value="manga">Manga</MenuItem>
           </Select>
         </FormControl>
         <button
-        type="submit"
-        className={classes.button}
-        onClick={(e) => props.handleFormSubmit(e, category)}
-        style={{
-          color: "white",
-          backgroundColor: "#f44336",
-          border: "none",
-          borderRadius: "4px",
-        }}
-      >
-        Search
-      </button> 
+          type="submit"
+          className={classes.button}
+          onClick={(e) => props.handleFormSubmit(e, category)}
+          style={{
+            color: "white",
+            backgroundColor: "#81c784",
+            border: "none",
+            borderRadius: "4px",
+          }}
+        >
+          <SearchIcon />
+        </button>
       </form>
     </div>
   );

@@ -48,8 +48,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          position: "relative",
+          minHeight: "100vh",
+        }}
+      >
         <Router>
+      <div style={{ paddingBottom: "50px" }}>
           <Header />
           <Nav />
           <Switch>
@@ -82,6 +89,7 @@ class App extends Component {
               <Details state={this.state} />
             </Route>
           </Switch>
+      </div>
           <Footer />
         </Router>
       </div>
