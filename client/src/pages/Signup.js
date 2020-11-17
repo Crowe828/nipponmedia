@@ -1,31 +1,57 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 export default function Signup() {
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{
+        marginTop: "50px",
+        marginBottom: "50px",
+        marginLeft: "100px",
+        marginRight: "100px",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
-          <h2>Sign Up Form</h2>
-          <form className="signup">
-            <div className="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email-input"
-                placeholder="Email"
-              />
-            </div>
-            <div className="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password-input"
-                placeholder="Password"
-              />
-            </div>
+          <h1>Create An Account</h1>
+          <h3>
+            Sign up today and join fans all over the world to discuss all of
+            your favorite anime and manga. It's completely free to join!
+          </h3>
+          <form className="signup" style={{ fontSize: "18px" }}>
+            <TextField
+              type="email"
+              id="emailInput"
+              variant="outlined"
+              label="Email"
+              style={{ margin: 8 }}
+              placeholder="Email"
+              helperText="e.g. perfect-cell@dbz.com"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              type="password"
+              id="passwordInput"
+              variant="outlined"
+              label="Password"
+              style={{ margin: 8 }}
+              placeholder="Password"
+              helperText="Make sure it's super sneaky."
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
             <div
               style={{ display: "none" }}
               id="alert"
@@ -39,13 +65,25 @@ export default function Signup() {
               <span className="sr-only">Error:</span>{" "}
               <span className="msg"></span>
             </div>
-            <button type="submit" className="btn btn-default">
-              Sign Up
-            </button>
+            <h4>
+              We promise to never use or sell your information in any way
+              without your consent.
+            </h4>
+            <Button
+              variant="contained"
+              size="large"
+              style={{
+                color: "white",
+                backgroundColor: "#81c784",
+                border: "none",
+                borderRadius: "4px",
+              }}
+            >
+              Let's go!
+            </Button>
           </form>
-          <br />
           <Link to="/login">
-            <p>Or log in here</p>
+            <p>Already a member? Login here.</p>
           </Link>
         </div>
       </div>
