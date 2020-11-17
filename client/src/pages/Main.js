@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "../components/Search";
-import AnimeCard from "../components/AnimeCard/index";
+import ContentCard from "../components/ContentCard";
 import SearchManga from "../components/SearchManga";
 
 function Main(props) {
@@ -10,7 +10,7 @@ function Main(props) {
         handleInputChange={props.handleInputChange}
         handleFormSubmit={props.handleFormSubmit}
       />
-      <AnimeCard results={props.state.results} />
+      <ContentCard results={props.state.results} />
     </div>
   );
 }

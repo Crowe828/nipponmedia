@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AnimeCard(props) {
+export default function ContentCard(props) {
   const classes = useStyles();
 
   return (
