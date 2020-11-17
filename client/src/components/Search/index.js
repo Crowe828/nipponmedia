@@ -76,7 +76,6 @@ export default function Search(props) {
             paddingLeft: "15px",
           }}
         />
-
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="dropdown">Type</InputLabel>
           <Select
