@@ -1,4 +1,7 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -24,6 +27,7 @@ const useStyles = makeStyles({
   },
   button: {
     height: 55,
+    width: 55,
     marginLeft: 10,
     marginRight: 10,
   },
@@ -62,6 +66,7 @@ export default function Search(props) {
             borderRadius: "4px",
             borderWidth: "1px",
             borderColor: "#cac6c6",
+            backgroundColor: "#cfd8dc",
           }}
         />
 
@@ -78,6 +83,7 @@ export default function Search(props) {
           </Select>
         </FormControl>
         <button
+
         type="submit"
         className={classes.button}
         onClick={(e) => props.handleFormSubmit(e, category)}
@@ -89,7 +95,7 @@ export default function Search(props) {
         }}
       >
         Search
-      </button> 
+      </button>
       </form>
     </div>
   );
