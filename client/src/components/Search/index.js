@@ -28,16 +28,22 @@ const useStyles = makeStyles({
   button: {
     height: 55,
     width: 55,
+    minWidth: 55,
     marginLeft: 10,
     marginRight: 10,
   },
   category: {
     marginLeft: 0,
   },
+  formControl: {
+    height: 55,
+    width: 100,
+    minWidth: 80,
+    marginLeft: 10,
+  },
 });
 
 export default function Search(props) {
-  
   const classes = useStyles();
   const [category, setCategory] = React.useState("");
 
@@ -70,32 +76,32 @@ export default function Search(props) {
           }}
         />
 
-        <FormControl className={classes.formControl}>
-          <InputLabel id="input">Age</InputLabel>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel id="dropdown">Type</InputLabel>
           <Select
-            onChange={handleChange}
-            value={category}
-            labelId="categoryLabel"
+            labelId="dropdown"
             id="select"
+            value={category}
+            onChange={handleChange}
+            label="Type"
           >
             <MenuItem value="anime">Anime</MenuItem>
             <MenuItem value="manga">Manga</MenuItem>
           </Select>
         </FormControl>
         <button
-
-        type="submit"
-        className={classes.button}
-        onClick={(e) => props.handleFormSubmit(e, category)}
-        style={{
-          color: "white",
-          backgroundColor: "#f44336",
-          border: "none",
-          borderRadius: "4px",
-        }}
-      >
-        Search
-      </button>
+          type="submit"
+          className={classes.button}
+          onClick={(e) => props.handleFormSubmit(e, category)}
+          style={{
+            color: "white",
+            backgroundColor: "#81c784",
+            border: "none",
+            borderRadius: "4px",
+          }}
+        >
+          <SearchIcon />
+        </button>
       </form>
     </div>
   );

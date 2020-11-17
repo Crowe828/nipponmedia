@@ -5,7 +5,8 @@ import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Popover from "@material-ui/core/Popover";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles({
   title: {
@@ -25,18 +26,6 @@ const useStyles = makeStyles({
 export default function AnimeCard(props) {
   const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-
   return (
     <div style={{ padding: 30 }}>
       <Grid
@@ -51,58 +40,36 @@ export default function AnimeCard(props) {
           <Grid item xs={12} sm={6} md={3} align="center" key={result.id}>
             <Link to={`/${result.id}`} style={{ textDecoration: "none" }}>
               <Card style={{ color: "white", backgroundColor: "#263238" }}>
-                <img
-                  className={classes.pot}
-                  src={result.attributes.posterImage.large}
-                  alt={result.attributes.titles.en}
-                  style={{ width: "100%" }}
-                />
+                <Tooltip
+                  title={
+                    <React.Fragment>
+                      <Typography style={{ fontSize: "18px" }}>
+                        Click for more details!
+                      </Typography>
+                      <Typography style={{ fontSize: "14px" }}>
+                        View synopsis, rating, and more.
+                      </Typography>
+                    </React.Fragment>
+                  }
+                  arrow
+                  TransitionComponent={Zoom}
+                >
+                  <img
+                    className={classes.pot}
+                    src={result.attributes.posterImage.large}
+                    alt={result.attributes.titles.en}
+                    style={{ width: "100%" }}
+                  />
+                </Tooltip>
                 <CardContent>
-                  <Typography
-                    aria-owns={open ? "mouse-over-popover" : undefined}
-                    aria-haspopup="true"
-                    onMouseEnter={handlePopoverOpen}
-                    onMouseLeave={handlePopoverClose}
-                  >
-                    <Typography variant="h5" component="h2">
-                      {result.attributes.titles.en}
-                    </Typography>
-                    <Typography className={classes.pos}>
-                      {result.attributes.titles.ja_jp}
-                    </Typography>
+                  <Typography variant="h5" component="h2">
+                    {result.attributes.titles.en}
+                  </Typography>
+                  <Typography className={classes.pos}>
+                    {result.attributes.titles.ja_jp}
                   </Typography>
                 </CardContent>
               </Card>
-              <Popover
-                id="mouse-over-popover"
-                className={classes.popover}
-                classes={{
-                  paper: classes.paper,
-                }}
-                open={open}
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "center",
-                  horizontal: "center",
-                }}
-                transformOrigin={{
-                  vertical: "center",
-                  horizontal: "center",
-                }}
-                onClose={handlePopoverClose}
-                disableRestoreFocus
-              >
-                <Typography
-                  style={{
-                    padding: "18px",
-                    fontSize: "18px",
-                    color: "white",
-                    backgroundColor: "#455a64",
-                  }}
-                >
-                  Click to learn more!
-                </Typography>
-              </Popover>
             </Link>
           </Grid>
         ))}
