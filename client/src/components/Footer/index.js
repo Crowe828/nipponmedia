@@ -5,7 +5,7 @@ import "./style.css";
 export default function Footer() {
   return (
     <footer>
-      <Typography>Nippon Media (2020 Copyright Pending)</Typography>
+      <Typography>Nippon Media (Provisional Hero License Pending)</Typography>
     </footer>
   );
 }
