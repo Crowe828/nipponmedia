@@ -19,11 +19,18 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.animeInfo("My hero");
+    this.getDefault();
   }
 
-  animeInfo = (query) => {
-    API.getAnime(query)
+  getDefault = () => {
+    API.defaultData()
+      .then((res) => this.setState({ ...this.state, results: res.data.data }))
+      .catch((err) => console.log(err));
+  };
+
+  getInfo = (query, category) => {
+    console.log(query, category);
+    API.getData(query, category)
       .then((res) => this.setState({ ...this.state, results: res.data.data }))
       .catch((err) => console.log(err));
   };
@@ -34,9 +41,9 @@ class App extends Component {
     });
   };
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = (event, category) => {
     event.preventDefault();
-    this.animeInfo(this.state.search);
+    this.getInfo(this.state.search, category);
   };
 
   render() {
@@ -49,39 +56,40 @@ class App extends Component {
         }}
       >
         <Router>
-          <div style={{ paddingBottom: "50px" }}>
-            <Header />
-            <Nav />
-            <Switch>
-              <Route exact path="/">
-                <Main
-                  handleFormSubmit={this.handleFormSubmit}
-                  handleInputChange={this.handleInputChange}
-                  state={this.state}
-                />
-              </Route>
-            </Switch>
-            <Switch>
-              <Route path="/login">
-                <Login />
-              </Route>
-            </Switch>
-            <Switch>
-              <Route path="/signup">
-                <Signup />
-              </Route>
-            </Switch>
-            <Switch>
-              <Route path="/profile">
-                <Profile />
-              </Route>
-            </Switch>
-            <Switch>
-              <Route path="/:id">
-                <Details state={this.state} />
-              </Route>
-            </Switch>
-          </div>
+      <div style={{ paddingBottom: "50px" }}>
+          <Header />
+          <Nav />
+          <Switch>
+            <Route exact path="/">
+              <Main
+                handleFormSubmit={this.handleFormSubmit}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmitManga={this.handleFormSubmitManga}
+                state={this.state}
+              />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route path="/:id">
+              <Details state={this.state} />
+            </Route>
+          </Switch>
+      </div>
           <Footer />
         </Router>
       </div>

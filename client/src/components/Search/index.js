@@ -3,6 +3,10 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 import "./style.css";
 
 const useStyles = makeStyles({
@@ -33,14 +37,15 @@ const useStyles = makeStyles({
 });
 
 export default function Search(props) {
+  
   const classes = useStyles();
-  const options = animeManga.map((option) => {
-    const firstLetter = option.title[0].toUpperCase();
-    return {
-      firstLetter: /[0-9]/.test(firstLetter) ? "0-9" : firstLetter,
-      ...option,
-    };
-  });
+  const [category, setCategory] = React.useState("");
+
+  const handleChange = (event) => {
+    console.log(event.target.value.toLowerCase());
+    setCategory(event.target.value);
+  };
+
   return (
     <div className={classes.container}>
       <form
@@ -64,37 +69,34 @@ export default function Search(props) {
             backgroundColor: "#cfd8dc",
           }}
         />
+
+        <FormControl className={classes.formControl}>
+          <InputLabel id="input">Age</InputLabel>
+          <Select
+            onChange={handleChange}
+            value={category}
+            labelId="categoryLabel"
+            id="select"
+          >
+            <MenuItem value="anime">Anime</MenuItem>
+            <MenuItem value="manga">Manga</MenuItem>
+          </Select>
+        </FormControl>
         <button
-          className={classes.button}
-          onClick={props.handleFormSubmit}
-          style={{
-            color: "white",
-            backgroundColor: "#81c784",
-            border: "none",
-            borderRadius: "4px",
-          }}
-        >
-          <SearchIcon />
-        </button>
-        <Autocomplete
-          className={classes.filter}
-          options={options.sort(
-            (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
-          )}
-          groupBy={(option) => option.firstLetter}
-          getOptionLabel={(option) => option.title}
-          renderInput={(params) => (
-            <TextField
-              className={classes.filter}
-              {...params}
-              label="Category"
-              variant="outlined"
-            />
-          )}
-        />
+
+        type="submit"
+        className={classes.button}
+        onClick={(e) => props.handleFormSubmit(e, category)}
+        style={{
+          color: "white",
+          backgroundColor: "#f44336",
+          border: "none",
+          borderRadius: "4px",
+        }}
+      >
+        Search
+      </button>
       </form>
     </div>
   );
 }
-
-const animeManga = [{ title: "Manga" }, { title: "Anime" }];
