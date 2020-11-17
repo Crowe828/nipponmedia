@@ -70,7 +70,7 @@ class Details extends Component {
       });
   }
 
-
+// will render anime detail, manga detail, or nothing depending on state
   render() {
     const { classes } = this.props;
     if (this.state.response == null) {

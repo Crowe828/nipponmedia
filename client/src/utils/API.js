@@ -12,10 +12,4 @@ export default {
       "https://kitsu.io/api/edge/" + drop + "?filter%5Btext%5D=" + query
     );
   },
-  getDetail: function (drop) {
-    console.log(drop);
-    return axios.get(
-      "https://kitsu.io/api/edge/" + drop + "/" + window.location.pathname
-    );
-  },
 };

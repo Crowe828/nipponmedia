@@ -36,6 +36,8 @@ export default function ContentCard(props) {
         alignItems="flex-start"
         style={{ marginBottom: "25px" }}
       >
+        {/*IMPORTANT: this link below is how we determine the details page, it grabs the type 
+      and id from the state and that will determine how the API call is executed */}
         {props.results.map((result) => (
           <Grid item xs={12} sm={6} md={3} align="center" key={result.id}>
             <Link

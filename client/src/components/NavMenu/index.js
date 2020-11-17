@@ -26,6 +26,7 @@ export default function NavMenu(props) {
     <div>
       <div className="NavMenuTitle">メインメニュー! Main Menu.</div>
       <div className={classes.root}>
+      {/* side bar with links */}
         <List component="nav" aria-label="Navbar Menu">
           <ListItem button>
             <ListItemIcon>
