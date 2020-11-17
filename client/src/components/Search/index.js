@@ -66,7 +66,7 @@ export default function Search(props) {
         />
 
         <FormControl className={classes.formControl}>
-          <InputLabel id="input">Age</InputLabel>
+          <InputLabel id="input">Category</InputLabel>
           <Select
             onChange={handleChange}
             value={category}
