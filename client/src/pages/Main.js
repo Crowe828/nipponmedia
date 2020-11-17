@@ -3,14 +3,14 @@ import Search from "../components/Search";
 import ContentCard from "../components/ContentCard";
 
 // sending state to ContentCard and sending functions to Search via props
-function Main(props) {
+function Main({handleFormSubmit, handleInputChange, results}) {
   return (
     <div>
       <Search
-        handleInputChange={props.handleInputChange}
-        handleFormSubmit={props.handleFormSubmit}
+        handleInputChange={handleInputChange}
+        handleFormSubmit={handleFormSubmit}
       />
-      <ContentCard results={props.state.results} />
+      <ContentCard results={results} />
     </div>
   );
 }
