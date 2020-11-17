@@ -74,7 +74,7 @@ class Details extends Component {
   render() {
     const { classes } = this.props;
     if (this.state.response == null) {
-      return <div>Loading...</div>;
+      return (<div>Loading...</div>);
     } else {
       return (
         <main className={classes.main}>
