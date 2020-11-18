@@ -33,10 +33,10 @@ export default function Profile() {
     <div style={{ marginBottom: "50px" }}>
       <Grid container className={classes.title}>
         <Grid item xs={6}>
-          <h1>Anime's Watched</h1>
+          <h1>Anime's Watched:</h1>
         </Grid>
         <Grid item xs={6}>
-          <h1>Anime WishList</h1>
+          <h1>Anime's Watching:</h1>
         </Grid>
       </Grid>
       <Grid container className={classes.saved}>
@@ -50,10 +50,10 @@ export default function Profile() {
 
       <Grid container className={classes.title}>
         <Grid item xs={6}>
-          <h1>Favorite Characters</h1>
+          <h1>Favorite Anime:</h1>
         </Grid>
         <Grid item xs={6}>
-          <h1>Favorite Manga</h1>
+          <h1>Favorite Manga:</h1>
         </Grid>
       </Grid>
       <Grid container className={classes.saved}>

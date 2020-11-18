@@ -52,6 +52,9 @@ const styles = () => ({
     display: "flex",
     justifyContent: "space-around",
   },
+  wrap: {
+    backgroundColor: "#263238",
+  },
 });
 
 class Details extends Component {
@@ -98,8 +101,8 @@ class Details extends Component {
             />
           </div>
           <Card className={classes.textCenter}>
-            <CardContent>
-              <Grid className={classes.spaceBetween} container spacing={3}>
+            <CardContent className={classes.wrap}>
+              <Grid className={classes.spaceBetween, classes.wrap} container spacing={3}>
                 <Grid item xs={12}>
                   <Typography>
                     Synopsis: <br />
@@ -255,7 +258,7 @@ class Details extends Component {
         </main>
       );
     } else {
-      return <div>hi</div>;
+      return <div>Loading</div>;
     }
   }
 }
