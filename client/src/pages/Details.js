@@ -19,6 +19,7 @@ const styles = () => ({
   center: {
     display: "flex",
     justifyContent: "center",
+    textAlign: "center",
   },
   spaceBetween: {
     display: "flex",
@@ -29,28 +30,43 @@ const styles = () => ({
   },
   imageSize: {
     width: "35%",
+    height: "100%",
     borderRadius: "5px",
     marginBottom: "10px",
+    marginRight: "5px",
   },
   card: {
     borderRadius: "10px",
     marginTop: "20px",
     boxShadow: ".5px .5px 1px 1px",
     backgroundColor: "#263238",
-    color: "white",
+    color: "beige",
   },
   cardSmall: {
     borderRadius: "10px",
     marginTop: "20px",
-    marginLeft: "10px",
+    marginLeft: "2px",
     boxShadow: ".5px .5px 1px 1px",
     backgroundColor: "#263238",
-    color: "white",
+    color: "beige",
   },
   btnGroup: {
-    marginTop: "15px",
+    marginTop: "50px",
     display: "flex",
     justifyContent: "space-around",
+  },
+  wrap: {
+    backgroundColor: "transparent",
+    height: "auto",
+    width: "auto",
+  },
+  display: {
+    display: "flex",
+    justifyContent: "center",
+    height: "800px",
+  },
+  title: {
+    fontSize: "24px",
   },
 });
 
@@ -80,182 +96,216 @@ class Details extends Component {
     if (this.state.type === "manga") {
       return (
         <main className={classes.main}>
-          <div className={classes.center}>
+          <div className={(classes.center, classes.title, classes.textCenter)}>
             {this.state.response.data.data.attributes.titles.en}
           </div>
-          <div className={classes.center}>
+          <div className={(classes.title, classes.textCenter)}>
             {" "}
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
-          <div className={classes.center}>
-            Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
-          </div>
-          <div className={classes.center}>
+          {this.state.response.data.data.attributes.ageRating === null ? (
+            <div className={classes.center}>Age Guide: No rating</div>
+          ) : (
+            <div className={classes.center}>
+              Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
+            </div>
+          )}
+
+          <div className={classes.display}>
             <img
               className={classes.imageSize}
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-          </div>
-          <Card className={classes.textCenter}>
-            <CardContent>
-              <Grid className={classes.spaceBetween} container spacing={3}>
-                <Grid item xs={12}>
-                  <Typography>
-                    Synopsis: <br />
-                    {this.state.response.data.data.attributes.synopsis}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.card} item xs={5}>
-                  <Typography>
-                    Start date:{" "}
-                    {this.state.response.data.data.attributes.startDate}{" "}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.card} item xs={5}>
-                  {this.state.response.data.data.attributes.endDate == null ? (
-                    <Typography component={"span"}>End Date: TBD</Typography>
-                  ) : (
-                    <Typography component={"span"}>
-                      End Date:{" "}
-                      {this.state.response.data.data.attributes.endDate}
+            <Card className={(classes.textCenter, classes.wrap)}>
+              <CardContent className={classes.wrap}>
+                <Grid className={classes.spaceBetween} container spacing={3}>
+                  <Grid item xs={12}>
+                    <Typography className={classes.synopsis}>
+                      Synopsis: <br />
+                      {this.state.response.data.data.attributes.synopsis}
                     </Typography>
-                  )}
+                  </Grid>
+                  <Grid className={classes.spaceBetween} container spacing={3}>
+                    <Grid className={classes.card} item xs={5}>
+                      <Typography>
+                        Start date:{" "}
+                        {this.state.response.data.data.attributes.startDate}{" "}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.card} item xs={5}>
+                      {this.state.response.data.data.attributes.endDate ==
+                      null ? (
+                        <Typography component={"span"}>
+                          End Date: TBD
+                        </Typography>
+                      ) : (
+                        <Typography component={"span"}>
+                          End Date:{" "}
+                          {this.state.response.data.data.attributes.endDate}
+                        </Typography>
+                      )}
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      <Typography>
+                        Status:{" "}
+                        {this.state.response.data.data.attributes.status}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      <Typography>
+                        Reader Rating:{" "}
+                        {this.state.response.data.data.attributes.averageRating}
+                        /100
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      <Typography>
+                        Rank among Manga's:{" "}
+                        {
+                          this.state.response.data.data.attributes
+                            .popularityRank
+                        }
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      <Typography>
+                        {this.state.response.data.data.attributes.nsfw ===
+                        null ? (
+                          <Typography>NSFW: Safe</Typography>
+                        ) : (
+                          <Typography>
+                            NSFW:{" "}
+                            {this.state.response.data.data.attributes.nsfw}
+                          </Typography>
+                        )}
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    Status: {this.state.response.data.data.attributes.status}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    Reader Rating:{" "}
-                    {this.state.response.data.data.attributes.averageRating}/100
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    Rank among Mangas:{" "}
-                    {this.state.response.data.data.attributes.popularityRank}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    NSFW: {this.state.response.data.data.attributes.nsfw}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-          <div className={classes.btnGroup}>
-            <Button variant="contained" color="primary">
-              Watching
-            </Button>
-            <Button variant="contained" color="secondary">
-              Watched
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              size="medium"
-              startIcon={<SaveIcon />}
-            >
-              Save as Favorite
-            </Button>
+                <div className={classes.btnGroup}>
+                  <Button variant="contained" color="primary">
+                    Reading
+                  </Button>
+                  <Button variant="contained" color="secondary">
+                    Read
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="medium"
+                    startIcon={<SaveIcon />}
+                  >
+                    Save as Favorite
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
+          <br />
         </main>
       );
     } else if (this.state.type === "anime") {
       return (
         <main className={classes.main}>
-          <div className={classes.center}>
+          <div className={(classes.center, classes.title, classes.textCenter)}>
             {this.state.response.data.data.attributes.titles.en}
           </div>
-          <div className={classes.center}>
+          <div className={(classes.title, classes.textCenter)}>
             {" "}
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
           <div className={classes.center}>
             Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
           </div>
-          <div className={classes.center}>
+          <div className={classes.display}>
             <img
               className={classes.imageSize}
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-          </div>
-          <Card className={classes.textCenter}>
-            <CardContent>
-              <Grid className={classes.spaceBetween} container spacing={3}>
-                <Grid item xs={12}>
-                  <Typography>
-                    Synopsis: <br />
-                    {this.state.response.data.data.attributes.synopsis}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.card} item xs={5}>
-                  <Typography>
-                    Start date:{" "}
-                    {this.state.response.data.data.attributes.startDate}{" "}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.card} item xs={5}>
-                  {this.state.response.data.data.attributes.endDate == null ? (
-                    <Typography component={"span"}>End Date: TBD</Typography>
-                  ) : (
-                    <Typography component={"span"}>
-                      End Date:{" "}
-                      {this.state.response.data.data.attributes.endDate}
+            <Card className={(classes.textCenter, classes.wrap)}>
+              <CardContent className={classes.wrap}>
+                <Grid className={classes.spaceBetween} container spacing={3}>
+                  <Grid item xs={12}>
+                    <Typography>
+                      Synopsis: <br />
+                      {this.state.response.data.data.attributes.synopsis}
                     </Typography>
-                  )}
+                  </Grid>
+                  <Grid className={classes.spaceBetween} container spacing={3}>
+                    <Grid className={classes.card} item xs={5}>
+                      <Typography>
+                        Start date:{" "}
+                        {this.state.response.data.data.attributes.startDate}{" "}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.card} item xs={5}>
+                      {this.state.response.data.data.attributes.endDate ==
+                      null ? (
+                        <Typography component={"span"}>
+                          End Date: TBD
+                        </Typography>
+                      ) : (
+                        <Typography component={"span"}>
+                          End Date:{" "}
+                          {this.state.response.data.data.attributes.endDate}
+                        </Typography>
+                      )}
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      <Typography>
+                        Status:{" "}
+                        {this.state.response.data.data.attributes.status}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      <Typography>
+                        Viewer Rating:{" "}
+                        {this.state.response.data.data.attributes.averageRating}
+                        /100
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      <Typography>
+                        Rank among Anime's:{" "}
+                        {
+                          this.state.response.data.data.attributes
+                            .popularityRank
+                        }
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      <Typography>
+                        NSFW: {this.state.response.data.data.attributes.nsfw}
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    Episodes:{" "}
-                    {this.state.response.data.data.attributes.episodeCount}{" "}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    Viewer Rating:{" "}
-                    {this.state.response.data.data.attributes.averageRating}/100
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    Rank among Animes:{" "}
-                    {this.state.response.data.data.attributes.popularityRank}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={2}>
-                  <Typography>
-                    NSFW: {this.state.response.data.data.attributes.nsfw}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-          <div className={classes.btnGroup}>
-            <Button variant="contained" color="primary">
-              Watching
-            </Button>
-            <Button variant="contained" color="secondary">
-              Watched
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              size="medium"
-              startIcon={<SaveIcon />}
-            >
-              Save as Favorite
-            </Button>
+                <div className={classes.btnGroup}>
+                  <Button variant="contained" color="primary">
+                    Watching
+                  </Button>
+                  <Button variant="contained" color="secondary">
+                    Watched
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="medium"
+                    startIcon={<SaveIcon />}
+                  >
+                    Save as Favorite
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
+          <br />
         </main>
       );
     } else {
-      return <div>hi</div>;
+      return <div>Loading</div>;
     }
   }
 }

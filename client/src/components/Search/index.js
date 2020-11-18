@@ -64,7 +64,7 @@ export default function Search(props) {
         }}
       >
         <input
-          placeholder="Search for an Anime or Manga!"
+          placeholder="Select a category and search!"
           name="search"
           onChange={props.handleInputChange}
           className={classes.bar}
