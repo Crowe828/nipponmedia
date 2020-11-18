@@ -1,19 +1,39 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 3001;
+const mongoose = require("mongoose");
+require("dotenv").config();
+const config = require("./config");
+const routes = require("./routes");
+
 const app = express();
 
-// Serve up static assets (usually on heroku)
+// middleware to parse data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// serve up static assets
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "./client/build")));
 }
 
-// Send every request to the React app
-// Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// connect to Mongo DB
+mongoose
+  .connect(config.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+  })
+  .then(() => console.log(`Mongo DB Succesfully Connected`))
+  .catch((err) => console.log(err));
 
-app.listen(PORT, function() {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+// use routes
+app.use(routes);
+
+// check for "production" enviroment and set port
+const PORT = process.env.PORT || 3001;
+
+// start server
+app.listen(PORT, () => {
+  console.log(`App listening on port: ${PORT}`);
 });

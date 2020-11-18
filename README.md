@@ -10,7 +10,7 @@ Inspired by Letterboxd, this application allows you to track all of your favorit
 **Group Name:** Weebs  
 **Project Name:** nipponmedia  
 **KanBan:** https://github.com/Crowe828/nipponmedia/projects/1  
-**Repo:** https://github.com/Crowe828/nipponmedia  
+**Repo:** https://github.com/Crowe828/nipponmedia
 
 ## Burndown Schedule:
 
@@ -31,5 +31,5 @@ Inspired by Letterboxd, this application allows you to track all of your favorit
 
 ## Team Members
 
- - Christian Rowe: [GitHub Profile](https://github.com/Crowe828) 
- - Brandon Green: [GitHub Profile](https://github.com/BrandonGreenOAB) 
+- Christian Rowe: [GitHub Profile](https://github.com/Crowe828)
+- Brandon Green: [GitHub Profile](https://github.com/BrandonGreenOAB)

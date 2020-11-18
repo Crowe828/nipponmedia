@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Logout from "../Logout";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -22,53 +24,23 @@ const useStyles = makeStyles((theme) => ({
 export default function NavMenu(props) {
   const classes = useStyles();
 
-  return (
-    <div>
-      <div className="NavMenuTitle">メインメニュー! Main Menu.</div>
-      <div className={classes.root}>
-      {/* side bar with links */}
-        <List component="nav" aria-label="Navbar Menu">
-          <ListItem button>
-            <ListItemIcon>
-              <HomeIcon fontSize="large" style={{ color: "white" }} />
-            </ListItemIcon>
-            <Link to="/" className="NavMenuHome" onClick={props.closeMenu}>
-              Home
-            </Link>
-          </ListItem>
-          <Divider />
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  // helper to show links on Navbar if user is authenticated
+  const showLinks = () => {
+    if (isAuthenticated) {
+      return (
+        <>
           <ListItem button>
             <ListItemIcon>
               <AccountBoxIcon fontSize="large" style={{ color: "white" }} />
             </ListItemIcon>
             <Link
-              to="/profile"
-              className="NavMenuLink"
+              to="/dashboard"
+              className="NavMenuLink item"
               onClick={props.closeMenu}
             >
               Profile
-            </Link>
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <ExitToAppIcon fontSize="large" style={{ color: "white" }} />
-            </ListItemIcon>
-            <Link to="/login" className="NavMenuLink" onClick={props.closeMenu}>
-              Login
-            </Link>
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <FiberNewIcon fontSize="large" style={{ color: "white" }} />
-            </ListItemIcon>
-            <Link
-              to="/signup"
-              className="NavMenuLink"
-              onClick={props.closeMenu}
-            >
-              Signup
             </Link>
           </ListItem>
           <Divider />
@@ -80,10 +52,63 @@ export default function NavMenu(props) {
               />
             </ListItemIcon>
             <Link to="/" className="NavMenuLink" onClick={props.closeMenu}>
-              Logout
+              <Logout />
             </Link>
           </ListItem>
           <Divider />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ListItem button>
+            <ListItemIcon>
+              <ExitToAppIcon fontSize="large" style={{ color: "white" }} />
+            </ListItemIcon>
+            <Link
+              to="/login"
+              className="NavMenuLink item"
+              onClick={props.closeMenu}
+            >
+              Login
+            </Link>
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemIcon>
+              <FiberNewIcon fontSize="large" style={{ color: "white" }} />
+            </ListItemIcon>
+            <Link
+              to="/register"
+              className="NavMenuLink item"
+              onClick={props.closeMenu}
+            >
+              Signup
+            </Link>
+          </ListItem>
+          <Divider />
+        </>
+      );
+    }
+  };
+
+  return (
+    <div>
+      <div className="NavMenuTitle">メインメニュー!</div>
+      <div className="NavMenuTitle">Main Menu.</div>
+      <div className={classes.root}>
+        {/* side bar with links */}
+        <List component="nav" aria-label="Navbar Menu">
+          <ListItem button>
+            <ListItemIcon>
+              <HomeIcon fontSize="large" style={{ color: "white" }} />
+            </ListItemIcon>
+            <Link to="/" className="NavMenuHome item" onClick={props.closeMenu}>
+              Home
+            </Link>
+          </ListItem>
+          <Divider />
+          <div>{showLinks()}</div>
         </List>
       </div>
     </div>

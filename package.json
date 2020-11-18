@@ -1,28 +1,32 @@
 {
-  "name": "mern",
+  "name": "nipponmedia",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "The premiere application allows you to track all of your favorite anime and manga! Sign up and join the conversation today.",
   "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crowe828/nipponmedia.git"
+  },
+  "author": "Christian Rowe",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
+  "bugs": {
+    "url": "https://github.com/Crowe828/nipponmedia/issues"
   },
+  "homepage": "https://github.com/Crowe828/nipponmedia#readme",
   "dependencies": {
-    "axios": "^0.21.0",
-    "express": "^4.16.3",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.10.13"
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "concurrently": "^5.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.20"
   }
 }

@@ -311,5 +311,4 @@ class Details extends Component {
 }
 
 //exporting with styles since this is a Class component
-
 export default withStyles(styles, { withTheme: true })(Details);
