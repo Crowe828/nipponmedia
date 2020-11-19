@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const MangaSchema = new Schema({
@@ -46,5 +45,4 @@ const MangaSchema = new Schema({
 });
 
 const Manga = mongoose.model("Manga", MangaSchema);
-
 module.exports = Manga;

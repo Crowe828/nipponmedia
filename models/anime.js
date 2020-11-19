@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AnimeSchema = new Schema({
+  _id: {
+    type: Number,
+    require: true,
+  },
   title: {
     type: String,
     require: false,
-  },
-  id: {
-    type: Number,
-    require: true,
   },
   jpTitle: {
     type: String,
@@ -49,4 +49,5 @@ const AnimeSchema = new Schema({
   },
 });
 
-module.exports = Anime = mongoose.model("Anime", AnimeSchema);
+const Anime = mongoose.model("Anime", AnimeSchema);
+module.exports = Anime;
