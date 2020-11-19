@@ -4,11 +4,15 @@ const Schema = mongoose.Schema;
 const AnimeSchema = new Schema({
   title: {
     type: String,
+    require: false,
+  },
+  id: {
+    type: Number,
     require: true,
   },
   jpTitle: {
     type: String,
-    require: true,
+    require: false,
   },
   img: {
     data: Buffer,
@@ -16,11 +20,11 @@ const AnimeSchema = new Schema({
   },
   synopsis: {
     type: String,
-    require: true,
+    require: false,
   },
   startDate: {
     type: Number,
-    require: true,
+    require: false,
   },
   endDate: {
     type: Number,
@@ -37,7 +41,7 @@ const AnimeSchema = new Schema({
   },
   episodeCount: {
     type: Number,
-    require: true,
+    require: false,
   },
   lengthEpisode: {
     type: Number,
