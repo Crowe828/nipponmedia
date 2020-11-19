@@ -11,7 +11,8 @@ const Register = () => {
   const renderFormMessage = () => {
     return (
       <>
-        Already Registered ? <Link to="/login">Login</Link>
+        <i className="address card icon"></i>Already a member?{" "}
+        <Link to="/login">Login here</Link>
       </>
     );
   };
@@ -35,7 +36,7 @@ const Register = () => {
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
           <Header as="h2" secondary="true" textAlign="center">
-            Create An Account
+            Create an Account
           </Header>
           <h3>
             Sign up today and join fans all over the world to discuss all of
@@ -47,7 +48,7 @@ const Register = () => {
           </h4>
           <UserForm
             renderMessage={renderFormMessage}
-            buttonText="Let's Go!"
+            buttonText="LET'S GO!"
             onSubmit={onFormSubmit}
           />
         </div>

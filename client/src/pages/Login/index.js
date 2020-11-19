@@ -20,7 +20,8 @@ const Login = (props) => {
   const renderFormMessage = () => {
     return (
       <>
-        New to us ? <Link to="/register">Register</Link>
+        <i className="user plus icon"></i>Not a member?{" "}
+        <Link to="/register">Sign up for a free account</Link>
       </>
     );
   };
@@ -54,7 +55,7 @@ const Login = (props) => {
           <h4>Hurry up and login, Wall Rose has already been breached!</h4>
           <UserForm
             renderMessage={renderFormMessage}
-            buttonText="Login"
+            buttonText="LOGIN"
             onSubmit={onFormSubmit}
           />
         </div>

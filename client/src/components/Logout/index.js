@@ -1,20 +1,21 @@
 import React from "react";
-import { LogoutUser } from "../../actions/authActions";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { LogoutUser } from "../../actions/authActions";
+import "./style.css";
 
 const Logout = () => {
   const dispatch = useDispatch();
   return (
-    <a
-      href="/"
-      style={{ border: "none", cursor: "pointer" }}
-      className="item"
+    <Link
+      to="/"
+      className="logoutLink item"
       onClick={() => {
         dispatch(LogoutUser());
       }}
     >
       Logout
-    </a>
+    </Link>
   );
 };
 

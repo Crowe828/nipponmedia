@@ -51,7 +51,7 @@ export default function NavMenu(props) {
                 style={{ color: "white" }}
               />
             </ListItemIcon>
-            <Link to="/" className="NavMenuLink" onClick={props.closeMenu}>
+            <Link to="/" onClick={props.closeMenu}>
               <Logout />
             </Link>
           </ListItem>
