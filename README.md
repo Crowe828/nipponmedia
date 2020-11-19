@@ -24,10 +24,11 @@ Inspired by Letterboxd, this application allows you to track all of your favorit
 ## CSS Framework
 
 **Material UI:** https://material-ui.com
+**Semantic UI React** https://react.semantic-ui.com
 
 ## API Package
 
-**Jikan:** https://jikan.docs.apiary.io/
+**Kitsu API:** https://kitsu.docs.apiary.io
 
 ## Team Members
 
