@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const MangaSchema = new Schema({
+  _id: {
+    type: Number,
+    require: true,
+  },
   title: {
     type: String,
     require: false,
@@ -10,10 +14,6 @@ const MangaSchema = new Schema({
   jpTitle: {
     type: String,
     require: false,
-  },
-  id: {
-    type: Number,
-    require: true,
   },
   img: {
     data: Buffer,
