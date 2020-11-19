@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
-const AnimeSchema = new Schema({
+const MangaSchema = new Schema({
   title: {
     type: String,
     require: true,
@@ -25,7 +26,6 @@ const AnimeSchema = new Schema({
   endDate: {
     type: Number,
     require: false,
-    default: "TBD",
   },
   rank: {
     type: Number,
@@ -35,14 +35,12 @@ const AnimeSchema = new Schema({
     type: String,
     require: false,
   },
-  episodeCount: {
-    type: Number,
-    require: true,
-  },
-  lengthEpisode: {
+  volumeCount: {
     type: Number,
     require: false,
   },
 });
 
-module.exports = Anime = mongoose.model("Anime", AnimeSchema);
+const Manga = mongoose.model("Manga", MangaSchema);
+
+module.exports = Manga;
