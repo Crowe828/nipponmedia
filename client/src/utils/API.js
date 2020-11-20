@@ -30,4 +30,8 @@ export default {
     console.log(mangaData);
     return axios.post("/api/mangas", mangaData);
   },
+  getManga: function (mangas) {
+    console.log("API", mangas);
+    return axios.get("/api/mangas", mangas);
+  }
 };

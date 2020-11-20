@@ -84,9 +84,9 @@ export const App = () => {
               <Route path="/register" component={Register} />
               <PrivateRoute path="/dashboard" component={UserDashboard} />
               {/* <Switch> */}
-                <Route path="/:type/:id">
-                  <Details results={results} />
-                </Route>
+              <Route path="/:type/:id">
+                <Details results={results} />
+              </Route>
               {/* </Switch> */}
             </Switch>
           </div>
