@@ -8,6 +8,10 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
+import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
+import StarsIcon from "@material-ui/icons/Stars";
+import TheatersIcon from "@material-ui/icons/Theaters";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import API from "../../utils/API";
 
 const styles = () => ({
@@ -32,11 +36,10 @@ const styles = () => ({
     textAlign: "center",
   },
   imageSize: {
-    width: "35%",
-    height: "100%",
-    borderRadius: "5px",
-    marginBottom: "10px",
-    marginRight: "5px",
+    height: "551px",
+    width: "390px",
+    borderRadius: "6px",
+    margin: "10px",
   },
   card: {
     borderRadius: "10px",
@@ -69,7 +72,7 @@ const styles = () => ({
     height: "800px",
   },
   title: {
-    fontSize: "24px",
+    fontSize: "36px",
   },
 });
 
@@ -134,16 +137,16 @@ class Details extends Component {
     axios
       .all([
         axios.get("https://kitsu.io/api/edge/" + window.location.pathname),
-        axios.get(
-          "https://kitsu.io/api/edge/" +
-            window.location.pathname +
-            "/streaming-links"
-        ),
+        axios
+          .get(
+            "https://kitsu.io/api/edge/" +
+              window.location.pathname +
+              "/streaming-links"
+          )
+          .catch((err) => null),
       ])
       .then(
         axios.spread((response, response2) => {
-          console.log(response.data.data);
-          console.log(response2.data.data);
           this.setState({
             response: response,
             response2: response2,
@@ -293,7 +296,7 @@ class Details extends Component {
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-            <Card className={(classes.textCenter, classes.wrap)}>
+            <Grid className={(classes.textCenter, classes.wrap)}>
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
@@ -303,27 +306,13 @@ class Details extends Component {
                     </Typography>
                   </Grid>
                   <Grid className={classes.spaceBetween} container spacing={3}>
-                    {/* Streaming Links */}
-                    <Grid item xs={3} className={classes.card}>
-                      <Typography>
-                        <a
-                          href={
-                            this.state.response2.data.data[0].attributes.url
-                          }
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          STREAM IT!
-                        </a>
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.card} item xs={3}>
+                    <Grid className={classes.card} item xs={5}>
                       <Typography>
                         Start date:{" "}
                         {this.state.response.data.data.attributes.startDate}{" "}
                       </Typography>
                     </Grid>
-                    <Grid className={classes.card} item xs={3}>
+                    <Grid className={classes.card} item xs={5}>
                       {this.state.response.data.data.attributes.endDate ==
                       null ? (
                         <Typography component={"span"}>
@@ -362,11 +351,18 @@ class Details extends Component {
                   </Grid>
                 </Grid>
                 <div className={classes.btnGroup}>
-                  <Button variant="contained" color="primary">
-                    Watching
-                  </Button>
-                  <Button variant="contained" color="secondary">
-                    Watched
+                  {/* Streaming Links */}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<OndemandVideoIcon />}
+                    href={this.state.response2.data.data[0].attributes.url}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                    style={{ color: "white" }}
+                  >
+                    Watch
                   </Button>
                   <Button
                     onClick={() =>
@@ -377,13 +373,27 @@ class Details extends Component {
                     variant="contained"
                     color="primary"
                     size="medium"
-                    startIcon={<SaveIcon />}
+                    startIcon={<StarsIcon />}
                   >
-                    Save as Favorite
+                    Favorite
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<TheatersIcon />}
+                  >
+                    Watching
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<CheckCircleIcon />}
+                  >
+                    Watched
                   </Button>
                 </div>
               </CardContent>
-            </Card>
+            </Grid>
           </div>
           <br />
         </main>
