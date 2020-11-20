@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Loader } from "semantic-ui-react";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
+import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
+import StarsIcon from "@material-ui/icons/Stars";
+import TheatersIcon from "@material-ui/icons/Theaters";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
 import API from "../../utils/API";
 
 const styles = () => ({
   main: {
-    fontFamily: "PT Sans Narrow, sans-serif",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -26,16 +28,22 @@ const styles = () => ({
   spaceBetween: {
     display: "flex",
     justifyContent: "space-around",
+    marginBottom: "20px",
   },
   textCenter: {
     textAlign: "center",
   },
-  imageSize: {
-    width: "35%",
-    height: "100%",
-    borderRadius: "5px",
-    marginBottom: "10px",
-    marginRight: "5px",
+  animeImage: {
+    height: "551px",
+    width: "390px",
+    borderRadius: "6px",
+    margin: "10px",
+  },
+  mangaImage: {
+    height: "325px",
+    width: "225px",
+    borderRadius: "6px",
+    margin: "10px",
   },
   card: {
     borderRadius: "10px",
@@ -57,31 +65,22 @@ const styles = () => ({
     display: "flex",
     justifyContent: "space-around",
   },
-  wrap: {
-    backgroundColor: "transparent",
-    height: "auto",
-    width: "auto",
-  },
   display: {
     display: "flex",
     justifyContent: "center",
     height: "800px",
   },
-  title: {
-    fontSize: "24px",
-  },
 });
 
 class Details extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      response: null,
-      type: null,
-      savedAnimes: [],
-      savedMangas: [],
-    };
-  }
+  state = {
+    response: null,
+    response2: null,
+    type: null,
+    savedAnimes: [],
+    savedMangas: [],
+  };
+
   // this will be the function to save the anime to the anime collection
   handleSaveAnime = (anime) => {
     let obj = {
@@ -105,6 +104,7 @@ class Details extends Component {
       )
       .catch((err) => console.error(err));
   };
+
   //
   handleSaveManga = (manga) => {
     let obj = {
@@ -127,15 +127,32 @@ class Details extends Component {
       .catch((err) => console.error(err));
   };
 
-  //this pulls the type and id of the anime from the App.js state
+  // Mount two Axios calls
+  // First is for all of the details
+  // Second is for the streaming links
   componentDidMount() {
     axios
-      .get("https://kitsu.io/api/edge/" + window.location.pathname)
-      .then((response) => {
-        console.log("axios", response.data.data);
-        this.setState({ response: response, type: response.data.data.type });
-        console.log("type: " + this.state.type);
-      });
+      .all([
+        axios.get("https://kitsu.io/api/edge/" + window.location.pathname),
+        axios
+          .get(
+            "https://kitsu.io/api/edge/" +
+              window.location.pathname +
+              "/streaming-links"
+          )
+          // Since there is no streaming links for the manga, return null when accessing the manga details page
+          .catch((err) => null),
+      ])
+      .then(
+        axios.spread((response, response2) => {
+          this.setState({
+            response: response,
+            response2: response2,
+            type: response.data.data.type,
+          });
+          console.log("type: " + this.state.type);
+        })
+      );
   }
 
   // will render anime detail, manga detail, or nothing depending on state
@@ -144,33 +161,59 @@ class Details extends Component {
     if (this.state.type === "manga") {
       return (
         <main className={classes.main}>
-          <div className={(classes.center, classes.title, classes.textCenter)}>
+          <div
+            className={classes.center}
+            style={{
+              fontWeight: "bold",
+              fontSize: "36px",
+              lineHeight: "normal",
+            }}
+          >
             {this.state.response.data.data.attributes.titles.en}
-          </div>
-          <div className={(classes.title, classes.textCenter)}>
-            {" "}
+            <br />
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
           {this.state.response.data.data.attributes.ageRating === null ? (
-            <div className={classes.center}>Age Guide: No rating</div>
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: No rating
+            </div>
           ) : (
-            <div className={classes.center}>
-              Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: {this.state.response.data.data.attributes.ageRating}
             </div>
           )}
 
           <div className={classes.display}>
             <img
-              className={classes.imageSize}
+              className={classes.mangaImage}
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-            <Card className={(classes.textCenter, classes.wrap)}>
+            <Grid className={(classes.center, classes.wrap)}>
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
-                    <Typography className={classes.synopsis}>
-                      Synopsis: <br />
+                    <Typography>
+                      <div
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                        }}
+                      >
+                        Synopsis:
+                      </div>
                       {this.state.response.data.data.attributes.synopsis}
                     </Typography>
                   </Grid>
@@ -232,12 +275,6 @@ class Details extends Component {
                   </Grid>
                 </Grid>
                 <div className={classes.btnGroup}>
-                  <Button variant="contained" color="primary">
-                    Reading
-                  </Button>
-                  <Button variant="contained" color="secondary">
-                    Read
-                  </Button>
                   <Button
                     onClick={() =>
                       this.handleSaveManga(
@@ -246,14 +283,30 @@ class Details extends Component {
                     }
                     variant="contained"
                     color="primary"
-                    size="medium"
-                    startIcon={<SaveIcon />}
+                    size="large"
+                    startIcon={<StarsIcon />}
                   >
-                    Save as Favorite
+                    Favorite
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<MenuBookIcon />}
+                  >
+                    Reading
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    startIcon={<CheckCircleIcon />}
+                  >
+                    Read
                   </Button>
                 </div>
               </CardContent>
-            </Card>
+            </Grid>
           </div>
           <br />
         </main>
@@ -261,28 +314,58 @@ class Details extends Component {
     } else if (this.state.type === "anime") {
       return (
         <main className={classes.main}>
-          <div className={(classes.center, classes.title, classes.textCenter)}>
+          <div
+            className={classes.center}
+            style={{
+              fontWeight: "bold",
+              fontSize: "36px",
+              lineHeight: "normal",
+            }}
+          >
             {this.state.response.data.data.attributes.titles.en}
-          </div>
-          <div className={(classes.title, classes.textCenter)}>
-            {" "}
+            <br />
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
-          <div className={classes.center}>
-            Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
-          </div>
+          {this.state.response.data.data.attributes.ageRating === null ? (
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: No rating
+            </div>
+          ) : (
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: {this.state.response.data.data.attributes.ageRating}
+            </div>
+          )}
           <div className={classes.display}>
             <img
-              className={classes.imageSize}
+              className={classes.animeImage}
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-            <Card className={(classes.textCenter, classes.wrap)}>
+            <Grid className={(classes.center, classes.wrap)}>
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
                     <Typography>
-                      Synopsis: <br />
+                      <div
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                        }}
+                      >
+                        Synopsis:
+                      </div>
                       {this.state.response.data.data.attributes.synopsis}
                     </Typography>
                   </Grid>
@@ -306,41 +389,51 @@ class Details extends Component {
                         </Typography>
                       )}
                     </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      <Typography>
-                        Status:{" "}
-                        {this.state.response.data.data.attributes.status}
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      <Typography>
-                        Viewer Rating:{" "}
-                        {this.state.response.data.data.attributes.averageRating}
-                        /100
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      <Typography>
-                        Rank among Anime's:{" "}
-                        {
-                          this.state.response.data.data.attributes
-                            .popularityRank
-                        }
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      <Typography>
-                        NSFW: {this.state.response.data.data.attributes.nsfw}
-                      </Typography>
-                    </Grid>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={2}>
+                    <Typography>
+                      Status: {this.state.response.data.data.attributes.status}
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={3}>
+                    <Typography>
+                      Viewer Rating:{" "}
+                      {this.state.response.data.data.attributes.averageRating}
+                      /100
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={3}>
+                    <Typography>
+                      Rank among Anime's:{" "}
+                      {this.state.response.data.data.attributes.popularityRank}
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={2}>
+                    <Typography>
+                      {this.state.response.data.data.attributes.nsfw ===
+                      null ? (
+                        <Typography>NSFW: Safe</Typography>
+                      ) : (
+                        <Typography>
+                          NSFW: {this.state.response.data.data.attributes.nsfw}
+                        </Typography>
+                      )}
+                    </Typography>
                   </Grid>
                 </Grid>
                 <div className={classes.btnGroup}>
-                  <Button variant="contained" color="primary">
-                    Watching
-                  </Button>
-                  <Button variant="contained" color="secondary">
-                    Watched
+                  {/* Streaming Links */}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<OndemandVideoIcon />}
+                    href={this.state.response2.data.data[0].attributes.url}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                    style={{ color: "white" }}
+                  >
+                    Watch
                   </Button>
                   <Button
                     onClick={() =>
@@ -350,14 +443,30 @@ class Details extends Component {
                     }
                     variant="contained"
                     color="primary"
-                    size="medium"
-                    startIcon={<SaveIcon />}
+                    size="large"
+                    startIcon={<StarsIcon />}
                   >
-                    Save as Favorite
+                    Favorite
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<TheatersIcon />}
+                  >
+                    Watching
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    startIcon={<CheckCircleIcon />}
+                  >
+                    Watched
                   </Button>
                 </div>
               </CardContent>
-            </Card>
+            </Grid>
           </div>
           <br />
         </main>
