@@ -1,10 +1,13 @@
 const router = require("express").Router();
 const animeController = require("../../controllers/animeController");
 
-// Matches with "/api/anime"
-router.route("/").get(animeController.findAll).post(animeController.add);
+// Matches with "/api/animes"
+router
+  .route("/")
+  .get(animeController.findAll)
+  .post(animeController.add);
 
-// Matches with "/api/anime/:id"
+// Matches with "/api/animes/:id"
 router
   .route("/:id")
   .get(animeController.findById)

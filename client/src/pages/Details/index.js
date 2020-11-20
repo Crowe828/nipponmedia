@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
+import API from "../../utils/API";
 
 const styles = () => ({
   main: {
@@ -77,8 +78,54 @@ class Details extends Component {
     this.state = {
       response: null,
       type: null,
+      savedAnimes: [],
+      savedMangas: [],
     };
   }
+  // this will be the function to save the anime to the anime collection
+  handleSaveAnime = (anime) => {
+    let obj = {
+      titleEn: anime.titles.en,
+      titleJp: anime.titles.ja_jp,
+      img: anime.posterImage.small,
+      synopsis: anime.synopsis,
+      startDate: anime.startDate,
+      endDate: anime.endDate,
+      rank: anime.popularityRank,
+      ageRating: anime.ageRating,
+      episodeCount: anime.episodeCount,
+      episodeLength: anime.episodeLength,
+    };
+
+    API.saveAnime(obj)
+      .then((savedAnime) =>
+        this.setState({
+          savedAnimes: this.state.savedAnimes.concat([savedAnime]),
+        })
+      )
+      .catch((err) => console.error(err));
+  };
+  //
+  handleSaveManga = (manga) => {
+    let obj = {
+      titleEn: manga.titles.en,
+      titleJp: manga.titles.ja_jp,
+      img: manga.posterImage.small,
+      synopsis: manga.synopsis,
+      startDate: manga.startDate,
+      endDate: manga.endDate,
+      rank: manga.popularityRank,
+      ageRating: manga.ageRating,
+    };
+
+    API.saveManga(obj)
+      .then((savedManga) =>
+        this.setState({
+          savedMangas: this.state.savedMangas.concat([savedManga]),
+        })
+      )
+      .catch((err) => console.error(err));
+  };
 
   //this pulls the type and id of the anime from the App.js state
   componentDidMount() {
@@ -192,6 +239,11 @@ class Details extends Component {
                     Read
                   </Button>
                   <Button
+                    onClick={() =>
+                      this.handleSaveManga(
+                        this.state.response.data.data.attributes
+                      )
+                    }
                     variant="contained"
                     color="primary"
                     size="medium"
@@ -291,6 +343,11 @@ class Details extends Component {
                     Watched
                   </Button>
                   <Button
+                    onClick={() =>
+                      this.handleSaveAnime(
+                        this.state.response.data.data.attributes
+                      )
+                    }
                     variant="contained"
                     color="primary"
                     size="medium"

@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const MangaSchema = new Schema({
-  _id: {
-    type: Number,
-    require: true,
-  },
   title: {
     type: String,
     require: false,
@@ -23,11 +19,11 @@ const MangaSchema = new Schema({
     require: false,
   },
   startDate: {
-    type: Number,
+    type: String,
     require: false,
   },
   endDate: {
-    type: Number,
+    type: String,
     require: false,
   },
   rank: {
