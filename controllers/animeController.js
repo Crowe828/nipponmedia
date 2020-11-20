@@ -5,7 +5,6 @@ module.exports = {
   // Find all animes
   findAll: function (req, res) {
     db.Anime.find(req.query)
-      .sort({ title: -1 })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => {
         console.error(err);

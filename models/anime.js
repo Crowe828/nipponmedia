@@ -2,21 +2,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AnimeSchema = new Schema({
-  title: {
+  titleEn: {
     type: String,
     require: false,
   },
-  jpTitle: {
+  titleJp: {
     type: String,
     require: false,
   },
   img: {
-    data: Buffer,
-    contentType: String,
+    type: String,
+    require: false,
   },
   synopsis: {
     type: String,
-    require: false,
+    require: true,
   },
   startDate: {
     type: String,
@@ -43,10 +43,6 @@ const AnimeSchema = new Schema({
     type: Number,
     require: false,
   },
-  // user :{
-  //   type: , 
-  //   ref: "User"
-  // }
 });
 
 const Anime = mongoose.model("Anime", AnimeSchema);

@@ -27,15 +27,12 @@ export default {
     return axios.post("/api/animes", animeData);
   },
   getAnime: function (animes) {
-    console.log("API", animes);
     return axios.get("/api/animes", animes);
   },
   saveManga: function (mangaData) {
-    console.log(mangaData);
     return axios.post("/api/mangas", mangaData);
   },
   getManga: function (mangas) {
-    console.log("API", mangas);
     return axios.get("/api/mangas", mangas);
   },
 };
