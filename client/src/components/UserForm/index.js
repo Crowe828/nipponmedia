@@ -20,12 +20,8 @@ const UserForm = (props) => {
 
   return (
     <>
-      <Form
-        onSubmit={props.handleSubmit(props.onSubmit)}
-        size="large"
-        style={{ fontSize: "18px" }}
-      >
-        <Segment>
+      <Form onSubmit={props.handleSubmit(props.onSubmit)} size="large">
+        <Segment className="ui orange raised">
           <Field name="email" component={renderInput} label="Email" />
           {errorMessage ? (
             <Label className="alertMssg" basic color="red">
@@ -35,12 +31,20 @@ const UserForm = (props) => {
             ""
           )}
           <Field name="password" component={renderInput} label="Password" />
-          <Button secondary fluid size="large">
-            {props.buttonText}
+          <Button
+            className="ui vertical animated"
+            tabindex="0"
+            fluid
+            size="large"
+          >
+            <div className="visible content">{props.buttonText}</div>
+            <div className="hidden content">
+              <i className="right arrow icon"></i>
+            </div>
           </Button>
         </Segment>
       </Form>
-      <Message>{props.renderMessage()}</Message>
+      <Message className="ui floating">{props.renderMessage()}</Message>
     </>
   );
 };

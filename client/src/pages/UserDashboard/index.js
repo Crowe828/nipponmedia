@@ -62,10 +62,21 @@ export const UserDashboard = (props) => {
   return (
     <>
       <div style={{ marginBottom: "50px" }}>
-        <Message className="message-container" size="huge" secondary="true">
-          <Header size="huge"> User Dashboard </Header>
-          <p>Welcome {user ? user.email : ""}</p>
-        </Message>
+        <Grid item xs={12}>
+          <div
+            style={{
+              textAlign: "center",
+              color: "#000",
+              backgroundColor: "#78909c",
+              padding: "1px",
+            }}
+          >
+            <h2 style={{ fontSize: "48px", margin: "10px" }}>User Dashboard</h2>
+            <h3 style={{ fontSize: "24x" }}>
+              Welcome, {user ? user.email : ""}
+            </h3>
+          </div>
+        </Grid>
         <Grid container className={classes.title}>
           <Grid item xs={6}>
             <h1>Anime's Watched</h1>

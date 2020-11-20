@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
 import axios from "axios";
+import { Loader } from "semantic-ui-react";
+import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -362,7 +363,11 @@ class Details extends Component {
         </main>
       );
     } else {
-      return <div>Loading</div>;
+      return (
+        <div className="ui active dimmer">
+          <Loader className="ui massive text">Loading...</Loader>
+        </div>
+      );
     }
   }
 }
