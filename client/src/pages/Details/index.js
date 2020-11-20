@@ -205,8 +205,15 @@ class Details extends Component {
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
-                    <Typography className={classes.synopsis}>
-                      Synopsis: <br />
+                    <Typography>
+                      <div
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                        }}
+                      >
+                        Synopsis:
+                      </div>
                       {this.state.response.data.data.attributes.synopsis}
                     </Typography>
                   </Grid>
@@ -276,7 +283,7 @@ class Details extends Component {
                     }
                     variant="contained"
                     color="primary"
-                    size="medium"
+                    size="large"
                     startIcon={<StarsIcon />}
                   >
                     Favorite
@@ -284,6 +291,7 @@ class Details extends Component {
                   <Button
                     variant="contained"
                     color="primary"
+                    size="large"
                     startIcon={<MenuBookIcon />}
                   >
                     Reading
@@ -291,6 +299,7 @@ class Details extends Component {
                   <Button
                     variant="contained"
                     color="secondary"
+                    size="large"
                     startIcon={<CheckCircleIcon />}
                   >
                     Read
@@ -305,18 +314,37 @@ class Details extends Component {
     } else if (this.state.type === "anime") {
       return (
         <main className={classes.main}>
-          <div className={classes.center}>
+          <div
+            className={classes.center}
+            style={{
+              fontWeight: "bold",
+              fontSize: "36px",
+              lineHeight: "normal",
+            }}
+          >
             {this.state.response.data.data.attributes.titles.en}
-          </div>
-          <div className={classes.center}>
-            {" "}
+            <br />
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
           {this.state.response.data.data.attributes.ageRating === null ? (
-            <div className={classes.center}>Age Guide: No rating</div>
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: No rating
+            </div>
           ) : (
-            <div className={classes.center}>
-              Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: {this.state.response.data.data.attributes.ageRating}
             </div>
           )}
           <div className={classes.display}>
@@ -330,7 +358,14 @@ class Details extends Component {
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
                     <Typography>
-                      Synopsis: <br />
+                      <div
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                        }}
+                      >
+                        Synopsis:
+                      </div>
                       {this.state.response.data.data.attributes.synopsis}
                     </Typography>
                   </Grid>
@@ -408,7 +443,7 @@ class Details extends Component {
                     }
                     variant="contained"
                     color="primary"
-                    size="medium"
+                    size="large"
                     startIcon={<StarsIcon />}
                   >
                     Favorite
@@ -416,6 +451,7 @@ class Details extends Component {
                   <Button
                     variant="contained"
                     color="primary"
+                    size="large"
                     startIcon={<TheatersIcon />}
                   >
                     Watching
@@ -423,6 +459,7 @@ class Details extends Component {
                   <Button
                     variant="contained"
                     color="secondary"
+                    size="large"
                     startIcon={<CheckCircleIcon />}
                   >
                     Watched
