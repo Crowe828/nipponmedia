@@ -21,7 +21,7 @@ const UserForm = (props) => {
   return (
     <>
       <Form onSubmit={props.handleSubmit(props.onSubmit)} size="large">
-        <Segment className="ui orange raised segment">
+        <Segment className="ui orange raised">
           <Field name="email" component={renderInput} label="Email" />
           {errorMessage ? (
             <Label className="alertMssg" basic color="red">
@@ -32,7 +32,7 @@ const UserForm = (props) => {
           )}
           <Field name="password" component={renderInput} label="Password" />
           <Button
-            className="ui vertical animated button"
+            className="ui vertical animated"
             tabindex="0"
             fluid
             size="large"
@@ -44,7 +44,7 @@ const UserForm = (props) => {
           </Button>
         </Segment>
       </Form>
-      <Message className="ui floating message">{props.renderMessage()}</Message>
+      <Message className="ui floating">{props.renderMessage()}</Message>
     </>
   );
 };

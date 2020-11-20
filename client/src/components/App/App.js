@@ -83,11 +83,9 @@ export const App = () => {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <PrivateRoute path="/dashboard" component={UserDashboard} />
-              {/* <Switch> */}
                 <Route path="/:type/:id">
                   <Details results={results} />
                 </Route>
-              {/* </Switch> */}
             </Switch>
           </div>
           <Footer />

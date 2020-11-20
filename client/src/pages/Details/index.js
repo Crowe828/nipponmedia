@@ -307,11 +307,9 @@ class Details extends Component {
       );
     } else {
       return (
-        // <div className="ui segment">
-          <div className="ui active dimmer">
-            <div className="ui massive text loader">Loading...</div>
-          </div>
-        // </div>
+        <div className="ui active dimmer">
+          <Loader className="ui massive text">Loading...</Loader>
+        </div>
       );
     }
   }
