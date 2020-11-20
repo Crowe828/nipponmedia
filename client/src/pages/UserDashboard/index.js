@@ -59,6 +59,7 @@ export const UserDashboard = (props) => {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <>
       <div style={{ marginBottom: "50px" }}>
@@ -105,8 +106,22 @@ export const UserDashboard = (props) => {
         </Grid>
         <Grid container className={classes.saved}>
           <Grid item xs={6}>
-            <p>{JSON.stringify(animes.data)}</p>
-            {console.log(animes.ageRating)}
+            {animes.data &&
+              animes.data.map((result) => (
+                <div>
+                  <img
+                    src={result.img}
+                    alt={result.titleEn}
+                    style={{ width: "50%" }}
+                  />
+                  <h1>
+                    {result.titleEn}
+                  </h1>
+                  <h2> {result.titleJp} </h2>
+                </div>
+              ))}
+            {animes.data &&
+              console.log("data from console log in component", animes.data)}
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={6}>
