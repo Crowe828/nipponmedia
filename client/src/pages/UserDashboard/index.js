@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Header, Message } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import API from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,11 +30,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const UserDashboard = () => {
+export const UserDashboard = (props) => {
   const classes = useStyles();
   // access to the currentUser property from the auth reducer state
   const user = useSelector((state) => state.auth.currentUser);
+  const [mangas, setMangas] = useState();
+  const [animes, setAnimes] = useState();
 
+  useEffect(() => {
+    getMangas();
+    getAnimes();
+    console.log("use effect", mangas);
+  }, []);
+
+  const getMangas = () => {
+    API.getManga()
+      .then((res) => {
+        console.log("functionManga", res);
+        setMangas(res);
+      })
+      .catch((err) => console.log(err));
+  };
+  const getAnimes = () => {
+    API.getAnime()
+      .then((res) => {
+        console.log("functionAnime", res);
+        setAnimes(res);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <div style={{ marginBottom: "50px" }}>
