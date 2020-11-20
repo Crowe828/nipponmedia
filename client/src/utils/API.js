@@ -22,4 +22,12 @@ export default {
       "https://kitsu.io/api/edge/" + drop + "?filter%5Btext%5D=" + query
     );
   },
+  saveAnime: function (animeData) {
+    console.log(animeData);
+    return axios.post("/api/animes", animeData);
+  },
+  saveManga: function (mangaData) {
+    console.log(mangaData);
+    return axios.post("/api/mangas", mangaData);
+  },
 };

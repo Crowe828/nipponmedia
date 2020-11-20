@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AnimeSchema = new Schema({
-  _id: {
-    type: Number,
-    require: true,
-  },
   title: {
     type: String,
     require: false,
@@ -23,11 +19,11 @@ const AnimeSchema = new Schema({
     require: false,
   },
   startDate: {
-    type: Number,
+    type: String,
     require: false,
   },
   endDate: {
-    type: Number,
+    type: String,
     require: false,
     default: "TBD",
   },
@@ -47,6 +43,10 @@ const AnimeSchema = new Schema({
     type: Number,
     require: false,
   },
+  // user :{
+  //   type: , 
+  //   ref: "User"
+  // }
 });
 
 const Anime = mongoose.model("Anime", AnimeSchema);
