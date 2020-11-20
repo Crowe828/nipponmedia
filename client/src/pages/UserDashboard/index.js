@@ -35,17 +35,27 @@ export const UserDashboard = (props) => {
   // access to the currentUser property from the auth reducer state
   const user = useSelector((state) => state.auth.currentUser);
   const [mangas, setMangas] = useState();
+  const [animes, setAnimes] = useState();
 
   useEffect(() => {
     getMangas();
+    getAnimes();
     console.log("use effect", mangas);
   }, []);
 
   const getMangas = () => {
     API.getManga()
       .then((res) => {
-        console.log("function", res);
+        console.log("functionManga", res);
         setMangas(res);
+      })
+      .catch((err) => console.log(err));
+  };
+  const getAnimes = () => {
+    API.getAnime()
+      .then((res) => {
+        console.log("functionAnime", res);
+        setAnimes(res);
       })
       .catch((err) => console.log(err));
   };
