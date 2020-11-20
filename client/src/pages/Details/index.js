@@ -26,6 +26,7 @@ const styles = () => ({
   spaceBetween: {
     display: "flex",
     justifyContent: "space-around",
+    marginBottom: "20px",
   },
   textCenter: {
     textAlign: "center",
@@ -73,15 +74,14 @@ const styles = () => ({
 });
 
 class Details extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      response: null,
-      type: null,
-      savedAnimes: [],
-      savedMangas: [],
-    };
-  }
+  state = {
+    response: null,
+    response2: null,
+    type: null,
+    savedAnimes: [],
+    savedMangas: [],
+  };
+
   // this will be the function to save the anime to the anime collection
   handleSaveAnime = (anime) => {
     let obj = {
@@ -127,15 +127,31 @@ class Details extends Component {
       .catch((err) => console.error(err));
   };
 
-  //this pulls the type and id of the anime from the App.js state
+  // Mount two Axios calls
+  // First is for all of the details
+  // Second is for the streaming links
   componentDidMount() {
     axios
-      .get("https://kitsu.io/api/edge/" + window.location.pathname)
-      .then((response) => {
-        console.log(response.data.data);
-        this.setState({ response: response, type: response.data.data.type });
-        console.log("type: " + this.state.type);
-      });
+      .all([
+        axios.get("https://kitsu.io/api/edge/" + window.location.pathname),
+        axios.get(
+          "https://kitsu.io/api/edge/" +
+            window.location.pathname +
+            "/streaming-links"
+        ),
+      ])
+      .then(
+        axios.spread((response, response2) => {
+          console.log(response.data.data);
+          console.log(response2.data.data);
+          this.setState({
+            response: response,
+            response2: response2,
+            type: response.data.data.type,
+          });
+          console.log("type: " + this.state.type);
+        })
+      );
   }
 
   // will render anime detail, manga detail, or nothing depending on state
@@ -287,13 +303,27 @@ class Details extends Component {
                     </Typography>
                   </Grid>
                   <Grid className={classes.spaceBetween} container spacing={3}>
-                    <Grid className={classes.card} item xs={5}>
+                    {/* Streaming Links */}
+                    <Grid item xs={3} className={classes.card}>
+                      <Typography>
+                        <a
+                          href={
+                            this.state.response2.data.data[0].attributes.url
+                          }
+                          rel="noreferrer noopener"
+                          target="_blank"
+                        >
+                          STREAM IT!
+                        </a>
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.card} item xs={3}>
                       <Typography>
                         Start date:{" "}
                         {this.state.response.data.data.attributes.startDate}{" "}
                       </Typography>
                     </Grid>
-                    <Grid className={classes.card} item xs={5}>
+                    <Grid className={classes.card} item xs={3}>
                       {this.state.response.data.data.attributes.endDate ==
                       null ? (
                         <Typography component={"span"}>
@@ -306,33 +336,29 @@ class Details extends Component {
                         </Typography>
                       )}
                     </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      <Typography>
-                        Status:{" "}
-                        {this.state.response.data.data.attributes.status}
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      <Typography>
-                        Viewer Rating:{" "}
-                        {this.state.response.data.data.attributes.averageRating}
-                        /100
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      <Typography>
-                        Rank among Anime's:{" "}
-                        {
-                          this.state.response.data.data.attributes
-                            .popularityRank
-                        }
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      <Typography>
-                        NSFW: {this.state.response.data.data.attributes.nsfw}
-                      </Typography>
-                    </Grid>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={2}>
+                    <Typography>
+                      Status: {this.state.response.data.data.attributes.status}
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={3}>
+                    <Typography>
+                      Viewer Rating:{" "}
+                      {this.state.response.data.data.attributes.averageRating}
+                      /100
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={3}>
+                    <Typography>
+                      Rank among Anime's:{" "}
+                      {this.state.response.data.data.attributes.popularityRank}
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={2}>
+                    <Typography>
+                      NSFW: {this.state.response.data.data.attributes.nsfw}
+                    </Typography>
                   </Grid>
                 </Grid>
                 <div className={classes.btnGroup}>
