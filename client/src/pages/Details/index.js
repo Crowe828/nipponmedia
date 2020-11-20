@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Loader } from "semantic-ui-react";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import SaveIcon from "@material-ui/icons/Save";
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
 import StarsIcon from "@material-ui/icons/Stars";
 import TheatersIcon from "@material-ui/icons/Theaters";
@@ -17,7 +15,6 @@ import API from "../../utils/API";
 
 const styles = () => ({
   main: {
-    fontFamily: "PT Sans Narrow, sans-serif",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -36,9 +33,15 @@ const styles = () => ({
   textCenter: {
     textAlign: "center",
   },
-  imageSize: {
+  animeImage: {
     height: "551px",
     width: "390px",
+    borderRadius: "6px",
+    margin: "10px",
+  },
+  mangaImage: {
+    height: "325px",
+    width: "225px",
     borderRadius: "6px",
     margin: "10px",
   },
@@ -62,18 +65,10 @@ const styles = () => ({
     display: "flex",
     justifyContent: "space-around",
   },
-  wrap: {
-    backgroundColor: "transparent",
-    height: "auto",
-    width: "auto",
-  },
   display: {
     display: "flex",
     justifyContent: "center",
     height: "800px",
-  },
-  title: {
-    fontSize: "36px",
   },
 });
 
@@ -109,6 +104,7 @@ class Details extends Component {
       )
       .catch((err) => console.error(err));
   };
+
   //
   handleSaveManga = (manga) => {
     let obj = {
@@ -144,6 +140,7 @@ class Details extends Component {
               window.location.pathname +
               "/streaming-links"
           )
+          // Since there is no streaming links for the manga, return null when accessing the manga details page
           .catch((err) => null),
       ])
       .then(
@@ -164,28 +161,47 @@ class Details extends Component {
     if (this.state.type === "manga") {
       return (
         <main className={classes.main}>
-          <div className={(classes.center, classes.title, classes.textCenter)}>
+          <div
+            className={classes.center}
+            style={{
+              fontWeight: "bold",
+              fontSize: "36px",
+              lineHeight: "normal",
+            }}
+          >
             {this.state.response.data.data.attributes.titles.en}
-          </div>
-          <div className={(classes.title, classes.textCenter)}>
-            {" "}
+            <br />
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
           {this.state.response.data.data.attributes.ageRating === null ? (
-            <div className={classes.center}>Age Guide: No rating</div>
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: No rating
+            </div>
           ) : (
-            <div className={classes.center}>
-              Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
+            <div
+              className={classes.center}
+              style={{
+                fontWeight: "bold",
+                fontSize: "24px",
+              }}
+            >
+              Age Guide: {this.state.response.data.data.attributes.ageRating}
             </div>
           )}
 
           <div className={classes.display}>
             <img
-              className={classes.imageSize}
+              className={classes.mangaImage}
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-            <Grid className={(classes.textCenter, classes.wrap)}>
+            <Grid className={(classes.center, classes.wrap)}>
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
@@ -289,10 +305,10 @@ class Details extends Component {
     } else if (this.state.type === "anime") {
       return (
         <main className={classes.main}>
-          <div className={(classes.center, classes.title, classes.textCenter)}>
+          <div className={classes.center}>
             {this.state.response.data.data.attributes.titles.en}
           </div>
-          <div className={(classes.title, classes.textCenter)}>
+          <div className={classes.center}>
             {" "}
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
@@ -305,11 +321,11 @@ class Details extends Component {
           )}
           <div className={classes.display}>
             <img
-              className={classes.imageSize}
+              className={classes.animeImage}
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-            <Grid className={(classes.textCenter, classes.wrap)}>
+            <Grid className={(classes.center, classes.wrap)}>
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
