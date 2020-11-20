@@ -12,6 +12,7 @@ import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
 import StarsIcon from "@material-ui/icons/Stars";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
 import API from "../../utils/API";
 
 const styles = () => ({
@@ -184,7 +185,7 @@ class Details extends Component {
               src={this.state.response.data.data.attributes.posterImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
             />
-            <Card className={(classes.textCenter, classes.wrap)}>
+            <Grid className={(classes.textCenter, classes.wrap)}>
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
@@ -251,12 +252,6 @@ class Details extends Component {
                   </Grid>
                 </Grid>
                 <div className={classes.btnGroup}>
-                  <Button variant="contained" color="primary">
-                    Reading
-                  </Button>
-                  <Button variant="contained" color="secondary">
-                    Read
-                  </Button>
                   <Button
                     onClick={() =>
                       this.handleSaveManga(
@@ -266,13 +261,27 @@ class Details extends Component {
                     variant="contained"
                     color="primary"
                     size="medium"
-                    startIcon={<SaveIcon />}
+                    startIcon={<StarsIcon />}
                   >
-                    Save as Favorite
+                    Favorite
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<MenuBookIcon />}
+                  >
+                    Reading
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<CheckCircleIcon />}
+                  >
+                    Read
                   </Button>
                 </div>
               </CardContent>
-            </Card>
+            </Grid>
           </div>
           <br />
         </main>
@@ -287,9 +296,13 @@ class Details extends Component {
             {" "}
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
-          <div className={classes.center}>
-            Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
-          </div>
+          {this.state.response.data.data.attributes.ageRating === null ? (
+            <div className={classes.center}>Age Guide: No rating</div>
+          ) : (
+            <div className={classes.center}>
+              Age Guide: {this.state.response.data.data.attributes.ageRating}{" "}
+            </div>
+          )}
           <div className={classes.display}>
             <img
               className={classes.imageSize}
@@ -346,7 +359,14 @@ class Details extends Component {
                   </Grid>
                   <Grid className={classes.cardSmall} item xs={2}>
                     <Typography>
-                      NSFW: {this.state.response.data.data.attributes.nsfw}
+                      {this.state.response.data.data.attributes.nsfw ===
+                      null ? (
+                        <Typography>NSFW: Safe</Typography>
+                      ) : (
+                        <Typography>
+                          NSFW: {this.state.response.data.data.attributes.nsfw}
+                        </Typography>
+                      )}
                     </Typography>
                   </Grid>
                 </Grid>
