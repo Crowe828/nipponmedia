@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const MangaSchema = new Schema({
   title: {
     type: String,
-    require: false,
+    require: true,
   },
   jpTitle: {
     type: String,
@@ -16,7 +16,7 @@ const MangaSchema = new Schema({
   },
   synopsis: {
     type: String,
-    require: false,
+    require: true,
   },
   startDate: {
     type: String,

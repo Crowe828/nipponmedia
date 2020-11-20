@@ -132,7 +132,7 @@ class Details extends Component {
     axios
       .get("https://kitsu.io/api/edge/" + window.location.pathname)
       .then((response) => {
-        console.log(response.data.data);
+        console.log("axios", response.data.data);
         this.setState({ response: response, type: response.data.data.type });
         console.log("type: " + this.state.type);
       });
