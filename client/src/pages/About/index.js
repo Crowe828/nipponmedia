@@ -56,7 +56,7 @@ export default function About() {
               className={classes.paper}
               style={{ textAlign: "left" }}
             >
-              <h2 className="heading">Devloped By</h2>
+              <h2 className="heading">Developed By</h2>
               <ul className="list">
                 <li>
                   Christian Rowe
