@@ -35,4 +35,7 @@ export default {
   getManga: function (mangas) {
     return axios.get("/api/mangas", mangas);
   },
+  deleteAnime: function (id) {
+    return axios.delete("/api/animes", id);
+  },
 };
