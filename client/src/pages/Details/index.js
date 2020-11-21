@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withAlert } from "react-alert";
 import axios from "axios";
 import { Loader } from "semantic-ui-react";
 import { withStyles } from "@material-ui/core/styles";
@@ -11,6 +12,7 @@ import StarsIcon from "@material-ui/icons/Stars";
 import TheatersIcon from "@material-ui/icons/Theaters";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+import Alert from "@material-ui/lab/Alert";
 import API from "../../utils/API";
 
 const styles = () => ({
@@ -81,7 +83,9 @@ class Details extends Component {
     savedMangas: [],
   };
 
-  // this will be the function to save the anime to the anime collection
+  alert = this.props.alert;
+
+  // this is the function to save the anime to the anime collection
   handleSaveAnime = (anime) => {
     let obj = {
       titleEn: anime.titles.en,
@@ -105,7 +109,7 @@ class Details extends Component {
       .catch((err) => console.error(err));
   };
 
-  //
+  // this is the function that saves the manga to the manga collection
   handleSaveManga = (manga) => {
     let obj = {
       titleEn: manga.titles.en,
@@ -116,6 +120,7 @@ class Details extends Component {
       endDate: manga.endDate,
       rank: manga.popularityRank,
       ageRating: manga.ageRating,
+      volumeCount: manga.volumeCount,
     };
 
     API.saveManga(obj)
@@ -153,6 +158,14 @@ class Details extends Component {
           console.log("type: " + this.state.type);
         })
       );
+  }
+
+  alert() {
+    return (
+      <Alert variant="outlined" severity="success">
+        Successfully added!
+      </Alert>
+    );
   }
 
   // will render anime detail, manga detail, or nothing depending on state
