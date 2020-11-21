@@ -55,12 +55,18 @@ export const UserDashboard = () => {
       })
       .catch((err) => console.log(err));
   };
-  const deleteAnime = () => {
-    API.deleteAnime()
-    .then((res) => {
-      console.log("function delete anime", res)
-    })
-  }
+  const deleteAnime = (animeId) => {
+    console.log(animeId);
+    API.deleteAnime(animeId).then((res) => {
+      console.log("function delete anime", res);
+    });
+  };
+  const deleteManga = (mangaId) => {
+    console.log(mangaId);
+    API.deleteManga(mangaId).then((res) => {
+      console.log("function delete manga", res);
+    });
+  };
 
   return (
     <>
@@ -108,7 +114,10 @@ export const UserDashboard = () => {
                       <div className="description">
                         Age Rating: {result.ageRating}
                       </div>
-                      <button onClick={() => console.log(this.animes.id)}> x </button>
+                      <button onClick={() => deleteAnime(result._id)}>
+                        {" "}
+                        x{" "}
+                      </button>
                     </div>
                   </div>
                 ))}
@@ -140,6 +149,7 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
+                    <button onClick={() => deleteManga(result._id)}> x </button>
                   </div>
                 ))}
               {mangas.data &&
