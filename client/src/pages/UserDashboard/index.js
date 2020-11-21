@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import API from "../../utils/API";
 import "semantic-ui-react";
@@ -56,6 +55,12 @@ export const UserDashboard = () => {
       })
       .catch((err) => console.log(err));
   };
+  const deleteAnime = () => {
+    API.deleteAnime()
+    .then((res) => {
+      console.log("function delete anime", res)
+    })
+  }
 
   return (
     <>
@@ -103,6 +108,7 @@ export const UserDashboard = () => {
                       <div className="description">
                         Age Rating: {result.ageRating}
                       </div>
+                      <button onClick={() => console.log(this.animes.id)}> x </button>
                     </div>
                   </div>
                 ))}

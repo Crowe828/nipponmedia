@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withAlert } from "react-alert";
 import axios from "axios";
 import { Loader } from "semantic-ui-react";
 import { withStyles } from "@material-ui/core/styles";
@@ -82,8 +81,6 @@ class Details extends Component {
     savedAnimes: [],
     savedMangas: [],
   };
-
-  alert = this.props.alert;
 
   // this is the function to save the anime to the anime collection
   handleSaveAnime = (anime) => {
