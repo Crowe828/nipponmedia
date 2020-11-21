@@ -4,11 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import API from "../../utils/API";
+import "semantic-ui-react";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
     marginTop: "10px",
     backgroundColor: "black",
@@ -19,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "3%",
   },
   saved: {
+    marginTop: "10px",
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -39,8 +38,6 @@ export const UserDashboard = () => {
   useEffect(() => {
     getMangas();
     getAnimes();
-    console.log("use effect", mangas);
-    console.log("use effect", animes);
   }, []);
 
   const getMangas = () => {
@@ -80,11 +77,11 @@ export const UserDashboard = () => {
         </Grid>
         <Grid container className={classes.title}>
           <Grid item xs={6}>
-            <h1>Anime's Watched</h1>
+            <h1>Anime Watched:</h1>
             <p></p>
           </Grid>
           <Grid item xs={6}>
-            <h1>Anime's Watching:</h1>
+            <h1>Anime Watching:</h1>
           </Grid>
         </Grid>
         <Grid container className={classes.saved}>
@@ -106,21 +103,30 @@ export const UserDashboard = () => {
         </Grid>
         <Grid container className={classes.saved}>
           <Grid item xs={6}>
-            {animes.data &&
-              animes.data.map((result) => (
-                <div key={result._id}>
-                  <img
-                    src={result.img}
-                    alt={result.titleEn}
-                    style={{ width: "50%" }}
-                  />
-                  <h1>{result.titleEn}</h1>
-                  <h2> {result.titleJp} </h2>
-                </div>
-              ))}
-            {animes.data &&
-              console.log("data from console log in component", animes.data)}
-            <Paper className={classes.paper}></Paper>
+            <div
+              className="ui massive divided list"
+              style={{ marginLeft: "20px", marginRight: "20px" }}
+            >
+              {animes.data &&
+                animes.data.map((result) => (
+                  <div className="item" key={result._id}>
+                    <img
+                      className="ui avatar image tiny"
+                      src={result.img}
+                      alt={result.titleEn}
+                    />
+                    <div className="content">
+                      <div className="header">{result.titleJp}</div>
+                      <div className="description">{result.titleEn}</div>
+                      <div className="description">
+                        Age Rating: {result.ageRating}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              {animes.data &&
+                console.log("data from console log in component", animes.data)}
+            </div>
           </Grid>
           <Grid item xs={6}>
             <Paper className={classes.paper}>xs=6</Paper>

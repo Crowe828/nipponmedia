@@ -252,7 +252,7 @@ class Details extends Component {
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={3}>
                       <Typography>
-                        Rank among Manga's:{" "}
+                        Rank among Manga:{" "}
                         {
                           this.state.response.data.data.attributes
                             .popularityRank
@@ -357,15 +357,13 @@ class Details extends Component {
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item xs={12}>
-                    <Typography>
-                      <div
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "18px",
-                        }}
-                      >
-                        Synopsis:
-                      </div>
+                    <Typography
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: "18px",
+                      }}
+                    >
+                      Synopsis:
                       {this.state.response.data.data.attributes.synopsis}
                     </Typography>
                   </Grid>
@@ -404,21 +402,18 @@ class Details extends Component {
                   </Grid>
                   <Grid className={classes.cardSmall} item xs={3}>
                     <Typography>
-                      Rank among Anime's:{" "}
+                      Rank among Anime:{" "}
                       {this.state.response.data.data.attributes.popularityRank}
                     </Typography>
                   </Grid>
                   <Grid className={classes.cardSmall} item xs={2}>
-                    <Typography>
-                      {this.state.response.data.data.attributes.nsfw ===
-                      null ? (
-                        <Typography>NSFW: Safe</Typography>
-                      ) : (
-                        <Typography>
-                          NSFW: {this.state.response.data.data.attributes.nsfw}
-                        </Typography>
-                      )}
-                    </Typography>
+                    {this.state.response.data.data.attributes.nsfw === null ? (
+                      <Typography>NSFW: Safe</Typography>
+                    ) : (
+                      <Typography>
+                        NSFW: {this.state.response.data.data.attributes.nsfw}
+                      </Typography>
+                    )}
                   </Grid>
                 </Grid>
                 <div className={classes.btnGroup}>
@@ -435,6 +430,7 @@ class Details extends Component {
                   >
                     Watch
                   </Button>
+                  {/* Favorite */}
                   <Button
                     onClick={() =>
                       this.handleSaveAnime(
@@ -448,6 +444,7 @@ class Details extends Component {
                   >
                     Favorite
                   </Button>
+                  {/* Watching */}
                   <Button
                     variant="contained"
                     color="primary"
@@ -456,6 +453,7 @@ class Details extends Component {
                   >
                     Watching
                   </Button>
+                  {/* Watched */}
                   <Button
                     variant="contained"
                     color="secondary"
@@ -473,6 +471,7 @@ class Details extends Component {
       );
     } else {
       return (
+        // Spinner animation plays while details page is loading
         <div className="ui active dimmer">
           <Loader className="ui massive text">Loading...</Loader>
         </div>
@@ -481,5 +480,5 @@ class Details extends Component {
   }
 }
 
-//exporting with styles since this is a Class component
+// Exporting with styles since this is a Class component
 export default withStyles(styles, { withTheme: true })(Details);
