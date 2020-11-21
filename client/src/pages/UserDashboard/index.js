@@ -61,7 +61,12 @@ export const UserDashboard = () => {
       console.log("function delete anime", res);
     });
   };
-
+  const deleteManga = (mangaId) => {
+    console.log(mangaId);
+    API.deleteManga(mangaId).then((res) => {
+      console.log("function delete manga", res);
+    });
+  };
 
   return (
     <>
@@ -144,7 +149,7 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
-                    <button> x </button>
+                    <button onClick={() => deleteManga(result._id)}> x </button>
                   </div>
                 ))}
               {mangas.data &&
