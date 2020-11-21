@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const MangaSchema = new Schema({
-  title: {
+  titleEn: {
     type: String,
     require: true,
   },
-  jpTitle: {
+  TitleJp: {
     type: String,
     require: false,
   },
   img: {
-    data: Buffer,
-    contentType: String,
+    type: String,
+    require: false,
   },
   synopsis: {
     type: String,

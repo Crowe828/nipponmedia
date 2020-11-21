@@ -70,29 +70,11 @@ export const UserDashboard = () => {
             }}
           >
             <h2 style={{ fontSize: "48px", margin: "10px" }}>User Dashboard</h2>
-            <h3 style={{ fontSize: "24x" }}>
+            <h3 style={{ fontSize: "24x", marginBottom: "50px" }}>
               Welcome, {user ? user.email : ""}
             </h3>
           </div>
         </Grid>
-        <Grid container className={classes.title}>
-          <Grid item xs={6}>
-            <h1>Anime Watched:</h1>
-            <p></p>
-          </Grid>
-          <Grid item xs={6}>
-            <h1>Anime Watching:</h1>
-          </Grid>
-        </Grid>
-        <Grid container className={classes.saved}>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
-          </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
-          </Grid>
-        </Grid>
-
         <Grid container className={classes.title}>
           <Grid item xs={6}>
             <h1>Favorite Anime:</h1>
@@ -129,7 +111,34 @@ export const UserDashboard = () => {
             </div>
           </Grid>
           <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
+            <div
+              className="ui massive divided list"
+              style={{ marginLeft: "20px", marginRight: "20px" }}
+            >
+              {mangas.data &&
+                mangas.data.map((result) => (
+                  <div className="item" key={result._id}>
+                    <img
+                      className="ui avatar image tiny"
+                      src={result.img}
+                      alt={result.titleEn}
+                    />
+                    <div className="content">
+                      <div className="header">{result.titleJp}</div>
+                      <div className="description">{result.titleEn}</div>
+                      {result.ageRating === null ? (
+                        <div className="description">Age Rating: N/A</div>
+                      ) : (
+                        <div className="description">
+                          Age Rating: {result.ageRating}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              {mangas.data &&
+                console.log("data from console log in component", mangas.data)}
+            </div>
           </Grid>
         </Grid>
       </div>
