@@ -58,13 +58,13 @@ export const UserDashboard = () => {
   const deleteAnime = (animeId) => {
     console.log(animeId);
     API.deleteAnime(animeId).then((res) => {
-      console.log("function delete anime", res);
+      getAnimes();
     });
   };
   const deleteManga = (mangaId) => {
     console.log(mangaId);
     API.deleteManga(mangaId).then((res) => {
-      console.log("function delete manga", res);
+      getMangas();
     });
   };
 

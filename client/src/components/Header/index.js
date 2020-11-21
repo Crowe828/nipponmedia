@@ -15,7 +15,7 @@ export default function Header() {
         <h1 style={{ fontSize: "72px", margin: "10px" }}>ニッポンメディア！</h1>
         <h2 style={{ fontSize: "48px", margin: "10px" }}>Nippon Media.</h2>
         <h3 style={{ fontSize: "24x" }}>
-          Discuss your favorte Anime and Manga.
+          Discuss your favorite Anime and Manga.
         </h3>
       </div>
     </Grid>
