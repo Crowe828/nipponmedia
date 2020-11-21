@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const UserDashboard = (props) => {
+export const UserDashboard = () => {
   const classes = useStyles();
   // access to the currentUser property from the auth reducer state
   const user = useSelector((state) => state.auth.currentUser);
@@ -108,15 +108,13 @@ export const UserDashboard = (props) => {
           <Grid item xs={6}>
             {animes.data &&
               animes.data.map((result) => (
-                <div>
+                <div key={result._id}>
                   <img
                     src={result.img}
                     alt={result.titleEn}
                     style={{ width: "50%" }}
                   />
-                  <h1>
-                    {result.titleEn}
-                  </h1>
+                  <h1>{result.titleEn}</h1>
                   <h2> {result.titleJp} </h2>
                 </div>
               ))}

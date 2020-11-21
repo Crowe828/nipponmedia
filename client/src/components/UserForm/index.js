@@ -33,7 +33,7 @@ const UserForm = (props) => {
           <Field name="password" component={renderInput} label="Password" />
           <Button
             className="ui vertical animated"
-            tabindex="0"
+            tabIndex="0"
             fluid
             size="large"
           >
