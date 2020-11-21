@@ -1,0 +1,34 @@
+.about {
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-bottom: 30px;
+  margin-left: 50px;
+}
+
+.paragraph {
+  font-size: 18px;
+}
+
+.repo {
+  font-size: 24px;
+}
+
+.list {
+  font-size: 16px;
+}
+
+.repo,
+.heading {
+  font-style: italic;
+}
+
+.repo,
+.list {
+  font-weight: bold;
+}
+
+.repo,
+.listLink,
+.listLink:hover {
+  color: inherit;
+}
