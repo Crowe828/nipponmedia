@@ -29,13 +29,16 @@ export default {
   getAnime: function (animes) {
     return axios.get("/api/animes", animes);
   },
+  deleteAnime: function (id) {
+    return axios.delete("api/animes/" + id, id);
+  },
   saveManga: function (mangaData) {
     return axios.post("/api/mangas", mangaData);
   },
   getManga: function (mangas) {
     return axios.get("/api/mangas", mangas);
   },
-  deleteAnime: function (id) {
-    return axios.delete("/api/animes", id);
+  deleteManga: function (id) {
+    return axios.delete("api/mangas/" + id, id);
   },
 };
