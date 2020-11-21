@@ -11,6 +11,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
+import CommentIcon from "@material-ui/icons/Comment";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import "./style.css";
 
@@ -103,6 +104,18 @@ export default function NavMenu(props) {
             </ListItemIcon>
             <Link to="/" className="NavMenuHome item" onClick={props.closeMenu}>
               Home
+            </Link>
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <CommentIcon fontSize="large" style={{ color: "white" }} />
+            </ListItemIcon>
+            <Link
+              to="/about"
+              className="NavMenuLink item"
+              onClick={props.closeMenu}
+            >
+              About
             </Link>
           </ListItem>
           <Divider />

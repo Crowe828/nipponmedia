@@ -3,15 +3,16 @@ import { Router, Route, Switch } from "react-router-dom";
 import history from "../../history";
 import { useDispatch } from "react-redux";
 import { loadUser } from "../../actions/authActions";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Nav from "../../components/Nav";
+import PrivateRoute from "../PrivateRoute";
 import Home from "../../pages/Home";
 import UserDashboard from "../../pages/UserDashboard";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
-import PrivateRoute from "../PrivateRoute";
-import Header from "../../components/Header";
-import Nav from "../../components/Nav";
 import Details from "../../pages/Details";
-import Footer from "../../components/Footer";
+import About from "../../pages/About";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -82,10 +83,11 @@ export const App = () => {
               </Route>
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              <Route path="/about" component={About} />
               <PrivateRoute path="/dashboard" component={UserDashboard} />
-                <Route path="/:type/:id">
-                  <Details results={results} />
-                </Route>
+              <Route path="/:type/:id">
+                <Details results={results} />
+              </Route>
             </Switch>
           </div>
           <Footer />
