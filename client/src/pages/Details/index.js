@@ -172,7 +172,7 @@ class Details extends Component {
             className={classes.center}
             style={{
               fontWeight: "bold",
-              fontSize: "36px",
+              fontSize: "48px",
               lineHeight: "normal",
             }}
           >
