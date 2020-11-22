@@ -7,6 +7,4 @@ router.use("/animes", animeRoutes);
 // Manga Route
 router.use("/mangas", mangaRoutes);
 
-
-
 module.exports = router;
