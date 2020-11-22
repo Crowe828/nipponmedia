@@ -77,14 +77,6 @@ export const UserDashboard = () => {
             </h3>
           </div>
         </Grid>
-        <Grid container className={classes.title}>
-          <Grid item xs={6}>
-            <h1>Your Favorite Animes:</h1>
-          </Grid>
-          <Grid item xs={6}>
-            <h1>Your Favorite Mangas:</h1>
-          </Grid>
-        </Grid>
         <Grid container className={classes.saved}>
           <Grid item xs={12} md={6}>
             <div
@@ -94,9 +86,8 @@ export const UserDashboard = () => {
                 marginRight: "20px",
               }}
             >
-              {/* Favorite anime list */}
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
-                Favorite Anime:
+                Your Favorite Animes:
               </h1>
               {animes.data &&
                 animes.data.map((result) => (
@@ -153,7 +144,7 @@ export const UserDashboard = () => {
               }}
             >
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
-                Favorite Manga:
+                Your Favorite Mangas:
               </h1>
               {mangas.data &&
                 mangas.data.map((result) => (
