@@ -18,6 +18,7 @@ This application was inspired by our mutual love for both anime and manga, and t
 - [Images](#images)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Motivation](#motivation)
 - [License](#license)
 - [Contributing](#contributing)
 - [Questions](#tests)
@@ -70,6 +71,10 @@ git clone https://github.com/Crowe828/nipponmedia.git
 ## Usage
 
 This application allows you to search for your favorite anime and manga, and click on their respective info card to access their details page. This page allows users to learn about the material that they selected, as well as mark them as a favorite, watching/reading, or read/watched. You can also create an account and log in and access your profile page, where all of the anime or manga you favorited will be stored and linked to your account.
+
+## Motivation
+
+The motivation for creating this applicaiton is the fact that there are not any great anime/manga websites around. A couple exist but none are looking to execute the social aspect and clean look that our team is chasing. We are looking to make this a social site where people who are as passionate about anime as we are can come together and rejoice.
 
 ## Contributing
 
