@@ -69,6 +69,7 @@ export const App = () => {
         }}
       >
         <Router history={history}>
+          {/* So that the footer is always at the bottom */}
           <div style={{ paddingBottom: "50px" }}>
             <Header />
             <Nav />
@@ -82,9 +83,12 @@ export const App = () => {
                 />
               </Route>
               <Route path="/login" component={Login} />
+              {/* Register = Signup page */}
               <Route path="/register" component={Register} />
               <Route path="/about" component={About} />
+              {/* Dashboard = Profile page */}
               <PrivateRoute path="/dashboard" component={UserDashboard} />
+              {/* Details page for each anime/manga */}
               <Route path="/:type/:id">
                 <Details results={results} />
               </Route>

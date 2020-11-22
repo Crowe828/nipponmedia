@@ -1,36 +1,91 @@
-# NipponMedia
+# Nippon Media
+
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+
+**[Repo](https://github.com/Crowe828/nipponmedia)**
+
+<!-- **[Deployment](INSERT DEPLOYMENT HERE)** -->
 
 ## Description
 
-**Overview of the project**  
-Inspired by Letterboxd, this application allows you to track all of your favorite anime and manga. You will be able to create an account, log which shows or manga you have read, and leave reviews. You will also be able to create lists of shows/manga you want to watch/read, create lists of your favorite characters, and also follow other users. This will be done using the Jikan API.
+Nippon Media is the premiere application allows you to track all of your favorite anime and manga. Sign up and join the conversation today!
 
-## Proposal
+This application was inspired by our mutual love for both anime and manga, and the feeling that there was not an online communtiy where we could discuss our feelings about the content. Our aim is to solve that problem.
 
-**Group Name:** Weebs  
-**Project Name:** nipponmedia  
-**KanBan:** https://github.com/Crowe828/nipponmedia/projects/1  
-**Repo:** https://github.com/Crowe828/nipponmedia
+## Table of Contents
 
-## Burndown Schedule:
+- [Technologies](#Technologies)
+- [Images](#images)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Questions](#tests)
 
-1. Choosing aesthetic, CSS frameworks, and NPM packages Nov: 12
-2. API Call and Search function: Nov. 13
-3. Have all info rendered into card components: Nov. 15
-4. Create and login to account: Nov 17
-5. CRUD functionality and ability to create lists and reviews: Nov. 20
-6. Final polish and presentation preparation: Nov. 22
+## Technologies
 
-## CSS Framework
+**STACK:**
 
-**Material UI:** https://material-ui.com
-**Semantic UI React** https://react.semantic-ui.com
+- _MongoDB_
+- _Express_
+- _React_
+- _Redux_
+- _Node_
 
-## API Package
+**API**
 
-**Kitsu API:** https://kitsu.docs.apiary.io
+- _Kitsu API:_ https://kitsu.docs.apiary.io
 
-## Team Members
+**CSS**
 
-- Christian Rowe: [GitHub Profile](https://github.com/Crowe828)
-- Brandon Green: [GitHub Profile](https://github.com/BrandonGreenOAB)
+- _Material UI:_ https://material-ui.com
+- _Semantic UI React_ https://react.semantic-ui.com
+
+## Images
+
+- Homepage:
+  ![Home](https://github.com/Crowe828/nipponmedia/blob/main/client/public/images/home.png)
+
+- Details:
+  ![Details](https://github.com/Crowe828/nipponmedia/blob/main/client/public/images/details.png)
+
+- About:
+  ![About](https://github.com/Crowe828/nipponmedia/blob/main/client/public/images/about.png)
+
+- Login
+  ![Login](https://github.com/Crowe828/nipponmedia/blob/main/client/public/images/login.png)
+
+- Signup
+  ![Signup](https://github.com/Crowe828/nipponmedia/blob/main/client/public/images/signup.png)
+
+- Profile
+  ![Profile](https://github.com/Crowe828/nipponmedia/blob/main/client/public/images/profile.png)
+
+## Installation
+
+```
+git clone https://github.com/Crowe828/nipponmedia.git
+```
+
+## Usage
+
+This application allows you to search for your favorite anime and manga, and click on their respective info card to access their details page. This page allows users to learn about the material that they selected, as well as mark them as a favorite, watching/reading, or read/watched. You can also create an account and log in and access your profile page, where all of the anime or manga you favorited will be stored and linked to your account.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
+
+## Questions
+
+If you would like to learn more, feel free to reach out via our GitHub or LinkedIn pages below:
+
+Christian Rowe:
+
+- [GitHub](https://github.com/Crowe828)
+- [LinkedIn](https://www.linkedin.com/in/christiantrowe/)
+
+Brandon Green:
+
+- [GitHub](https://github.com/BrandonGreenOAB)
+- [LinkedIn](https://www.linkedin.com/in/brandon-d-green/)

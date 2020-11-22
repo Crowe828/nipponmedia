@@ -29,6 +29,7 @@ export default function NavMenu(props) {
 
   // helper to show links on Navbar if user is authenticated
   const showLinks = () => {
+    // These only appear if a user is logged in
     if (isAuthenticated) {
       return (
         <>
@@ -58,6 +59,7 @@ export default function NavMenu(props) {
         </>
       );
     } else {
+      // If not, these menu items are present
       return (
         <>
           <ListItem button>
@@ -91,6 +93,7 @@ export default function NavMenu(props) {
     }
   };
 
+  // These menu items are always present no matter what
   return (
     <div>
       <div className="NavMenuTitle">メインメニュー!</div>

@@ -12,14 +12,16 @@ const Login = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // If login is successful take user to their dashboard
     if (isAuthenticated) {
-      props.history.push("/");
+      props.history.push("/dashboard");
     }
   });
 
   const renderFormMessage = () => {
     return (
       <>
+        {/* If not a member, sign up */}
         <i className="user plus icon"></i>Not a member?{" "}
         <Link to="/register">Sign up for a free account</Link>
       </>
@@ -42,6 +44,7 @@ const Login = (props) => {
         justifyContent: "center",
       }}
     >
+      {/* Login form text */}
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
           <Header as="h2" secondary="true" textAlign="center">

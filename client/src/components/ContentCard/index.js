@@ -45,6 +45,7 @@ export default function ContentCard(props) {
               style={{ textDecoration: "none" }}
             >
               <Card style={{ color: "white", backgroundColor: "#263238" }}>
+                {/* A popup instructing the user to click to go to the details page */}
                 <Tooltip
                   title={
                     <React.Fragment>
@@ -66,6 +67,7 @@ export default function ContentCard(props) {
                     style={{ width: "100%" }}
                   />
                 </Tooltip>
+                {/* Titles in English/Japanese */}
                 <CardContent>
                   <Typography variant="h5" component="h2">
                     {result.attributes.titles.en}

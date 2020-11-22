@@ -2,7 +2,7 @@ const db = require("../models/");
 
 // Defining methods for the animeController
 module.exports = {
-  // Find all animes
+  // Find all anime
   findAll: function (req, res) {
     db.Anime.find(req.query)
       .then((dbModel) => res.json(dbModel))
@@ -22,7 +22,7 @@ module.exports = {
   },
   // Add an anime to your lists
   add: function (req, res) {
-    console.log("Method", req.body)
+    console.log("Method", req.body);
     db.Anime.create(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => {

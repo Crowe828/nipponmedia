@@ -6,6 +6,7 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import "./style.css";
 
+// Material-UI styling
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -56,6 +57,7 @@ export default function About() {
               className={classes.paper}
               style={{ textAlign: "left" }}
             >
+              {/* Contact info */}
               <h2 className="heading">Developed By</h2>
               <ul className="list">
                 <li>
@@ -111,6 +113,7 @@ export default function About() {
               </ul>
             </Paper>
           </Grid>
+          {/* GitJub repo link */}
           <Grid item xs={6}>
             <a
               href="https://github.com/Crowe828/nipponmedia"
