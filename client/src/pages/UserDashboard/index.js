@@ -102,23 +102,41 @@ export const UserDashboard = () => {
             >
               {animes.data &&
                 animes.data.map((result) => (
-                  <div className="item" key={result._id}>
+                  <div
+                    style={{ display: "flex", flexDirection: "row" }}
+                    className="item"
+                    key={result._id}
+                  >
                     <img
                       className="ui avatar image tiny"
                       src={result.img}
                       alt={result.titleEn}
                     />
-                    <div className="content">
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "100%",
+                      }}
+                      className="content"
+                    >
                       <div className="header">{result.titleJp}</div>
                       <div className="description">{result.titleEn}</div>
                       <div className="description">
                         Age Rating: {result.ageRating}
                       </div>
-                      <button onClick={() => deleteAnime(result._id)}>
-                        {" "}
-                        x{" "}
-                      </button>
                     </div>
+                    <a
+                      onClick={() => deleteManga(result._id)}
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        color: "#743325",
+                      }}
+                    >
+                      remove
+                    </a>
                   </div>
                 ))}
               {animes.data &&
@@ -132,13 +150,24 @@ export const UserDashboard = () => {
             >
               {mangas.data &&
                 mangas.data.map((result) => (
-                  <div className="item" key={result._id}>
+                  <div
+                    className="item"
+                    key={result._id}
+                    style={{ display: "flex", flexDirection: "row" }}
+                  >
                     <img
                       className="ui avatar image tiny"
                       src={result.img}
                       alt={result.titleEn}
                     />
-                    <div className="content">
+                    <div
+                      className="content"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "100%",
+                      }}
+                    >
                       <div className="header">{result.titleJp}</div>
                       <div className="description">{result.titleEn}</div>
                       {result.ageRating === null ? (
@@ -149,7 +178,17 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
-                    <button onClick={() => deleteManga(result._id)}> x </button>
+                    <a
+                      onClick={() => deleteManga(result._id)}
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        color: "#743325",
+                      }}
+                    >
+                      remove
+                    </a>
                   </div>
                 ))}
               {mangas.data &&
