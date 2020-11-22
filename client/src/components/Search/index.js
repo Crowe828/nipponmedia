@@ -61,7 +61,6 @@ export default function Search(props) {
   const [category, setCategory] = React.useState("");
 
   const handleChange = (event) => {
-    console.log(event.target.value.toLowerCase());
     setCategory(event.target.value);
   };
 

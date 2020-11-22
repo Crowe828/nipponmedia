@@ -152,7 +152,6 @@ class Details extends Component {
             response2: response2,
             type: response.data.data.type,
           });
-          console.log("type: " + this.state.type);
         })
       );
   }

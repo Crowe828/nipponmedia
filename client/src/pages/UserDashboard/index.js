@@ -30,7 +30,6 @@ export const UserDashboard = () => {
   const getMangas = () => {
     API.getManga()
       .then((res) => {
-        console.log("functionManga", res);
         setMangas(res);
       })
       .catch((err) => console.log(err));
@@ -39,21 +38,18 @@ export const UserDashboard = () => {
   const getAnimes = () => {
     API.getAnime()
       .then((res) => {
-        console.log("functionAnime", res);
         setAnimes(res);
       })
       .catch((err) => console.log(err));
   };
   // Delete manga from db
   const deleteManga = (mangaId) => {
-    console.log(mangaId);
     API.deleteManga(mangaId).then((res) => {
       getMangas();
     });
   };
   // Delete anime from db
   const deleteAnime = (animeId) => {
-    console.log(animeId);
     API.deleteAnime(animeId).then((res) => {
       getAnimes();
     });
@@ -134,8 +130,6 @@ export const UserDashboard = () => {
                     </button>
                   </div>
                 ))}
-              {animes.data &&
-                console.log("data from console log in component", animes.data)}
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -197,8 +191,6 @@ export const UserDashboard = () => {
                     </button>
                   </div>
                 ))}
-              {mangas.data &&
-                console.log("data from console log in component", mangas.data)}
             </div>
           </Grid>
         </Grid>

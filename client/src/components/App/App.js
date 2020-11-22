@@ -36,7 +36,6 @@ export const App = () => {
   }
   // function that will show the anime / manga that you searched and set the state
   function getInfo(query, category) {
-    console.log(query, category);
     API.getData(query, category)
       .then((res) => setResults(res.data.data))
       .catch((err) => console.log(err));

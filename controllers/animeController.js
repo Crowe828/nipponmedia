@@ -22,7 +22,6 @@ module.exports = {
   },
   // Add an anime to your lists
   add: function (req, res) {
-    console.log("Method", req.body);
     db.Anime.create(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => {
