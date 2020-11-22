@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { schema } = require("./anime");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -12,4 +13,4 @@ const UserSchema = new Schema({
   },
 });
 
-module.exports = User = mongoose.model("user", UserSchema);
+module.exports = User = mongoose.model("User", UserSchema);

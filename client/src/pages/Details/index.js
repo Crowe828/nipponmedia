@@ -13,6 +13,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import Alert from "@material-ui/lab/Alert";
 import API from "../../utils/API";
+import UserDashboard from "../UserDashboard";
 
 // Material-UI Styling
 const styles = () => ({
@@ -116,6 +117,7 @@ class Details extends Component {
       rank: manga.popularityRank,
       ageRating: manga.ageRating,
       volumeCount: manga.volumeCount,
+      savedBy: this.user,
     };
 
     API.saveManga(obj)
@@ -473,7 +475,7 @@ class Details extends Component {
                     {/* Streaming Links */}
                     <Button
                       variant="contained"
-                      color="primary"
+                      color="secondary"
                       size="large"
                       startIcon={<OndemandVideoIcon />}
                       href={this.state.response2.data.data[0].attributes.url}
@@ -509,7 +511,7 @@ class Details extends Component {
                     {/* Watched */}
                     <Button
                       variant="contained"
-                      color="secondary"
+                      color="primary"
                       size="large"
                       startIcon={<CheckCircleIcon />}
                     >
