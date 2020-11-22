@@ -86,9 +86,8 @@ export const UserDashboard = () => {
                 marginRight: "20px",
               }}
             >
-              {/* Favorite anime list */}
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
-                Favorite Anime:
+                Your Favorite Animes:
               </h1>
               {animes.data &&
                 animes.data.map((result) => (
@@ -116,7 +115,6 @@ export const UserDashboard = () => {
                         Age Rating: {result.ageRating}
                       </div>
                     </div>
-                    {/* Delete button */}
                     <button
                       onClick={() => deleteAnime(result._id)}
                       style={{
@@ -145,9 +143,8 @@ export const UserDashboard = () => {
                 marginRight: "20px",
               }}
             >
-              {/* Favorite manga list */}
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
-                Favorite Manga:
+                Your Favorite Mangas:
               </h1>
               {mangas.data &&
                 mangas.data.map((result) => (
