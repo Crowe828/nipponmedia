@@ -126,17 +126,19 @@ export const UserDashboard = () => {
                         Age Rating: {result.ageRating}
                       </div>
                     </div>
-                    <a
-                      onClick={() => deleteManga(result._id)}
+                    <button
+                      onClick={() => deleteAnime(result._id)}
                       style={{
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        color: "#743325",
+                        height: "50%",
+                        float: "right",
+                        color: "white",
+                        backgroundColor: "#f44336",
+                        borderColor: "#f44336",
+                        borderRadius: "14px",
                       }}
                     >
                       remove
-                    </a>
+                    </button>
                   </div>
                 ))}
               {animes.data &&
@@ -178,17 +180,19 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
-                    <a
+                    <button
                       onClick={() => deleteManga(result._id)}
                       style={{
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        color: "#743325",
+                        height: "50%",
+                        float: "right",
+                        color: "white",
+                        backgroundColor: "#f44336",
+                        borderColor: "#f44336",
+                        borderRadius: "14px",
                       }}
                     >
                       remove
-                    </a>
+                    </button>
                   </div>
                 ))}
               {mangas.data &&

@@ -272,17 +272,14 @@ class Details extends Component {
                       </Typography>
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={2}>
-                      <Typography>
-                        {this.state.response.data.data.attributes.nsfw ===
-                        null ? (
-                          <Typography>NSFW: Safe</Typography>
-                        ) : (
-                          <Typography>
-                            NSFW:{" "}
-                            {this.state.response.data.data.attributes.nsfw}
-                          </Typography>
-                        )}
-                      </Typography>
+                      {this.state.response.data.data.attributes.nsfw ===
+                      null ? (
+                        <Typography>NSFW: Safe</Typography>
+                      ) : (
+                        <Typography>
+                          NSFW: {this.state.response.data.data.attributes.nsfw}
+                        </Typography>
+                      )}
                     </Grid>
                   </Grid>
                 </Grid>
