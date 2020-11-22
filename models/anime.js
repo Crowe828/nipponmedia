@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const User = require("./user");
 
 const AnimeSchema = new Schema({
   titleEn: {
@@ -43,6 +44,12 @@ const AnimeSchema = new Schema({
     type: Number,
     require: false,
   },
+  savedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: User,
+    },
+  ],
 });
 
 const Anime = mongoose.model("Anime", AnimeSchema);
