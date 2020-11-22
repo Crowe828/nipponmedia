@@ -27,8 +27,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Nav() {
   const classes = useStyles();
 
+  // Hide/show nav menu
   const [showMenu, setShowMenu] = useState(false);
 
+  // Nav menu animates smoothly
   const maskTransitions = useTransition(showMenu, null, {
     from: { position: "absolute", opacity: 0 },
     enter: { opacity: 1 },
@@ -49,6 +51,7 @@ export default function Nav() {
         style={{ backgroundColor: "#263238" }}
       >
         <Toolbar>
+          {/* Clicking the menu button opens the navbar */}
           <IconButton
             edge="start"
             className={classes.menuButton}

@@ -5,31 +5,17 @@ import Grid from "@material-ui/core/Grid";
 import API from "../../utils/API";
 import "semantic-ui-react";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: "10px",
-    backgroundColor: "black",
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-    height: "300px",
-    width: "93%",
-    marginLeft: "3%",
-  },
+// Material-UI styles
+const useStyles = makeStyles({
   saved: {
     marginTop: "10px",
     width: "100%",
-    display: "flex",
-    flexDirection: "row",
   },
-  title: {
-    display: "flex",
-    textAlign: "center",
-  },
-}));
+});
 
 export const UserDashboard = () => {
   const classes = useStyles();
-  // access to the currentUser property from the auth reducer state
+  // Access to the currentUser property from the auth reducer state
   const user = useSelector((state) => state.auth.currentUser);
   const [mangas, setMangas] = useState([]);
   const [animes, setAnimes] = useState([]);
@@ -39,6 +25,7 @@ export const UserDashboard = () => {
     getAnimes();
   }, []);
 
+  // Get manga from the db
   const getMangas = () => {
     API.getManga()
       .then((res) => {
@@ -47,6 +34,7 @@ export const UserDashboard = () => {
       })
       .catch((err) => console.log(err));
   };
+  // Get anime from db
   const getAnimes = () => {
     API.getAnime()
       .then((res) => {
@@ -55,16 +43,18 @@ export const UserDashboard = () => {
       })
       .catch((err) => console.log(err));
   };
-  const deleteAnime = (animeId) => {
-    console.log(animeId);
-    API.deleteAnime(animeId).then((res) => {
-      getAnimes();
-    });
-  };
+  // Delete manga from db
   const deleteManga = (mangaId) => {
     console.log(mangaId);
     API.deleteManga(mangaId).then((res) => {
       getMangas();
+    });
+  };
+  // Delete anime from db
+  const deleteAnime = (animeId) => {
+    console.log(animeId);
+    API.deleteAnime(animeId).then((res) => {
+      getAnimes();
     });
   };
 
@@ -82,6 +72,7 @@ export const UserDashboard = () => {
           >
             <h2 style={{ fontSize: "48px", margin: "10px" }}>User Dashboard</h2>
             <h3 style={{ fontSize: "24x", marginBottom: "50px" }}>
+              {/* Displays users email */}
               Welcome, {user ? user.email : ""}
             </h3>
           </div>
@@ -95,15 +86,22 @@ export const UserDashboard = () => {
           </Grid>
         </Grid>
         <Grid container className={classes.saved}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div
               className="ui massive divided list"
-              style={{ marginLeft: "20px", marginRight: "20px" }}
+              style={{
+                marginLeft: "20px",
+                marginRight: "20px",
+              }}
             >
+              {/* Favorite anime list */}
+              <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
+                Favorite Anime:
+              </h1>
               {animes.data &&
                 animes.data.map((result) => (
                   <div
-                    style={{ display: "flex", flexDirection: "row" }}
+                    style={{ display: "flex" }}
                     className="item"
                     key={result._id}
                   >
@@ -129,31 +127,41 @@ export const UserDashboard = () => {
                     <a
                       onClick={() => deleteAnime(result._id)}
                       style={{
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        color: "#743325",
+                        fontSize: "18px",
+                        height: "50%",
+                        float: "right",
+                        color: "white",
+                        backgroundColor: "#f44336",
+                        borderColor: "#f44336",
+                        borderRadius: "14px",
                       }}
                     >
                       remove
-                    </a>
+                    </button>
                   </div>
                 ))}
               {animes.data &&
                 console.log("data from console log in component", animes.data)}
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div
               className="ui massive divided list"
-              style={{ marginLeft: "20px", marginRight: "20px" }}
+              style={{
+                marginLeft: "20px",
+                marginRight: "20px",
+              }}
             >
+              {/* Favorite manga list */}
+              <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
+                Favorite Manga:
+              </h1>
               {mangas.data &&
                 mangas.data.map((result) => (
                   <div
                     className="item"
                     key={result._id}
-                    style={{ display: "flex", flexDirection: "row" }}
+                    style={{ display: "flex" }}
                   >
                     <img
                       className="ui avatar image tiny"
@@ -178,17 +186,21 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
-                    <a
+                    {/* Delete manga button */}
+                    <button
                       onClick={() => deleteManga(result._id)}
                       style={{
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        color: "#743325",
+                        fontSize: "18px",
+                        height: "50%",
+                        float: "right",
+                        color: "white",
+                        backgroundColor: "#f44336",
+                        borderColor: "#f44336",
+                        borderRadius: "14px",
                       }}
                     >
                       remove
-                    </a>
+                    </button>
                   </div>
                 ))}
               {mangas.data &&

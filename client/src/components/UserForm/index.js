@@ -19,9 +19,11 @@ const UserForm = (props) => {
   }, [error]);
 
   return (
+    // Form for both login and signup pages
     <>
       <Form onSubmit={props.handleSubmit(props.onSubmit)} size="large">
         <Segment className="ui orange raised">
+          {/* Enter users email */}
           <Field name="email" component={renderInput} label="Email" />
           {errorMessage ? (
             <Label className="alertMssg" basic color="red">
@@ -30,7 +32,9 @@ const UserForm = (props) => {
           ) : (
             ""
           )}
+          {/* Enter user password */}
           <Field name="password" component={renderInput} label="Password" />
+          {/* Submit button, features an arrow animation on hover */}
           <Button
             className="ui vertical animated"
             tabIndex="0"

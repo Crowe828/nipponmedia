@@ -5,6 +5,7 @@ import { LogoutUser } from "../../actions/authActions";
 import "./style.css";
 
 const Logout = () => {
+  // Dispatch allows the logout function
   const dispatch = useDispatch();
   return (
     <Link

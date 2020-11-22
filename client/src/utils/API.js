@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  // API request to server side
+  // API request to logging in/creating an account
   register(data) {
     return axios.post("/auth/register", data);
   },
@@ -11,7 +11,7 @@ export default {
   loadUser(headers) {
     return axios.get("/auth/user", headers);
   },
-  //default API call to show popular animes on the home page
+  // Default API call to show popular animes on the home page
   defaultData: function () {
     return axios.get("https://kitsu.io/api/edge/trending/anime");
   },
