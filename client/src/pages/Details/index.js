@@ -168,6 +168,9 @@ class Details extends Component {
   // Will render anime details, manga details, or nothing depending on state
   render() {
     const { classes } = this.props;
+    {
+      /*this will render mangas if clicked on a manga from the main page */
+    }
     if (this.state.type === "manga") {
       return (
         <main className={classes.main}>
@@ -312,6 +315,7 @@ class Details extends Component {
                   >
                     Favorite
                   </Button>
+                  {/*non funcitoning button */}
                   <Button
                     variant="contained"
                     color="primary"
@@ -320,6 +324,7 @@ class Details extends Component {
                   >
                     Reading
                   </Button>
+                  {/*non functioning button*/}
                   <Button
                     variant="contained"
                     color="secondary"
@@ -336,6 +341,9 @@ class Details extends Component {
         </main>
       );
     } else if (this.state.type === "anime") {
+      {
+        /*returning animes if clicked on an anime from the main page */
+      }
       return (
         <>
           {/* Cover image */}
@@ -499,7 +507,7 @@ class Details extends Component {
                     >
                       Favorite
                     </Button>
-                    {/* Watching */}
+                    {/* Watching */} {/*non functioning button*/}
                     <Button
                       variant="contained"
                       color="primary"
@@ -508,7 +516,7 @@ class Details extends Component {
                     >
                       Watching
                     </Button>
-                    {/* Watched */}
+                    {/* Watched */} {/*non functioning button*/}
                     <Button
                       variant="contained"
                       color="primary"
