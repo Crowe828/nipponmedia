@@ -7,7 +7,7 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import "./style.css";
 
-//styling for the search bar and categories
+// Styling for the search bar and categories
 const useStyles = makeStyles({
   bar: {
     width: 650,
@@ -42,8 +42,8 @@ const useStyles = makeStyles({
   },
 });
 
-//passing handle inputchange and handle formsubmit via props. also using handleChange
-//to grab the value of the category for the details page
+// Passing handle inputchange and handle formsubmit via props. also using handleChange
+// to grab the value of the category for the details page
 
 export default function Search(props) {
   const classes = useStyles();
@@ -78,6 +78,7 @@ export default function Search(props) {
             paddingLeft: "15px",
           }}
         />
+        {/* The user must choose to search for anime OR manga */}
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="dropdown">Type</InputLabel>
           <Select
