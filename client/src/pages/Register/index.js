@@ -11,6 +11,7 @@ const Register = () => {
   const renderFormMessage = () => {
     return (
       <>
+        {/* If already a member, go to login page */}
         <i className="address card icon"></i>Already a member?{" "}
         <Link to="/login">Login here</Link>
       </>
@@ -33,6 +34,7 @@ const Register = () => {
         justifyContent: "center",
       }}
     >
+      {/* Signup page text */}
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
           <Header as="h2" secondary="true" textAlign="center">

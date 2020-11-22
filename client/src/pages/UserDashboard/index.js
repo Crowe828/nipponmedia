@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import API from "../../utils/API";
 import "semantic-ui-react";
 
+// Material-UI styles
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: "10px",
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const UserDashboard = () => {
   const classes = useStyles();
-  // access to the currentUser property from the auth reducer state
+  // Access to the currentUser property from the auth reducer state
   const user = useSelector((state) => state.auth.currentUser);
   const [mangas, setMangas] = useState([]);
   const [animes, setAnimes] = useState([]);
@@ -39,6 +40,7 @@ export const UserDashboard = () => {
     getAnimes();
   }, []);
 
+  // Get manga from the db
   const getMangas = () => {
     API.getManga()
       .then((res) => {
@@ -47,6 +49,7 @@ export const UserDashboard = () => {
       })
       .catch((err) => console.log(err));
   };
+  // Get anime from db
   const getAnimes = () => {
     API.getAnime()
       .then((res) => {
@@ -55,16 +58,18 @@ export const UserDashboard = () => {
       })
       .catch((err) => console.log(err));
   };
-  const deleteAnime = (animeId) => {
-    console.log(animeId);
-    API.deleteAnime(animeId).then((res) => {
-      getAnimes();
-    });
-  };
+  // Delete manga from db
   const deleteManga = (mangaId) => {
     console.log(mangaId);
     API.deleteManga(mangaId).then((res) => {
       getMangas();
+    });
+  };
+  // Delete anime from db
+  const deleteAnime = (animeId) => {
+    console.log(animeId);
+    API.deleteAnime(animeId).then((res) => {
+      getAnimes();
     });
   };
 
@@ -82,11 +87,13 @@ export const UserDashboard = () => {
           >
             <h2 style={{ fontSize: "48px", margin: "10px" }}>User Dashboard</h2>
             <h3 style={{ fontSize: "24x", marginBottom: "50px" }}>
+              {/* Displays users email */}
               Welcome, {user ? user.email : ""}
             </h3>
           </div>
         </Grid>
         <Grid container className={classes.title}>
+          {/* Favorite lists */}
           <Grid item xs={6}>
             <h1>Favorite Anime:</h1>
           </Grid>
@@ -100,6 +107,7 @@ export const UserDashboard = () => {
               className="ui massive divided list"
               style={{ marginLeft: "20px", marginRight: "20px" }}
             >
+              {/* Render favorite anime into a list */}
               {animes.data &&
                 animes.data.map((result) => (
                   <div
@@ -126,6 +134,7 @@ export const UserDashboard = () => {
                         Age Rating: {result.ageRating}
                       </div>
                     </div>
+                    {/* Delete button */}
                     <button
                       onClick={() => deleteAnime(result._id)}
                       style={{
@@ -149,6 +158,7 @@ export const UserDashboard = () => {
             <div
               className="ui massive divided list"
               style={{ marginLeft: "20px", marginRight: "20px" }}
+              // Favorite manga list
             >
               {mangas.data &&
                 mangas.data.map((result) => (
@@ -180,6 +190,7 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
+                    {/* Delete manga button */}
                     <button
                       onClick={() => deleteManga(result._id)}
                       style={{

@@ -14,6 +14,7 @@ import MenuBookIcon from "@material-ui/icons/MenuBook";
 import Alert from "@material-ui/lab/Alert";
 import API from "../../utils/API";
 
+// Material-UI Styling
 const styles = () => ({
   main: {
     display: "flex",
@@ -79,7 +80,7 @@ class Details extends Component {
     savedMangas: [],
   };
 
-  // this is the function to save the anime to the anime collection
+  // This is the function to save the anime to the anime collection
   handleSaveAnime = (anime) => {
     let obj = {
       titleEn: anime.titles.en,
@@ -103,7 +104,7 @@ class Details extends Component {
       .catch((err) => console.error(err));
   };
 
-  // this is the function that saves the manga to the manga collection
+  // This is the function that saves the manga to the manga collection
   handleSaveManga = (manga) => {
     let obj = {
       titleEn: manga.titles.en,
@@ -162,7 +163,7 @@ class Details extends Component {
     );
   }
 
-  // will render anime detail, manga detail, or nothing depending on state
+  // Will render anime details, manga details, or nothing depending on state
   render() {
     const { classes } = this.props;
     if (this.state.type === "manga") {
@@ -176,11 +177,13 @@ class Details extends Component {
               lineHeight: "normal",
             }}
           >
+            {/* Page titles English/Japanese */}
             {this.state.response.data.data.attributes.titles.en}
             <br />
             {this.state.response.data.data.attributes.titles.ja_jp}
           </div>
           <div className={classes.display}>
+            {/* Manga cover */}
             <img
               className={classes.mangaImage}
               src={this.state.response.data.data.attributes.posterImage.large}
@@ -198,6 +201,7 @@ class Details extends Component {
                     >
                       Synopsis:
                     </Typography>
+                    {/* If there is no age rating, say so*/}
                     {this.state.response.data.data.attributes.ageRating ===
                     null ? (
                       <div
@@ -217,7 +221,7 @@ class Details extends Component {
                           lineHeight: "normal",
                         }}
                       >
-                        Age Guide:{" "}
+                        Age Guide: {/* If there is, display it */}
                         {this.state.response.data.data.attributes.ageRating}
                       </div>
                     )}
@@ -226,17 +230,21 @@ class Details extends Component {
                         fontSize: "18px",
                       }}
                     >
+                      {/* Snyopsis */}
                       {this.state.response.data.data.attributes.synopsis}
                     </Typography>
                   </Grid>
                   <Grid className={classes.spaceBetween} container spacing={3}>
                     <Grid className={classes.card} item xs={5}>
                       <Typography>
-                        Start date:{" "}
-                        {this.state.response.data.data.attributes.startDate}{" "}
+                        Start date: {/* When the manga started */}
+                        {
+                          this.state.response.data.data.attributes.startDate
+                        }{" "}
                       </Typography>
                     </Grid>
                     <Grid className={classes.card} item xs={5}>
+                      {/* If the manga has not ended say TBD. If it has, display the end date */}
                       {this.state.response.data.data.attributes.endDate ==
                       null ? (
                         <Typography component={"span"}>
@@ -252,17 +260,20 @@ class Details extends Component {
                     <Grid className={classes.cardSmall} item xs={2}>
                       <Typography>
                         Status:{" "}
+                        {/* Is the manga still being made or has it finished */}
                         {this.state.response.data.data.attributes.status}
                       </Typography>
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={3}>
                       <Typography>
+                        {/* Reader rating out of 100 */}
                         Reader Rating:{" "}
                         {this.state.response.data.data.attributes.averageRating}
                         /100
                       </Typography>
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={3}>
+                      {/* Popularity */}
                       <Typography>
                         Rank among Manga:{" "}
                         {
@@ -274,6 +285,7 @@ class Details extends Component {
                     <Grid className={classes.cardSmall} item xs={2}>
                       {this.state.response.data.data.attributes.nsfw ===
                       null ? (
+                        // If it's NSFW, say so. If it is, display that as well
                         <Typography>NSFW: Safe</Typography>
                       ) : (
                         <Typography>
@@ -284,6 +296,7 @@ class Details extends Component {
                   </Grid>
                 </Grid>
                 <div className={classes.btnGroup}>
+                  {/* Buttons to save manga */}
                   <Button
                     onClick={() =>
                       this.handleSaveManga(
@@ -323,6 +336,7 @@ class Details extends Component {
     } else if (this.state.type === "anime") {
       return (
         <>
+          {/* Cover image */}
           <img
             src={this.state.response.data.data.attributes.coverImage.large}
             alt={this.state.response.data.data.attributes.titles.en}
@@ -337,11 +351,13 @@ class Details extends Component {
                 lineHeight: "normal",
               }}
             >
+              {/* Anime title in English/Japanese */}
               {this.state.response.data.data.attributes.titles.en}
               <br />
               {this.state.response.data.data.attributes.titles.ja_jp}
             </div>
             <div className={classes.display}>
+              {/* Anime poster art */}
               <img
                 className={classes.animeImage}
                 src={this.state.response.data.data.attributes.posterImage.large}
@@ -358,6 +374,7 @@ class Details extends Component {
                         }}
                       >
                         Synopsis:
+                        {/* Age rating */}
                       </Typography>
                       {this.state.response.data.data.attributes.ageRating ===
                       null ? (
@@ -396,6 +413,7 @@ class Details extends Component {
                       spacing={3}
                     >
                       <Grid className={classes.card} item xs={5}>
+                        {/* Anime start/end date */}
                         <Typography>
                           Start date:{" "}
                           {this.state.response.data.data.attributes.startDate}{" "}
@@ -417,19 +435,21 @@ class Details extends Component {
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={2}>
                       <Typography>
+                        {/* Is the anime finished or not */}
                         Status:{" "}
                         {this.state.response.data.data.attributes.status}
                       </Typography>
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={3}>
                       <Typography>
-                        Viewer Rating:{" "}
+                        Viewer Rating: {/* Rating out of 100 */}
                         {this.state.response.data.data.attributes.averageRating}
                         /100
                       </Typography>
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={3}>
                       <Typography>
+                        {/* Popularity */}
                         Rank among Anime:{" "}
                         {
                           this.state.response.data.data.attributes
@@ -440,6 +460,7 @@ class Details extends Component {
                     <Grid className={classes.cardSmall} item xs={2}>
                       {this.state.response.data.data.attributes.nsfw ===
                       null ? (
+                        // NSFW or not
                         <Typography>NSFW: Safe</Typography>
                       ) : (
                         <Typography>
