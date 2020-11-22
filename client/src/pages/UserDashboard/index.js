@@ -77,6 +77,14 @@ export const UserDashboard = () => {
             </h3>
           </div>
         </Grid>
+        <Grid container className={classes.title}>
+          <Grid item xs={6}>
+            <h1>Your Favorite Animes:</h1>
+          </Grid>
+          <Grid item xs={6}>
+            <h1>Your Favorite Mangas:</h1>
+          </Grid>
+        </Grid>
         <Grid container className={classes.saved}>
           <Grid item xs={12} md={6}>
             <div
@@ -116,8 +124,7 @@ export const UserDashboard = () => {
                         Age Rating: {result.ageRating}
                       </div>
                     </div>
-                    {/* Delete button */}
-                    <button
+                    <a
                       onClick={() => deleteAnime(result._id)}
                       style={{
                         fontSize: "18px",
