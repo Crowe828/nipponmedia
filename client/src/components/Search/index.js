@@ -5,24 +5,28 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
+import Button from "@material-ui/core/Button";
 import "./style.css";
 
 // Styling for the search bar and categories
 const useStyles = makeStyles({
   bar: {
     width: 650,
-    height: 50,
+    height: 55,
+    fontSize: "16px",
+    border: "solid",
+    borderRadius: "4px",
+    borderWidth: "1px",
+    borderColor: "#cac6c6",
+    backgroundColor: "#cfd8dc",
+    paddingLeft: "15px",
   },
   container: {
-    width: "100%",
     marginTop: 15,
+    width: "100%",
     display: "inline-flex",
     flexDirection: "row",
     justifyContent: "center",
-  },
-  filter: {
-    height: 40,
-    width: 250,
   },
   button: {
     height: 55,
@@ -30,9 +34,16 @@ const useStyles = makeStyles({
     minWidth: 55,
     marginLeft: 10,
     marginRight: 10,
-  },
-  category: {
-    marginLeft: 0,
+    color: "white",
+    border: "none",
+    borderRadius: 4,
+    backgroundColor: "#81c784",
+    "&:hover": {
+      backgroundColor: "#66bb6a",
+    },
+    "&:active": {
+      backgroundColor: "#4caf50",
+    },
   },
   formControl: {
     height: 55,
@@ -68,15 +79,6 @@ export default function Search(props) {
           name="search"
           onChange={props.handleInputChange}
           className={classes.bar}
-          style={{
-            fontSize: "16px",
-            border: "solid",
-            borderRadius: "4px",
-            borderWidth: "1px",
-            borderColor: "#cac6c6",
-            backgroundColor: "#cfd8dc",
-            paddingLeft: "15px",
-          }}
         />
         {/* The user must choose to search for anime OR manga */}
         <FormControl variant="outlined" className={classes.formControl}>
@@ -92,21 +94,17 @@ export default function Search(props) {
             <MenuItem value="manga">Manga</MenuItem>
           </Select>
         </FormControl>
-        <button
-          type="submit"
+        <Button
+          disableElevation
           className={classes.button}
+          variant="contained"
+          type="submit"
           /* binding an anonymous funciton to the handleformsubmit so it doesnt call unless clicked
           grabbing category and the event in order to determine whether its Anime or Manga*/
           onClick={(e) => props.handleFormSubmit(e, category)}
-          style={{
-            color: "white",
-            backgroundColor: "#81c784",
-            border: "none",
-            borderRadius: "4px",
-          }}
         >
           <SearchIcon />
-        </button>
+        </Button>
       </form>
     </div>
   );
