@@ -124,7 +124,7 @@ export const UserDashboard = () => {
                         Age Rating: {result.ageRating}
                       </div>
                     </div>
-                    <a
+                    <button
                       onClick={() => deleteAnime(result._id)}
                       style={{
                         fontSize: "18px",
@@ -152,7 +152,6 @@ export const UserDashboard = () => {
                 marginRight: "20px",
               }}
             >
-              {/* Favorite manga list */}
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
                 Favorite Manga:
               </h1>
