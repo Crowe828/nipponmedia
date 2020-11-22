@@ -88,10 +88,10 @@ export const UserDashboard = () => {
         </Grid>
         <Grid container className={classes.title}>
           <Grid item xs={6}>
-            <h1>Favorite Anime:</h1>
+            <h1>Your Favorite Animes:</h1>
           </Grid>
           <Grid item xs={6}>
-            <h1>Favorite Manga:</h1>
+            <h1>Your Favorite Mangas:</h1>
           </Grid>
         </Grid>
         <Grid container className={classes.saved}>
@@ -127,7 +127,7 @@ export const UserDashboard = () => {
                       </div>
                     </div>
                     <a
-                      onClick={() => deleteManga(result._id)}
+                      onClick={() => deleteAnime(result._id)}
                       style={{
                         width: "100%",
                         display: "flex",
