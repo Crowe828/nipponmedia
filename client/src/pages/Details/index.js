@@ -179,7 +179,6 @@ class Details extends Component {
               <br />
               {this.state.response.data.data.attributes.titles.ja_jp}
             </Grid>
-
             {/* Manga cover */}
             <Grid
               item
@@ -214,122 +213,6 @@ class Details extends Component {
                   }}
                 >
                   Age Guide: No rating
-                      </div>
-                    ) : (
-                      <div
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "18px",
-                          lineHeight: "normal",
-                        }}
-                      >
-                        Age Guide: {/* If there is, display it */}
-                        {this.state.response.data.data.attributes.ageRating}
-                      </div>
-                    )}
-                    <Typography
-                      style={{
-                        fontSize: "18px",
-                      }}
-                    >
-                      {/* Snyopsis */}
-                      {this.state.response.data.data.attributes.synopsis}
-                    </Typography>
-                  </Grid>
-                  <Grid className={classes.spaceBetween} container spacing={3}>
-                    <Grid className={classes.card} item xs={5}>
-                      <Typography>
-                        Start date: {/* When the manga started */}
-                        {
-                          this.state.response.data.data.attributes.startDate
-                        }{" "}
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.card} item xs={5}>
-                      {/* If the manga has not ended say TBD. If it has, display the end date */}
-                      {this.state.response.data.data.attributes.endDate ==
-                      null ? (
-                        <Typography component={"span"}>
-                          End Date: TBD
-                        </Typography>
-                      ) : (
-                        <Typography component={"span"}>
-                          End Date:{" "}
-                          {this.state.response.data.data.attributes.endDate}
-                        </Typography>
-                      )}
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      <Typography>
-                        Status:{" "}
-                        {/* Is the manga still being made or has it finished */}
-                        {this.state.response.data.data.attributes.status}
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      <Typography>
-                        {/* Reader rating out of 100 */}
-                        Reader Rating:{" "}
-                        {this.state.response.data.data.attributes.averageRating}
-                        /100
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      {/* Popularity */}
-                      <Typography>
-                        Rank among Manga:{" "}
-                        {
-                          this.state.response.data.data.attributes
-                            .popularityRank
-                        }
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      {this.state.response.data.data.attributes.nsfw ===
-                      null ? (
-                        // If it's NSFW, say so. If it is, display that as well
-                        <Typography>NSFW: Safe</Typography>
-                      ) : (
-                        <Typography>
-                          NSFW: {this.state.response.data.data.attributes.nsfw}
-                        </Typography>
-                      )}
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <div className={classes.btnGroup}>
-                  {/* Buttons to save manga */}
-                  <Button
-                    onClick={() =>
-                      this.handleSaveManga(
-                        this.state.response.data.data.attributes
-                      )
-                    }
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    startIcon={<StarsIcon />}
-                  >
-                    Favorite
-                  </Button>
-                  {/*non funcitoning button */}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    startIcon={<MenuBookIcon />}
-                  >
-                    Reading
-                  </Button>
-                  {/*non functioning button*/}
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    size="large"
-                    startIcon={<CheckCircleIcon />}
-                  >
-                    Read
-                  </Button>
                 </div>
               ) : (
                 <div
@@ -513,125 +396,6 @@ class Details extends Component {
                   >
                     Age Guide:{" "}
                     {this.state.response.data.data.attributes.ageRating}
-
-                        </div>
-                      )}
-                      <Typography
-                        style={{
-                          fontSize: "18px",
-                        }}
-                      >
-                        {this.state.response.data.data.attributes.synopsis}
-                      </Typography>
-                    </Grid>
-                    <Grid
-                      className={classes.spaceBetween}
-                      container
-                      spacing={3}
-                    >
-                      <Grid className={classes.card} item xs={5}>
-                        {/* Anime start/end date */}
-                        <Typography>
-                          Start date:{" "}
-                          {this.state.response.data.data.attributes.startDate}{" "}
-                        </Typography>
-                      </Grid>
-                      <Grid className={classes.card} item xs={5}>
-                        {this.state.response.data.data.attributes.endDate ==
-                        null ? (
-                          <Typography component={"span"}>
-                            End Date: TBD
-                          </Typography>
-                        ) : (
-                          <Typography component={"span"}>
-                            End Date:{" "}
-                            {this.state.response.data.data.attributes.endDate}
-                          </Typography>
-                        )}
-                      </Grid>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      <Typography>
-                        {/* Is the anime finished or not */}
-                        Status:{" "}
-                        {this.state.response.data.data.attributes.status}
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      <Typography>
-                        Viewer Rating: {/* Rating out of 100 */}
-                        {this.state.response.data.data.attributes.averageRating}
-                        /100
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={3}>
-                      <Typography>
-                        {/* Popularity */}
-                        Rank among Anime:{" "}
-                        {
-                          this.state.response.data.data.attributes
-                            .popularityRank
-                        }
-                      </Typography>
-                    </Grid>
-                    <Grid className={classes.cardSmall} item xs={2}>
-                      {this.state.response.data.data.attributes.nsfw ===
-                      null ? (
-                        // NSFW or not
-                        <Typography>NSFW: Safe</Typography>
-                      ) : (
-                        <Typography>
-                          NSFW: {this.state.response.data.data.attributes.nsfw}
-                        </Typography>
-                      )}
-                    </Grid>
-                  </Grid>
-                  <div className={classes.btnGroup}>
-                    {/* Streaming Links */}
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      size="large"
-                      startIcon={<OndemandVideoIcon />}
-                      href={this.state.response2.data.data[0].attributes.url}
-                      rel="noreferrer noopener"
-                      target="_blank"
-                      style={{ color: "white" }}
-                    >
-                      Watch
-                    </Button>
-                    {/* Favorite */}
-                    <Button
-                      onClick={() =>
-                        this.handleSaveAnime(
-                          this.state.response.data.data.attributes
-                        )
-                      }
-                      variant="contained"
-                      color="primary"
-                      size="large"
-                      startIcon={<StarsIcon />}
-                    >
-                      Favorite
-                    </Button>
-                    {/* Watching */} {/*non functioning button*/}
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      size="large"
-                      startIcon={<TheatersIcon />}
-                    >
-                      Watching
-                    </Button>
-                    {/* Watched */} {/*non functioning button*/}
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      size="large"
-                      startIcon={<CheckCircleIcon />}
-                    >
-                      Watched
-                    </Button>
                   </div>
                 )}
                 <Typography
@@ -642,106 +406,108 @@ class Details extends Component {
                   {this.state.response.data.data.attributes.synopsis}
                 </Typography>
               </Grid>
-            </Grid>
-            <CardContent>
-              <Grid className={classes.spaceBetween} container spacing={3}>
-                <Grid className={classes.card} item xs={5}>
-                  {/* Anime start/end date */}
-                  <Typography>
-                    Start date:{" "}
-                    {this.state.response.data.data.attributes.startDate}{" "}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.card} item xs={5}>
-                  {this.state.response.data.data.attributes.endDate == null ? (
-                    <Typography component={"span"}>End Date: TBD</Typography>
-                  ) : (
-                    <Typography component={"span"}>
-                      End Date:{" "}
-                      {this.state.response.data.data.attributes.endDate}
-                    </Typography>
-                  )}
-                </Grid>
 
-                <Grid className={classes.cardSmall} item xs={4} sm={2}>
-                  <Typography>
-                    {/* Is the anime finished or not */}
-                    Status: {this.state.response.data.data.attributes.status}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={4} sm={2}>
-                  <Typography>
-                    Viewer Rating: {/* Rating out of 100 */}
-                    {this.state.response.data.data.attributes.averageRating}
-                    /100
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={4} sm={2}>
-                  <Typography>
-                    {/* Popularity */}
-                    Rank among Anime:{" "}
-                    {this.state.response.data.data.attributes.popularityRank}
-                  </Typography>
-                </Grid>
-                <Grid className={classes.cardSmall} item xs={4} sm={2}>
-                  {this.state.response.data.data.attributes.nsfw === null ? (
-                    // NSFW or not
-                    <Typography>NSFW: Safe</Typography>
-                  ) : (
+              <CardContent>
+                <Grid className={classes.spaceBetween} container spacing={3}>
+                  <Grid className={classes.card} item xs={5}>
+                    {/* Anime start/end date */}
                     <Typography>
-                      NSFW: {this.state.response.data.data.attributes.nsfw}
+                      Start date:{" "}
+                      {this.state.response.data.data.attributes.startDate}{" "}
                     </Typography>
-                  )}
+                  </Grid>
+                  <Grid className={classes.card} item xs={5}>
+                    {this.state.response.data.data.attributes.endDate ==
+                    null ? (
+                      <Typography component={"span"}>End Date: TBD</Typography>
+                    ) : (
+                      <Typography component={"span"}>
+                        End Date:{" "}
+                        {this.state.response.data.data.attributes.endDate}
+                      </Typography>
+                    )}
+                  </Grid>
+
+                  <Grid className={classes.cardSmall} item xs={4} sm={2}>
+                    <Typography>
+                      {/* Is the anime finished or not */}
+                      Status: {this.state.response.data.data.attributes.status}
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={4} sm={2}>
+                    <Typography>
+                      Viewer Rating: {/* Rating out of 100 */}
+                      {this.state.response.data.data.attributes.averageRating}
+                      /100
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={4} sm={2}>
+                    <Typography>
+                      {/* Popularity */}
+                      Rank among Anime:{" "}
+                      {this.state.response.data.data.attributes.popularityRank}
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.cardSmall} item xs={4} sm={2}>
+                    {this.state.response.data.data.attributes.nsfw === null ? (
+                      // NSFW or not
+                      <Typography>NSFW: Safe</Typography>
+                    ) : (
+                      <Typography>
+                        NSFW: {this.state.response.data.data.attributes.nsfw}
+                      </Typography>
+                    )}
+                  </Grid>
                 </Grid>
-              </Grid>
-              <div className={classes.btnGroup}>
-                {/* Streaming Links */}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  startIcon={<OndemandVideoIcon />}
-                  href={this.state.response2.data.data[0].attributes.url}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                  style={{ color: "white" }}
-                >
-                  Watch
-                </Button>
-                {/* Favorite */}
-                <Button
-                  onClick={() =>
-                    this.handleSaveAnime(
-                      this.state.response.data.data.attributes
-                    )
-                  }
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  startIcon={<StarsIcon />}
-                >
-                  Favorite
-                </Button>
-                {/* Watching */}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  startIcon={<TheatersIcon />}
-                >
-                  Watching
-                </Button>
-                {/* Watched */}
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  size="large"
-                  startIcon={<CheckCircleIcon />}
-                >
-                  Watched
-                </Button>
-              </div>
-            </CardContent>
+                <div className={classes.btnGroup}>
+                  {/* Streaming Links */}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<OndemandVideoIcon />}
+                    href={this.state.response2.data.data[0].attributes.url}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                    style={{ color: "white" }}
+                  >
+                    Watch
+                  </Button>
+                  {/* Favorite */}
+                  <Button
+                    onClick={() =>
+                      this.handleSaveAnime(
+                        this.state.response.data.data.attributes
+                      )
+                    }
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<StarsIcon />}
+                  >
+                    Favorite
+                  </Button>
+                  {/* Watching */}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<TheatersIcon />}
+                  >
+                    Watching
+                  </Button>
+                  {/* Watched */}
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    startIcon={<CheckCircleIcon />}
+                  >
+                    Watched
+                  </Button>
+                </div>
+              </CardContent>
+            </Grid>
           </div>
         </>
       );
