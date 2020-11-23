@@ -43,6 +43,12 @@ const AnimeSchema = new Schema({
     type: Number,
     require: false,
   },
+  savedBy: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Anime = mongoose.model("Anime", AnimeSchema);

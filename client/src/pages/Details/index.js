@@ -13,6 +13,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import Alert from "@material-ui/lab/Alert";
 import API from "../../utils/API";
+import UserDashboard from "../UserDashboard";
 
 // Material-UI Styling
 const styles = () => ({
@@ -106,6 +107,7 @@ class Details extends Component {
       rank: manga.popularityRank,
       ageRating: manga.ageRating,
       volumeCount: manga.volumeCount,
+      savedBy: this.user,
     };
 
     API.saveManga(obj)
@@ -140,7 +142,6 @@ class Details extends Component {
             response2: response2,
             type: response.data.data.type,
           });
-          console.log("type: " + this.state.type);
         })
       );
   }
@@ -156,6 +157,9 @@ class Details extends Component {
   // Will render anime details, manga details, or nothing depending on state
   render() {
     const { classes } = this.props;
+    {
+      /*this will render mangas if clicked on a manga from the main page */
+    }
     if (this.state.type === "manga") {
       return (
         <div className={classes.root}>
@@ -210,6 +214,122 @@ class Details extends Component {
                   }}
                 >
                   Age Guide: No rating
+                      </div>
+                    ) : (
+                      <div
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                          lineHeight: "normal",
+                        }}
+                      >
+                        Age Guide: {/* If there is, display it */}
+                        {this.state.response.data.data.attributes.ageRating}
+                      </div>
+                    )}
+                    <Typography
+                      style={{
+                        fontSize: "18px",
+                      }}
+                    >
+                      {/* Snyopsis */}
+                      {this.state.response.data.data.attributes.synopsis}
+                    </Typography>
+                  </Grid>
+                  <Grid className={classes.spaceBetween} container spacing={3}>
+                    <Grid className={classes.card} item xs={5}>
+                      <Typography>
+                        Start date: {/* When the manga started */}
+                        {
+                          this.state.response.data.data.attributes.startDate
+                        }{" "}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.card} item xs={5}>
+                      {/* If the manga has not ended say TBD. If it has, display the end date */}
+                      {this.state.response.data.data.attributes.endDate ==
+                      null ? (
+                        <Typography component={"span"}>
+                          End Date: TBD
+                        </Typography>
+                      ) : (
+                        <Typography component={"span"}>
+                          End Date:{" "}
+                          {this.state.response.data.data.attributes.endDate}
+                        </Typography>
+                      )}
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      <Typography>
+                        Status:{" "}
+                        {/* Is the manga still being made or has it finished */}
+                        {this.state.response.data.data.attributes.status}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      <Typography>
+                        {/* Reader rating out of 100 */}
+                        Reader Rating:{" "}
+                        {this.state.response.data.data.attributes.averageRating}
+                        /100
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      {/* Popularity */}
+                      <Typography>
+                        Rank among Manga:{" "}
+                        {
+                          this.state.response.data.data.attributes
+                            .popularityRank
+                        }
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      {this.state.response.data.data.attributes.nsfw ===
+                      null ? (
+                        // If it's NSFW, say so. If it is, display that as well
+                        <Typography>NSFW: Safe</Typography>
+                      ) : (
+                        <Typography>
+                          NSFW: {this.state.response.data.data.attributes.nsfw}
+                        </Typography>
+                      )}
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <div className={classes.btnGroup}>
+                  {/* Buttons to save manga */}
+                  <Button
+                    onClick={() =>
+                      this.handleSaveManga(
+                        this.state.response.data.data.attributes
+                      )
+                    }
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<StarsIcon />}
+                  >
+                    Favorite
+                  </Button>
+                  {/*non funcitoning button */}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    startIcon={<MenuBookIcon />}
+                  >
+                    Reading
+                  </Button>
+                  {/*non functioning button*/}
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    startIcon={<CheckCircleIcon />}
+                  >
+                    Read
+                  </Button>
                 </div>
               ) : (
                 <div
@@ -318,6 +438,9 @@ class Details extends Component {
         </div>
       );
     } else if (this.state.type === "anime") {
+      {
+        /*returning animes if clicked on an anime from the main page */
+      }
       return (
         <>
           {/* Cover image */}
@@ -390,6 +513,125 @@ class Details extends Component {
                   >
                     Age Guide:{" "}
                     {this.state.response.data.data.attributes.ageRating}
+
+                        </div>
+                      )}
+                      <Typography
+                        style={{
+                          fontSize: "18px",
+                        }}
+                      >
+                        {this.state.response.data.data.attributes.synopsis}
+                      </Typography>
+                    </Grid>
+                    <Grid
+                      className={classes.spaceBetween}
+                      container
+                      spacing={3}
+                    >
+                      <Grid className={classes.card} item xs={5}>
+                        {/* Anime start/end date */}
+                        <Typography>
+                          Start date:{" "}
+                          {this.state.response.data.data.attributes.startDate}{" "}
+                        </Typography>
+                      </Grid>
+                      <Grid className={classes.card} item xs={5}>
+                        {this.state.response.data.data.attributes.endDate ==
+                        null ? (
+                          <Typography component={"span"}>
+                            End Date: TBD
+                          </Typography>
+                        ) : (
+                          <Typography component={"span"}>
+                            End Date:{" "}
+                            {this.state.response.data.data.attributes.endDate}
+                          </Typography>
+                        )}
+                      </Grid>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      <Typography>
+                        {/* Is the anime finished or not */}
+                        Status:{" "}
+                        {this.state.response.data.data.attributes.status}
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      <Typography>
+                        Viewer Rating: {/* Rating out of 100 */}
+                        {this.state.response.data.data.attributes.averageRating}
+                        /100
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={3}>
+                      <Typography>
+                        {/* Popularity */}
+                        Rank among Anime:{" "}
+                        {
+                          this.state.response.data.data.attributes
+                            .popularityRank
+                        }
+                      </Typography>
+                    </Grid>
+                    <Grid className={classes.cardSmall} item xs={2}>
+                      {this.state.response.data.data.attributes.nsfw ===
+                      null ? (
+                        // NSFW or not
+                        <Typography>NSFW: Safe</Typography>
+                      ) : (
+                        <Typography>
+                          NSFW: {this.state.response.data.data.attributes.nsfw}
+                        </Typography>
+                      )}
+                    </Grid>
+                  </Grid>
+                  <div className={classes.btnGroup}>
+                    {/* Streaming Links */}
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      size="large"
+                      startIcon={<OndemandVideoIcon />}
+                      href={this.state.response2.data.data[0].attributes.url}
+                      rel="noreferrer noopener"
+                      target="_blank"
+                      style={{ color: "white" }}
+                    >
+                      Watch
+                    </Button>
+                    {/* Favorite */}
+                    <Button
+                      onClick={() =>
+                        this.handleSaveAnime(
+                          this.state.response.data.data.attributes
+                        )
+                      }
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      startIcon={<StarsIcon />}
+                    >
+                      Favorite
+                    </Button>
+                    {/* Watching */} {/*non functioning button*/}
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      startIcon={<TheatersIcon />}
+                    >
+                      Watching
+                    </Button>
+                    {/* Watched */} {/*non functioning button*/}
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      startIcon={<CheckCircleIcon />}
+                    >
+                      Watched
+                    </Button>
                   </div>
                 )}
                 <Typography

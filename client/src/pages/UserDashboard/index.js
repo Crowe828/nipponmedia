@@ -20,6 +20,7 @@ export const UserDashboard = () => {
   const [mangas, setMangas] = useState([]);
   const [animes, setAnimes] = useState([]);
 
+  // When component mounts, grab the animes and mangas and apply them to the page
   useEffect(() => {
     getMangas();
     getAnimes();
@@ -29,7 +30,6 @@ export const UserDashboard = () => {
   const getMangas = () => {
     API.getManga()
       .then((res) => {
-        console.log("functionManga", res);
         setMangas(res);
       })
       .catch((err) => console.log(err));
@@ -38,21 +38,18 @@ export const UserDashboard = () => {
   const getAnimes = () => {
     API.getAnime()
       .then((res) => {
-        console.log("functionAnime", res);
         setAnimes(res);
       })
       .catch((err) => console.log(err));
   };
   // Delete manga from db
   const deleteManga = (mangaId) => {
-    console.log(mangaId);
     API.deleteManga(mangaId).then((res) => {
       getMangas();
     });
   };
   // Delete anime from db
   const deleteAnime = (animeId) => {
-    console.log(animeId);
     API.deleteAnime(animeId).then((res) => {
       getAnimes();
     });
@@ -89,6 +86,7 @@ export const UserDashboard = () => {
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
                 Your Favorite Animes:
               </h1>
+              {/*displays animes in a list*/}
               {animes.data &&
                 animes.data.map((result) => (
                   <div
@@ -115,6 +113,7 @@ export const UserDashboard = () => {
                         Age Rating: {result.ageRating}
                       </div>
                     </div>
+                    {/* grabs a specific id and deletes that anime */}
                     <button
                       onClick={() => deleteAnime(result._id)}
                       style={{
@@ -131,8 +130,6 @@ export const UserDashboard = () => {
                     </button>
                   </div>
                 ))}
-              {animes.data &&
-                console.log("data from console log in component", animes.data)}
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -146,6 +143,7 @@ export const UserDashboard = () => {
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
                 Your Favorite Mangas:
               </h1>
+              {/* displays mangas in a list */}
               {mangas.data &&
                 mangas.data.map((result) => (
                   <div
@@ -176,7 +174,7 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
-                    {/* Delete manga button */}
+                    {/* grabs a specific id and deletes that manga */}
                     <button
                       onClick={() => deleteManga(result._id)}
                       style={{
@@ -193,8 +191,6 @@ export const UserDashboard = () => {
                     </button>
                   </div>
                 ))}
-              {mangas.data &&
-                console.log("data from console log in component", mangas.data)}
             </div>
           </Grid>
         </Grid>
