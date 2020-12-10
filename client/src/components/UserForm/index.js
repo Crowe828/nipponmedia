@@ -10,13 +10,15 @@ const UserForm = (props) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (error.message) {
-      setErrorMessage(error.message);
-      dispatch(clearErrors());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error]);
+  useEffect(
+    (dispatch) => {
+      if (error.message) {
+        setErrorMessage(error.message);
+        dispatch(clearErrors());
+      }
+    },
+    [dispatch, error]
+  );
 
   return (
     // Form for both login and signup pages

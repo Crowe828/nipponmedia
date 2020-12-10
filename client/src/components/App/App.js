@@ -55,8 +55,7 @@ export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

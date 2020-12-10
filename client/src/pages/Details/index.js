@@ -163,7 +163,6 @@ class Details extends Component {
     );
   }
 
-  
   render() {
     const { classes } = this.props;
     if (this.state.type === "manga") {
@@ -234,9 +233,7 @@ class Details extends Component {
                     <Grid className={classes.card} item xs={5}>
                       <Typography>
                         Start date:
-                        {
-                          this.state.response.data.data.attributes.startDate
-                        }
+                        {this.state.response.data.data.attributes.startDate}
                       </Typography>
                     </Grid>
                     <Grid className={classes.card} item xs={5}>
@@ -426,7 +423,7 @@ class Details extends Component {
                     </Grid>
                     <Grid className={classes.cardSmall} item xs={3}>
                       <Typography>
-                        Viewer Rating: 
+                        Viewer Rating:
                         {this.state.response.data.data.attributes.averageRating}
                         /100
                       </Typography>
@@ -499,19 +496,16 @@ class Details extends Component {
             </div>
             <br />
           </main>
-          </div>
-      )
-    }
-     else {
+        </div>
+      );
+    } else {
       return (
         <div className="ui active dimmer">
           <Loader className="ui massive text">Loading...</Loader>
         </div>
-      )
+      );
     }
   }
 }
 
-
 export default withStyles(styles, { withTheme: true })(Details);
-

@@ -79,7 +79,6 @@ export default function Search(props) {
           onChange={props.handleInputChange}
           className={classes.bar}
         />
-        {/* The user must choose to search for anime OR manga */}
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="dropdown">Type</InputLabel>
           <Select

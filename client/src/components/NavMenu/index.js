@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavMenu(props) {
   const classes = useStyles();
-
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   // helper to show links on Navbar if user is authenticated
@@ -99,7 +98,6 @@ export default function NavMenu(props) {
       <div className="NavMenuTitle">メインメニュー!</div>
       <div className="NavMenuTitle">Main Menu.</div>
       <div className={classes.root}>
-        {/* side bar with links */}
         <List component="nav" aria-label="Navbar Menu">
           <ListItem button>
             <ListItemIcon>
