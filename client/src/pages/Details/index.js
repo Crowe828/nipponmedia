@@ -13,7 +13,6 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import Alert from "@material-ui/lab/Alert";
 import API from "../../utils/API";
-import UserDashboard from "../UserDashboard";
 
 // Material-UI Styling
 const styles = () => ({
@@ -515,3 +514,4 @@ class Details extends Component {
 
 
 export default withStyles(styles, { withTheme: true })(Details);
+
