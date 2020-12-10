@@ -515,3 +515,4 @@ class Details extends Component {
 
 
 export default withStyles(styles, { withTheme: true })(Details);
+

@@ -12,9 +12,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    height: 225,
-    padding: theme.spacing(2),
+    minHeight: 250,
+    lineHeight: "normal",
+    padding: theme.spacing(3),
     textAlign: "center",
+    fontSize: 22,
+    fontWeight: "bold",
     color: theme.palette.text.secondary,
     backgroundColor: "#607d8b",
   },
@@ -51,77 +54,64 @@ export default function About() {
       </p>
       <div className={classes.root}>
         <Grid container spacing={4}>
-          <Grid item xs={6}>
-            <Paper
-              variant="outlined"
-              className={classes.paper}
-              style={{ textAlign: "left" }}
-            >
+          <Grid item xs={12} sm={6}>
+            <Paper variant="outlined" className={classes.paper}>
               {/* Contact info */}
-              <h2 className="heading">Developed By</h2>
-              <ul className="list">
-                <li>
-                  Christian Rowe
-                  <ul>
-                    <li>
-                      <a
-                        href="https://github.com/Crowe828"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        className="listLink"
-                      >
-                        <GitHubIcon /> GitHub
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/christiantrowe/"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        className="listLink"
-                      >
-                        <LinkedInIcon /> LinkedIn
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  Brandon Green
-                  <ul>
-                    <li>
-                      <a
-                        href="https://github.com/BrandonGreenOAB"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        className="listLink"
-                      >
-                        <GitHubIcon /> GitHub
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/brandon-d-green/"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        className="listLink"
-                      >
-                        <LinkedInIcon /> LinkedIn
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+              <h1 className="heading">Developed By</h1>
+              <div>
+                <div style={{ fontStyle: "italic" }}>Christian Rowe</div>
+                <a
+                  href="https://github.com/Crowe828"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  className="listLink"
+                >
+                  <GitHubIcon /> GitHub
+                </a>{" "}
+                <a
+                  href="https://www.linkedin.com/in/christiantrowe/"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  className="listLink"
+                >
+                  <LinkedInIcon /> LinkedIn
+                </a>
+              </div>
+              <br />
+              <div>
+                <div style={{ fontStyle: "italic" }}>Brandon Green</div>
+                <a
+                  href="https://github.com/BrandonGreenOAB"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  className="listLink"
+                >
+                  <GitHubIcon /> GitHub
+                </a>{" "}
+                <a
+                  href="https://www.linkedin.com/in/brandon-d-green/"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                  className="listLink"
+                >
+                  <LinkedInIcon /> LinkedIn
+                </a>
+              </div>
             </Paper>
           </Grid>
-          {/* GitJub repo link */}
-          <Grid item xs={6}>
+          {/* GitHub repo link */}
+          <Grid item xs={12} sm={6}>
             <a
               href="https://github.com/Crowe828/nipponmedia"
               rel="noreferrer noopener"
               target="_blank"
               className="repo"
             >
-              <Paper variant="outlined" className={classes.paper}>
+              <Paper
+                variant="outlined"
+                className={classes.paper}
+                style={{ fontSize: "28px" }}
+              >
                 GitHub Repo
                 <br />
                 <GitHubIcon style={{ fontSize: "160px", padding: "25px" }} />

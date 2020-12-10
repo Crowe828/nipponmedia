@@ -13,12 +13,12 @@ app.use(express.json());
 
 // serve up static assets
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./client/public")));
+  app.use(express.static(path.join(__dirname, "./client/build")));
 }
 
 // connect to Mongo DB
 mongoose
-  .connect(config.MONGO_URI, {
+  .connect(config.MONGO_URI || "mongodb://localhost/nipponmedia ", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

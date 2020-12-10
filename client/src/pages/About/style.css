@@ -9,22 +9,9 @@
   font-size: 18px;
 }
 
-.repo {
-  font-size: 24px;
-}
-
-.list {
-  font-size: 16px;
-}
-
 .repo,
 .heading {
   font-style: italic;
-}
-
-.repo,
-.list {
-  font-weight: bold;
 }
 
 .repo,
