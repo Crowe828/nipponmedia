@@ -17,14 +17,12 @@ export default {
   },
   // API call to get the results for either anime/manga (using drop) and the desired search query (using query)
   getData: function (query, drop) {
-    console.log(query, drop);
     return axios.get(
       "https://kitsu.io/api/edge/" + drop + "?filter%5Btext%5D=" + query
     );
   },
   // API call to get the information for the anime from the API call and adds those properties to the model
   saveAnime: function (animeData) {
-    console.log(animeData);
     return axios.post("/api/animes", animeData);
   },
   // grabs the anime's that are saved into the animes state
