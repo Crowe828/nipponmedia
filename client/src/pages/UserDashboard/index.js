@@ -56,7 +56,7 @@ export const UserDashboard = () => {
   };
 
   return (
-    <>
+    <div>
       <div style={{ marginBottom: "50px" }}>
         <Grid item xs={12}>
           <div
@@ -195,7 +195,7 @@ export const UserDashboard = () => {
           </Grid>
         </Grid>
       </div>
-    </>
+    </div>
   );
 };
 
