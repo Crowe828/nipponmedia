@@ -20,11 +20,11 @@ const Login = (props) => {
 
   const renderFormMessage = () => {
     return (
-      <>
+      <div>
         {/* If not a member, sign up */}
         <i className="user plus icon"></i>Not a member?{" "}
         <Link to="/register">Sign up for a free account</Link>
-      </>
+      </div>
     );
   };
 

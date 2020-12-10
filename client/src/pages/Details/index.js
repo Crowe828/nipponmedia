@@ -163,7 +163,7 @@ class Details extends Component {
     );
   }
 
-  // Will render anime details, manga details, or nothing depending on state
+  
   render() {
     const { classes } = this.props;
     if (this.state.type === "manga") {
