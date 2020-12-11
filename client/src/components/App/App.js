@@ -58,44 +58,42 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <div
-        className="App"
-        style={{
-          position: "relative",
-          minHeight: "100vh",
-        }}
-      >
-        <Router history={history}>
-          {/* So that the footer is always at the bottom */}
-          <div style={{ paddingBottom: "50px" }}>
-            <Header />
-            <Nav />
-            <Switch>
-              <Route exact path="/">
-                <Home
-                  handleFormSubmit={handleFormSubmit}
-                  handleInputChange={handleInputChange}
-                  results={results}
-                  search={search}
-                />
-              </Route>
-              <Route path="/login" component={Login} />
-              {/* Register = Signup page */}
-              <Route path="/register" component={Register} />
-              <Route path="/about" component={About} />
-              {/* Dashboard = Profile page */}
-              <PrivateRoute path="/dashboard" component={UserDashboard} />
-              {/* Details page for each anime/manga */}
-              <Route path="/:type/:id">
-                <Details results={results} />
-              </Route>
-            </Switch>
-          </div>
-          <Footer />
-        </Router>
-      </div>
-    </>
+    <div
+      className="App"
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+      }}
+    >
+      <Router history={history}>
+        {/* So that the footer is always at the bottom */}
+        <div style={{ paddingBottom: "50px" }}>
+          <Header />
+          <Nav />
+          <Switch>
+            <Route exact path="/">
+              <Home
+                handleFormSubmit={handleFormSubmit}
+                handleInputChange={handleInputChange}
+                results={results}
+                search={search}
+              />
+            </Route>
+            <Route path="/login" component={Login} />
+            {/* Register = Signup page */}
+            <Route path="/register" component={Register} />
+            <Route path="/about" component={About} />
+            {/* Dashboard = Profile page */}
+            <PrivateRoute path="/dashboard" component={UserDashboard} />
+            {/* Details page for each anime/manga */}
+            <Route path="/:type/:id">
+              <Details results={results} />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
+      </Router>
+    </div>
   );
 };
 
