@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/Crowe828/nipponmedia/issues"
   },
-  "homepage": ".",
+  "homepage": "https://github.com/Crowe828/nipponmedia#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "concurrently": "^5.2.0",
