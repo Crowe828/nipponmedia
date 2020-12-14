@@ -18,12 +18,15 @@ if (process.env.NODE_ENV === "production") {
 
 // connect to Mongo DB
 mongoose
-  .connect(config.MONGO_URI || "mongodb://localhost/nipponmedia ", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
-  })
+  .connect(
+    config.REACT_APP_MONGO_URI || "mongodb://localhost:27017/nipponmedia",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: true,
+    }
+  )
   .then(() => console.log(`Mongo DB Succesfully Connected`))
   .catch((err) => console.log(err));
 
