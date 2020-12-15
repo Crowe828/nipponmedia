@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
 // connect to Mongo DB
 mongoose
   .connect(
-    config.REACT_APP_MONGO_URI || "mongodb://localhost:27017/nipponmedia",
+    config.MONGO_URI || "mongodb://localhost/nipponmedia",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
