@@ -330,7 +330,7 @@ class Details extends Component {
             <div className={classes.invisible}> </div>
           ) : (
             <img
-              src={this.state.response.data.data.attributes.coverImage}
+              src={this.state.response.data.data.attributes.coverImage.large}
               alt={this.state.response.data.data.attributes.titles.en}
               style={{ width: "100%" }}
             />
