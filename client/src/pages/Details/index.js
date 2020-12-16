@@ -69,6 +69,9 @@ const styles = () => ({
   display: {
     display: "flex",
   },
+  invisible: {
+    display: "none",
+  },
 });
 
 class Details extends Component {
@@ -323,11 +326,16 @@ class Details extends Component {
     } else if (this.state.type === "anime") {
       return (
         <div>
-          <img
-            src={this.state.response.data.data.attributes.coverImage.large}
-            alt={this.state.response.data.data.attributes.titles.en}
-            style={{ width: "100%" }}
-          />
+          {this.state.response.data.data.attributes.coverImage === null ? (
+            <div className={classes.invisible}> </div>
+          ) : (
+            <img
+              src={this.state.response.data.data.attributes.coverImage.large}
+              alt={this.state.response.data.data.attributes.titles.en}
+              style={{ width: "100%" }}
+            />
+          )}
+
           <main className={classes.main}>
             <div
               className={classes.center}
