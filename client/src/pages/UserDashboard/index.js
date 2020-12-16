@@ -96,12 +96,12 @@ export const UserDashboard = () => {
                   >
                     <img
                       className="ui avatar image tiny"
+                      style={{ height: "100%" }}
                       src={result.img}
                       alt={result.titleEn}
                     />
                     <div
                       style={{
-                        display: "flex",
                         flexDirection: "column",
                         width: "100%",
                       }}
@@ -153,13 +153,13 @@ export const UserDashboard = () => {
                   >
                     <img
                       className="ui avatar image tiny"
+                      style={{ height: "100%" }}
                       src={result.img}
                       alt={result.titleEn}
                     />
                     <div
                       className="content"
                       style={{
-                        display: "flex",
                         flexDirection: "column",
                         width: "100%",
                       }}
