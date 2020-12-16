@@ -20,7 +20,7 @@ export const UserDashboard = () => {
   const [mangas, setMangas] = useState([]);
   const [animes, setAnimes] = useState([]);
 
-  // When component mounts, grab the animes and mangas and apply them to the page
+  // When component mounts, grab the anime and manga and apply them to the page
   useEffect(() => {
     getMangas();
     getAnimes();
@@ -84,9 +84,9 @@ export const UserDashboard = () => {
               }}
             >
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
-                Your Favorite Animes:
+                Your Favorite Anime:
               </h1>
-              {/*displays animes in a list*/}
+              {/*displays anime in a list*/}
               {animes.data &&
                 animes.data.map((result) => (
                   <div
@@ -141,9 +141,9 @@ export const UserDashboard = () => {
               }}
             >
               <h1 style={{ textAlign: "center", marginBottom: "50px" }}>
-                Your Favorite Mangas:
+                Your Favorite Manga:
               </h1>
-              {/* displays mangas in a list */}
+              {/* displays manga in a list */}
               {mangas.data &&
                 mangas.data.map((result) => (
                   <div
