@@ -8,6 +8,7 @@ const UserForm = (props) => {
   const error = useSelector((state) => state.errors);
   const [errorMessage, setErrorMessage] = useState("");
 
+  
   const dispatch = useDispatch();
 
   useEffect(
@@ -20,8 +21,8 @@ const UserForm = (props) => {
     [dispatch, error]
   );
 
+  // Form for both login and signup pages
   return (
-    // Form for both login and signup pages
     <>
       <Form onSubmit={props.handleSubmit(props.onSubmit)} size="large">
         <Segment className="ui orange raised">

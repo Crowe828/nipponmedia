@@ -21,12 +21,12 @@ export const App = () => {
   const [results, setResults] = useState([]);
   const [search, setSearch] = useState("");
 
-  // on mount, state will show popular animes
+  // on mount, state will show popular anime
   useEffect(() => {
     getDefault();
   }, []);
 
-  // function that sets state to popular animes
+  // function that sets state to popular anime
   function getDefault() {
     API.defaultData()
       .then((res) => {
@@ -51,7 +51,7 @@ export const App = () => {
     getInfo(search, category);
   }
 
-  // on mount, state will show popular animes
+  // on mount, state will show popular anime
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());

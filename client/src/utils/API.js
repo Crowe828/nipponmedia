@@ -11,7 +11,7 @@ export default {
   loadUser(headers) {
     return axios.get("/auth/user", headers);
   },
-  // Default API call to show popular animes on the home page
+  // Default API call to show popular anime on the home page
   defaultData: function () {
     return axios.get("https://kitsu.io/api/edge/trending/anime");
   },

@@ -1,7 +1,7 @@
-const express = require("express");
-const path = require("path");
-const mongoose = require("mongoose");
 require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
 const config = require("./config");
 const routes = require("./routes");
 
@@ -13,16 +13,16 @@ app.use(express.json());
 
 // serve up static assets
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./client/build")));
+  app.use(express.static(path.join(__dirname, "client", "build")));
 }
 
 // connect to Mongo DB
 mongoose
-  .connect(config.MONGO_URI || "mongodb://localhost:27017/nipponmedia ", {
+  .connect(config.MONGO_URI || "mongodb://localhost/nipponmedia", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
   })
   .then(() => console.log(`Mongo DB Succesfully Connected`))
   .catch((err) => console.log(err));

@@ -29,7 +29,7 @@ module.exports = {
         res.status(422).json(err);
       });
   },
-  // Update you list of anime
+  // Update your list of anime
   update: function (req, res) {
     db.Anime.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
