@@ -13,19 +13,19 @@ app.use(express.json());
 
 // serve up static assets
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./client/build")));
+  app.use(express.static(path.join(__dirname, "client", "build")));
 }
 
 // connect to Mongo DB
-mongoose.connect(
-  config.MONGO_URI || "mongodb://localhost/nipponmedia",
-  {
+mongoose
+  .connect(config.MONGO_URI || "mongodb://localhost/nipponmedia", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
-  }
-).then(() => console.log(`Mongo DB Succesfully Connected`)).catch((err) => console.log(err));
+  })
+  .then(() => console.log(`Mongo DB Succesfully Connected`))
+  .catch((err) => console.log(err));
 
 // use routes
 app.use(routes);

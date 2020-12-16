@@ -48,7 +48,7 @@ module.exports = {
           jwt.sign(
             { userId: user.id },
             config.jwtSecret,
-            { expiresIn: 60 * 60 },
+            { expiresIn: "1h" },
             (err, token) => {
               if (err) throw err;
               res.json({
@@ -90,7 +90,7 @@ module.exports = {
         jwt.sign(
           { userId: user.id },
           config.jwtSecret,
-          { expiresIn: 60 * 60 },
+          { expiresIn: "1h" },
           (err, token) => {
             if (err) throw err;
             res.json({
