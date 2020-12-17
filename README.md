@@ -7,7 +7,7 @@
 
 ## Description
 
-Nippon Media is the premiere application allows you to track all of your favorite anime and manga. Sign up and join the conversation today!
+Nippon Media is the premiere application allows you to track all of your favorite anime and manga. Sign up and join the conversation!
 
 This application was inspired by our mutual love for both anime and manga, and the feeling that there was not an online communtiy where we could discuss our feelings about the content. Our aim is to solve that problem.
 
