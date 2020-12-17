@@ -6,7 +6,7 @@ import { loginUser } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 
 const Login = (props) => {
-  // access to the isAuthenticated property from the auth reducer state
+  // Access to the isAuthenticated property from the auth reducer state
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ const Login = (props) => {
 
   const renderFormMessage = () => {
     return (
+      // Link to sign up if the user is not a member
       <div>
         <i className="user plus icon"></i>Not a member?{" "}
         <Link to="/register">Sign up for a free account</Link>
@@ -54,6 +55,7 @@ const Login = (props) => {
             your daily life!
           </h3>
           <h4>Hurry up and login, Wall Rose has already been breached!</h4>
+          {/* Form to enter email and password */}
           <UserForm
             renderMessage={renderFormMessage}
             buttonText="LOGIN"

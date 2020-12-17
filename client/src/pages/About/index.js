@@ -60,6 +60,7 @@ export default function About() {
               <h1 className="heading">Developed By</h1>
               <div>
                 <div style={{ fontStyle: "italic" }}>Christian Rowe</div>
+                {/* Christian's GitHub */}
                 <a
                   href="https://github.com/Crowe828"
                   rel="noreferrer noopener"
@@ -68,6 +69,7 @@ export default function About() {
                 >
                   <GitHubIcon /> GitHub
                 </a>{" "}
+                {/* Christian's LinkedIn */}
                 <a
                   href="https://www.linkedin.com/in/christiantrowe/"
                   rel="noreferrer noopener"
@@ -80,6 +82,7 @@ export default function About() {
               <br />
               <div>
                 <div style={{ fontStyle: "italic" }}>Brandon Green</div>
+                {/* Brandon's GitHub */}
                 <a
                   href="https://github.com/BrandonGreenOAB"
                   rel="noreferrer noopener"
@@ -88,6 +91,7 @@ export default function About() {
                 >
                   <GitHubIcon /> GitHub
                 </a>{" "}
+                {/* Brandon's LinkedIn */}
                 <a
                   href="https://www.linkedin.com/in/brandon-d-green/"
                   rel="noreferrer noopener"

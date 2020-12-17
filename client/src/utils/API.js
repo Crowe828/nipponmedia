@@ -25,11 +25,11 @@ export default {
   saveAnime: function (animeData) {
     return axios.post("/api/animes", animeData);
   },
-  // grabs the anime's that are saved into the animes state
+  // Grabs the anime's that are saved into the animes state
   getAnime: function (animes) {
     return axios.get("/api/animes", animes);
   },
-  // deletes an anime matching it's specific ID for the profile page
+  // Deletes an anime matching it's specific ID for the profile page
   deleteAnime: function (id) {
     return axios.delete("api/animes/" + id, id);
   },
@@ -37,11 +37,11 @@ export default {
   saveManga: function (mangaData) {
     return axios.post("/api/mangas", mangaData);
   },
-  // grabs the manga's that are saved into the animes state
+  // Grabs the manga's that are saved into the animes state
   getManga: function (mangas) {
     return axios.get("/api/mangas", mangas);
   },
-  // deletes a manga matching it's specific ID for the profile page
+  // Deletes a manga matching it's specific ID for the profile page
   deleteManga: function (id) {
     return axios.delete("api/mangas/" + id, id);
   },

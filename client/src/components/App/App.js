@@ -17,16 +17,16 @@ import API from "../../utils/API";
 import "./style.css";
 
 export const App = () => {
-  // state for data that comes in for the API call and the search term in the search bar
+  // State for data that comes in for the API call and the search term in the search bar
   const [results, setResults] = useState([]);
   const [search, setSearch] = useState("");
 
-  // on mount, state will show popular anime
+  // On mount, state will show popular anime
   useEffect(() => {
     getDefault();
   }, []);
 
-  // function that sets state to popular anime
+  // Function that sets state to popular anime
   function getDefault() {
     API.defaultData()
       .then((res) => {
@@ -34,24 +34,24 @@ export const App = () => {
       })
       .catch((err) => console.log(err));
   }
-  // function that will show the anime / manga that you searched and set the state
+  // Function that will show the anime / manga that you searched and set the state
   function getInfo(query, category) {
     API.getData(query, category)
       .then((res) => setResults(res.data.data))
       .catch((err) => console.log(err));
   }
-  // changes search from id="search" on change and sets the state of it to the current search
+  // Changes search from id="search" on change and sets the state of it to the current search
   function handleInputChange(event) {
     setSearch(event.target.value);
   }
-  // handles the submit to use the API call dependant on search term and type of anime/manga in category.
-  //passing type through Search component from state
+  // Handles the submit to use the API call dependant on search term and type of anime/manga in category.
+  //Passing type through Search component from state
   function handleFormSubmit(event, category) {
     event.preventDefault();
     getInfo(search, category);
   }
 
-  // on mount, state will show popular anime
+  // On mount, state will show popular anime
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());

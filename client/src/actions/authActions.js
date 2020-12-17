@@ -12,7 +12,7 @@ import {
 } from "./types";
 import history from "../history";
 
-// action to handle errors
+// Action to handle errors
 export const getErrors = (errorData) => {
   return {
     type: GET_ERRORS,
@@ -28,19 +28,19 @@ export const clearErrors = () => {
 // Action to register new users
 export const registerUser = (data) => async (dispatch) => {
   try {
-    // send request to server side to register user
+    // Send request to server side to register user
     const response = await API.register(data);
-    // dispatch to reducer
+    // Dispatch to reducer
     dispatch({
       type: REGISTER_SUCCESS,
       payload: response.data,
     });
-    // redirect to page
+    // Redirect to page
     history.push("/dashboard");
   } catch (err) {
-    // dispatch get error Action
+    // Dispatch get error Action
     dispatch(getErrors(err.response.data));
-    // dispatch register fail
+    // Dispatch register fail
     dispatch({
       type: REGISTER_FAIL,
     });
@@ -49,19 +49,19 @@ export const registerUser = (data) => async (dispatch) => {
 // Action to login users
 export const loginUser = (data) => async (dispatch) => {
   try {
-    // send request to server side to login user
+    // Send request to server side to login user
     const response = await API.login(data);
-    // dispatch to reducer
+    // Dispatch to reducer
     dispatch({
       type: LOGIN_SUCCESS,
       payload: response.data,
     });
-    // redirect to page
+    // Redirect to page
     history.push("/dashboard");
   } catch (err) {
-    // dispatch get error Action
+    // Dispatch get error Action
     dispatch(getErrors(err.response.data));
-    // dispatch login fail
+    // Dispatch login fail
     dispatch({
       type: LOGIN_FAIL,
     });
@@ -70,24 +70,24 @@ export const loginUser = (data) => async (dispatch) => {
 // Action to load current user
 export const loadUser = () => async (dispatch, getState) => {
   try {
-    // call getTokenImfo funtion and store content (geader information) to headers
+    // Call getTokenImfo funtion and store content (geader information) to headers
     const headers = getTokenInfo(getState);
-    // send request to server side and pass token information in headers to verify token
+    // Send request to server side and pass token information in headers to verify token
     const user = await API.loadUser(headers);
-    // dispatch to reducer
+    // Dispatch to reducer
     dispatch({
       type: USER_LOADED,
       payload: user.data,
     });
   } catch (err) {
-    // dispatch Auth error
+    // Dispatch Auth error
     dispatch({
       type: AUTH_ERROR,
     });
   }
 };
 
-// function to configure token to be used on any server request using the server side "auth" middleware
+// Function to configure token to be used on any server request using the server side "auth" middleware
 export const getTokenInfo = (getState) => {
   const token = getState().auth.token;
   const headerConfig = {
@@ -103,9 +103,9 @@ export const getTokenInfo = (getState) => {
 };
 // Action to logout user
 export const LogoutUser = () => {
-  // redirect to page
+  // Redirect to page
   history.push("/");
-  // dispatch logout success
+  // Dispatch logout success
   return {
     type: LOGOUT_SUCCESS,
   };

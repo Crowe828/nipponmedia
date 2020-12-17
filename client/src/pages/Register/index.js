@@ -10,6 +10,7 @@ const Register = () => {
 
   const renderFormMessage = () => {
     return (
+      // If the user is a member the can click this link to go to the login page
       <div>
         <i className="address card icon"></i>Already a member?{" "}
         <Link to="/login">Login here</Link>
@@ -46,6 +47,7 @@ const Register = () => {
             We promise to never use or sell your information in any way without
             your consent.
           </h4>
+          {/* Email/pasword form */}
           <UserForm
             renderMessage={renderFormMessage}
             buttonText="LET'S GO!"
