@@ -2,10 +2,8 @@
 
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
-**[Deployment](https://nipponmedia.herokuapp.com)**
-**[Repo](https://github.com/Crowe828/nipponmedia)**
-
-<!-- **[Deployment](INSERT DEPLOYMENT HERE)** -->
+- **[App](https://nipponmedia.herokuapp.com)**
+- **[Repo](https://github.com/Crowe828/nipponmedia)**
 
 ## Description
 
