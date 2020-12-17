@@ -466,7 +466,19 @@ class Details extends Component {
                       </Grid>
                       <div className={classes.btnGroup}>
                         {/* Link to website where the anime can be streamed */}
-                        <Button
+                        {this.state.response2.data.data[0].attributes.url === null ? (
+                          <Button
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<OndemandVideoIcon />}
+                          rel="noreferrer noopener"
+                          target="_blank"
+                          style={{ color: "white", fontSize: "10px" }}
+                        >
+                          Unwatchable
+                        </Button>
+                        ) : (
+                          <Button
                           variant="contained"
                           color="secondary"
                           startIcon={<OndemandVideoIcon />}
@@ -479,6 +491,7 @@ class Details extends Component {
                         >
                           Watch
                         </Button>
+                        )}
                         {/* Buttons to favorite, mark as watched, or watching */}
                         <Button
                           onClick={() =>
