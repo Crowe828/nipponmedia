@@ -8,6 +8,7 @@ const Logout = () => {
   // Dispatch allows the logout function
   const dispatch = useDispatch();
   return (
+    // Logout link used in NavMenu
     <Link
       to="/"
       className="logoutLink item"

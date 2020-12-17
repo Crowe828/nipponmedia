@@ -75,6 +75,7 @@ export const UserDashboard = () => {
           </div>
         </Grid>
         <Grid container className={classes.saved}>
+          {/* Lists of saved anime/manga */}
           <Grid item xs={12} md={6}>
             <div
               className="ui massive divided list"
@@ -94,6 +95,7 @@ export const UserDashboard = () => {
                     className="item"
                     key={result._id}
                   >
+                    {/* Anime cover image */}
                     <img
                       className="ui avatar image tiny"
                       style={{ height: "100%" }}
@@ -107,13 +109,14 @@ export const UserDashboard = () => {
                       }}
                       className="content"
                     >
+                      {/* Anime title in English/Japanese and age rating */}
                       <div className="header">{result.titleJp}</div>
                       <div className="description">{result.titleEn}</div>
                       <div className="description">
                         Age Rating: {result.ageRating}
                       </div>
                     </div>
-                    {/* grabs a specific id and deletes that anime */}
+                    {/* Grabs a specific id and deletes that anime */}
                     <button
                       onClick={() => deleteAnime(result._id)}
                       style={{
@@ -126,6 +129,7 @@ export const UserDashboard = () => {
                         borderRadius: "14px",
                       }}
                     >
+                      {/* Un-favorite an anime */}
                       remove
                     </button>
                   </div>
@@ -151,6 +155,7 @@ export const UserDashboard = () => {
                     key={result._id}
                     style={{ display: "flex" }}
                   >
+                    {/* Manga cover image */}
                     <img
                       className="ui avatar image tiny"
                       style={{ height: "100%" }}
@@ -164,6 +169,7 @@ export const UserDashboard = () => {
                         width: "100%",
                       }}
                     >
+                      {/* Manga title in English/Japanese and age rating */}
                       <div className="header">{result.titleJp}</div>
                       <div className="description">{result.titleEn}</div>
                       {result.ageRating === null ? (
@@ -174,7 +180,7 @@ export const UserDashboard = () => {
                         </div>
                       )}
                     </div>
-                    {/* grabs a specific id and deletes that manga */}
+                    {/* Grabs a specific id and deletes that manga */}
                     <button
                       onClick={() => deleteManga(result._id)}
                       style={{
@@ -187,6 +193,7 @@ export const UserDashboard = () => {
                         borderRadius: "14px",
                       }}
                     >
+                      {/* Un-favorite manga */}
                       remove
                     </button>
                   </div>

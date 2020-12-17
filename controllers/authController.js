@@ -22,7 +22,7 @@ module.exports = {
           .status(400)
           .json({ message: "Password must be at least 6 characters long" });
 
-      // create new User object to be saved in Database
+      // Create new User object to be saved in Database
       const newUser = new User({
         email,
         password,
@@ -44,7 +44,7 @@ module.exports = {
           newUser.password = hash;
           //Save user to DB
           const user = await newUser.save();
-          // create json web token and send it back to client side
+          // Create json web token and send it back to client side
           jwt.sign(
             { userId: user.id },
             config.jwtSecret,
@@ -75,18 +75,18 @@ module.exports = {
           .json({ message: "Please enter enter email and password" });
       // Check for correct email
       const user = await User.findOne({ email });
-      // if email not found
+      // If email not found
       if (!user)
         return res
           .status(400)
           .json({ message: "Email not found. Please register" });
-      // if email found compare hashed password with incoming password
+      // If email found compare hashed password with incoming password
       bcrypt.compare(password, user.password, (err, result) => {
         if (err) throw err;
         const match = result;
         if (!match)
           return res.status(401).json({ message: "Incorrect Password" });
-        // create json web token and send it back to client side
+        // Create json web token and send it back to client side
         jwt.sign(
           { userId: user.id },
           config.jwtSecret,
@@ -104,14 +104,14 @@ module.exports = {
       console.log(err);
     }
   },
-  // get user information
+  // Get user information
   async getUser(req, res) {
     try {
-      // find user by id
+      // Find user by id
       const user = await User.findById(req.userId)
-        // return all info but password
+        // Return all info but password
         .select("-password");
-      // send info to client
+      // Send info to client
       res.json(user);
     } catch (err) {
       throw err;

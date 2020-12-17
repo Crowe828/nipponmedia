@@ -3,7 +3,6 @@ import axios from "axios";
 import { Loader } from "semantic-ui-react";
 import { withStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import OndemandVideoIcon from "@material-ui/icons/OndemandVideo";
@@ -158,6 +157,7 @@ class Details extends Component {
       );
   }
 
+  // Alert the user they added the anime/manga to their profile
   alert() {
     return (
       <Alert variant="outlined" severity="success">
@@ -168,6 +168,7 @@ class Details extends Component {
 
   render() {
     const { classes } = this.props;
+    // Everything for Manga details pages
     if (this.state.type === "manga") {
       return (
         <main className={classes.main}>
@@ -176,6 +177,7 @@ class Details extends Component {
               <CardContent className={classes.wrap}>
                 <Grid className={classes.spaceBetween} container spacing={3}>
                   <Grid item md={3}>
+                    {/* Manga poster image */}
                     <img
                       className={classes.mangaImage}
                       src={
@@ -195,6 +197,7 @@ class Details extends Component {
                           lineHeight: "normal",
                         }}
                       >
+                        {/* Name of manga in English/Japanese */}
                         {this.state.response.data.data.attributes.titles.en}
                         <br />
                         {this.state.response.data.data.attributes.titles.ja_jp}
@@ -206,11 +209,13 @@ class Details extends Component {
                       spacing={3}
                     >
                       <Grid className={classes.card} item xs={5}>
+                        {/* When the manga started */}
                         <h4>
                           Start date:{" "}
                           {this.state.response.data.data.attributes.startDate}
                         </h4>
                       </Grid>
+                      {/* If the manga has finished, display that. If not, display TBD */}
                       <Grid className={classes.card} item xs={5}>
                         {this.state.response.data.data.attributes.endDate ==
                         null ? (
@@ -223,12 +228,14 @@ class Details extends Component {
                         )}
                       </Grid>
                       <Grid className={classes.cardSmall} item xs={2}>
+                        {/* Current status of manga */}
                         <h4>
                           Status:{" "}
                           {this.state.response.data.data.attributes.status}
                         </h4>
                       </Grid>
                       <Grid className={classes.cardSmall} item xs={3}>
+                        {/* User rating */}
                         <h4>
                           Reader Rating:{" "}
                           {
@@ -239,6 +246,7 @@ class Details extends Component {
                         </h4>
                       </Grid>
                       <Grid className={classes.cardSmall} item xs={3}>
+                        {/* Rank of manga compared to other manga */}
                         <h4>
                           Rank among Manga:{" "}
                           {
@@ -248,6 +256,7 @@ class Details extends Component {
                         </h4>
                       </Grid>
                       <Grid className={classes.cardSmall} item xs={2}>
+                        {/* If the manga is NSFW, display that. If not, let them know it is safe */}
                         {this.state.response.data.data.attributes.nsfw ===
                         null ? (
                           <h4>NSFW: Safe</h4>
@@ -260,6 +269,7 @@ class Details extends Component {
                       </Grid>
                     </Grid>
                     <div className={classes.btnGroup}>
+                      {/* Buttons to favorite, mark as reading, or mark as read */}
                       <Button
                         onClick={() =>
                           this.handleSaveManga(
@@ -300,6 +310,7 @@ class Details extends Component {
                     >
                       Synopsis
                     </h1>
+                    {/* What the age rating of the manga is. If there isn't one, display that */}
                     {this.state.response.data.data.attributes.ageRating ===
                     null ? (
                       <div
@@ -323,6 +334,7 @@ class Details extends Component {
                         {this.state.response.data.data.attributes.ageRating}
                       </h1>
                     )}
+                    {/* Manga synopsis */}
                     <p
                       style={{
                         fontSize: "22px",
@@ -338,9 +350,11 @@ class Details extends Component {
           <br />
         </main>
       );
+      // Everything for anime details pages
     } else if (this.state.type === "anime") {
       return (
         <div>
+          {/* Cover image for anime at the top of the page */}
           {this.state.response.data.data.attributes.coverImage === null ? (
             <div className={classes.invisible}> </div>
           ) : (
@@ -356,6 +370,7 @@ class Details extends Component {
                 <CardContent className={classes.wrap}>
                   <Grid className={classes.spaceBetween} container spacing={3}>
                     <Grid item md={3}>
+                      {/* Anime poster image */}
                       <img
                         className={classes.animeImage}
                         src={
@@ -375,9 +390,13 @@ class Details extends Component {
                             lineHeight: "normal",
                           }}
                         >
+                          {/* Anime title in English/Japanese */}
                           {this.state.response.data.data.attributes.titles.en}
                           <br />
-                          {this.state.response.data.data.attributes.titles.ja_jp}
+                          {
+                            this.state.response.data.data.attributes.titles
+                              .ja_jp
+                          }
                         </h1>
                       </Grid>
                       <Grid
@@ -386,12 +405,14 @@ class Details extends Component {
                         spacing={3}
                       >
                         <Grid className={classes.card} item xs={5}>
+                          {/* When the anime started */}
                           <h4>
                             Start date:{" "}
                             {this.state.response.data.data.attributes.startDate}
                           </h4>
                         </Grid>
                         <Grid className={classes.card} item xs={5}>
+                          {/* Whether or not the anime has ended */}
                           {this.state.response.data.data.attributes.endDate ==
                           null ? (
                             <h4>End Date: TBD</h4>
@@ -403,12 +424,14 @@ class Details extends Component {
                           )}
                         </Grid>
                         <Grid className={classes.cardSmall} item xs={2}>
+                          {/* Current status of anime */}
                           <h4>
                             Status:{" "}
                             {this.state.response.data.data.attributes.status}
                           </h4>
                         </Grid>
                         <Grid className={classes.cardSmall} item xs={3}>
+                          {/* User rating */}
                           <h4>
                             Viewer Rating:{" "}
                             {
@@ -419,6 +442,7 @@ class Details extends Component {
                           </h4>
                         </Grid>
                         <Grid className={classes.cardSmall} item xs={3}>
+                          {/* Rank compared to other anime */}
                           <h4>
                             Rank among Anime:{" "}
                             {
@@ -427,6 +451,7 @@ class Details extends Component {
                             }
                           </h4>
                         </Grid>
+                        {/* Whether or not the anime is NSFW */}
                         <Grid className={classes.cardSmall} item xs={2}>
                           {this.state.response.data.data.attributes.nsfw ===
                           null ? (
@@ -440,6 +465,7 @@ class Details extends Component {
                         </Grid>
                       </Grid>
                       <div className={classes.btnGroup}>
+                        {/* Link to website where the anime can be streamed */}
                         <Button
                           variant="contained"
                           color="secondary"
@@ -453,6 +479,7 @@ class Details extends Component {
                         >
                           Watch
                         </Button>
+                        {/* Buttons to favorite, mark as watched, or watching */}
                         <Button
                           onClick={() =>
                             this.handleSaveAnime(
@@ -493,6 +520,7 @@ class Details extends Component {
                       >
                         Synopsis:
                       </h1>
+                      {/* Age rating if there is one */}
                       {this.state.response.data.data.attributes.ageRating ===
                       null ? (
                         <div
@@ -516,6 +544,7 @@ class Details extends Component {
                           {this.state.response.data.data.attributes.ageRating}
                         </div>
                       )}
+                      {/* Anime synopsis */}
                       <p
                         style={{
                           fontSize: "22px",
@@ -534,6 +563,7 @@ class Details extends Component {
       );
     } else {
       return (
+        // Loader while anime/manga details are being retrieved
         <div className="ui active dimmer">
           <Loader className="ui massive text">Loading...</Loader>
         </div>

@@ -11,6 +11,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import NavMenu from "../NavMenu";
 import "./style.css";
 
+// Material-UI Styling
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -84,6 +85,7 @@ export default function Nav() {
                 </animated.div>
               )
           )}
+          {/* Home button always present reglars of page the user is on */}
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <Button color="inherit">
               <HomeIcon style={{ paddingRight: "5px", fontSize: "large" }} />{" "}

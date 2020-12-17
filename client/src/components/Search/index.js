@@ -8,7 +8,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
 import "./style.css";
 
-// Styling for the search bar and categories
+// Material-UI Styling
 const useStyles = makeStyles({
   bar: {
     width: 650,
@@ -73,12 +73,14 @@ export default function Search(props) {
           width: "90%",
         }}
       >
+        {/* Searchbar */}
         <input
           placeholder="Select a category and search!"
           name="search"
           onChange={props.handleInputChange}
           className={classes.bar}
         />
+        {/* Select which category the user is searching */}
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="dropdown">Type</InputLabel>
           <Select

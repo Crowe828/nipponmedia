@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import reducers from "../reducers";
 import thunk from "redux-thunk";
-// redux configuration of the store with the reducers, thunk middleware and chrome web tools.
+
+// Redux configuration of the store with the reducers, thunk middleware and chrome web tools.
 export const store = createStore(
   reducers,
   compose(

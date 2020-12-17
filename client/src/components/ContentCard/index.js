@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 
+// Material-UI Styling
 const useStyles = makeStyles({
   title: {
     fontSize: 14,
@@ -28,6 +29,7 @@ export default function ContentCard(props) {
 
   return (
     <div style={{ padding: 30 }}>
+      {/* Grid displaying all cards */}
       <Grid
         container
         spacing={2}

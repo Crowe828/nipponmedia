@@ -15,6 +15,7 @@ import CommentIcon from "@material-ui/icons/Comment";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import "./style.css";
 
+// Material-UI Styling
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -26,7 +27,7 @@ export default function NavMenu(props) {
   const classes = useStyles();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
-  // helper to show links on Navbar if user is authenticated
+  // Helper to show links on Navbar if user is authenticated
   const showLinks = () => {
     // These only appear if a user is logged in
     if (isAuthenticated) {
